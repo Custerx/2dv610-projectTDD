@@ -60,5 +60,38 @@ namespace ProjectTDD.test
 
             Assert.InRange(actual, expectedLow, expectedHigh);
         }
+
+        public void Play_GetValueFromDice4_InRange1to6()
+        {
+            List<model.Dice> diceList = m_farkle.Play();
+
+            int actual = diceList.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_4).GetValue();
+            int expectedLow = 1;
+            int expectedHigh = 6;
+
+            Assert.InRange(actual, expectedLow, expectedHigh);
+        }
+
+        public void Play_GetValueFromDice5_InRange1to6()
+        {
+            List<model.Dice> diceList = m_farkle.Play();
+
+            int actual = diceList.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_5).GetValue();
+            int expectedLow = 1;
+            int expectedHigh = 6;
+
+            Assert.InRange(actual, expectedLow, expectedHigh);
+        }
+
+        public void Play_GetValueFromDice6_InRange1to6()
+        {
+            List<model.Dice> diceList = m_farkle.Play();
+
+            int actual = diceList.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_6).GetValue();
+            int expectedLow = 1;
+            int expectedHigh = 6;
+
+            Assert.InRange(actual, expectedLow, expectedHigh);
+        }
     }
 }
