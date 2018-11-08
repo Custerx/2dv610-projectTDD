@@ -6,6 +6,7 @@ namespace ProjectTDD.model
 {
     class Farkle
     {
+        List<model.Dice> m_diceList;
         private Dice m_dice_1;
         private Dice m_dice_2;
         private Dice m_dice_3;
@@ -15,7 +16,7 @@ namespace ProjectTDD.model
 
         public enum Dices
         {
-            Dice_1,
+            Dice_1 = 1,
             Dice_2,
             Dice_3,
             Dice_4,
@@ -25,6 +26,7 @@ namespace ProjectTDD.model
 
         public Farkle()
         {
+            m_diceList = new List<model.Dice>();
             m_dice_1 = new Dice();
             m_dice_2 = new Dice();
             m_dice_3 = new Dice();
@@ -35,31 +37,25 @@ namespace ProjectTDD.model
 
         public List<model.Dice> Play()
         {
-            List<model.Dice> diceList = new List<model.Dice>();
-            m_dice_1.Dicenumber = Farkle.Dices.Dice_1;
-            m_dice_1.Roll();
-            diceList.Add(m_dice_1);
+            AddDiceNumberRollDiceAddToList(m_dice_1, 1);
+            AddDiceNumberRollDiceAddToList(m_dice_2, 2);
+            AddDiceNumberRollDiceAddToList(m_dice_3, 3);
+            AddDiceNumberRollDiceAddToList(m_dice_4, 4);
+            AddDiceNumberRollDiceAddToList(m_dice_5, 5);
+            AddDiceNumberRollDiceAddToList(m_dice_6, 6);
+            return m_diceList;
+        }
 
-            m_dice_2.Dicenumber = Farkle.Dices.Dice_2;
-            m_dice_2.Roll();
-            diceList.Add(m_dice_2);
+        private void AddDiceNumberRollDiceAddToList(model.Dice a_dice, int a_diceNumber)
+        {
+            if (a_diceNumber < 1 || a_diceNumber > 6)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
 
-            m_dice_3.Dicenumber = Farkle.Dices.Dice_3;
-            m_dice_3.Roll();
-            diceList.Add(m_dice_3);
-
-            m_dice_4.Dicenumber = Farkle.Dices.Dice_4;
-            m_dice_4.Roll();
-            diceList.Add(m_dice_4);
-
-            m_dice_5.Dicenumber = Farkle.Dices.Dice_5;
-            m_dice_5.Roll();
-            diceList.Add(m_dice_5);
-
-            m_dice_6.Dicenumber = Farkle.Dices.Dice_6;
-            m_dice_6.Roll();
-            diceList.Add(m_dice_6);
-            return diceList;
+            a_dice.Dicenumber = (Dices)a_diceNumber;
+            a_dice.Roll();
+            m_diceList.Add(a_dice);
         }
     }
 }
