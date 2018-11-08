@@ -36,5 +36,17 @@ namespace ProjectTDD.test
 
             Assert.InRange(actual, expectedLow, expectedHigh);
         }
+
+        [Fact]
+        public void Play_GetValueFromDice2_InRange1to6()
+        {
+            List<model.Dice> diceList = m_farkle.Play();
+
+            int actual = diceList.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_2).GetValue();
+            int expectedLow = 1;
+            int expectedHigh = 6;
+
+            Assert.InRange(actual, expectedLow, expectedHigh);
+        }
     }
 }
