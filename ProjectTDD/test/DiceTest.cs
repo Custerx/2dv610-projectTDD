@@ -15,6 +15,8 @@ namespace ProjectTDD.test
         [Fact]
         public void GetValue_RandomValue_InRange1to6()
         {
+            m_dice.Roll();
+
             int actual = m_dice.GetValue();
             int expectedLow = 1;
             int expectedHigh = 6;
