@@ -21,5 +21,14 @@ namespace ProjectTDD.test
 
             Assert.InRange(actual, expectedLow, expectedHigh);
         }
+
+        [Fact]
+        public void GetValue_BeforeDiceRoll_Return0()
+        {
+            int actual = m_dice.GetValue();
+            int expected = 0;
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
