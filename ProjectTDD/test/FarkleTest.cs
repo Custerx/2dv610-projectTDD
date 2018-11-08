@@ -98,10 +98,19 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void AddDiceNumberRollDiceAddToList_UseWrongArgumentInt8_ThrowsArgumentOutOfRangeException()
+        public void AddDiceNumberRollDiceAddToList_UseWrongArgumentInt7_ThrowsArgumentOutOfRangeException()
         {
             model.Dice dice = new model.Dice();
-            int outOfRangeNumber = 8;
+            int outOfRangeNumber = 7;
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => m_farkle.AddDiceNumberRollDiceAddToList(dice, outOfRangeNumber));
+        }
+
+        [Fact]
+        public void AddDiceNumberRollDiceAddToList_UseWrongArgumentInt0_ThrowsArgumentOutOfRangeException()
+        {
+            model.Dice dice = new model.Dice();
+            int outOfRangeNumber = 0;
 
             Assert.Throws<ArgumentOutOfRangeException>(() => m_farkle.AddDiceNumberRollDiceAddToList(dice, outOfRangeNumber));
         }
