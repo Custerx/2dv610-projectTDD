@@ -48,8 +48,16 @@ namespace ProjectTDD.model
             m_dice_3.Roll();
             diceList.Add(m_dice_3);
 
+            m_dice_4.Dicenumber = Farkle.Dices.Dice_4;
+            m_dice_4.Roll();
             diceList.Add(m_dice_4);
+
+            m_dice_5.Dicenumber = Farkle.Dices.Dice_5;
+            m_dice_5.Roll();
             diceList.Add(m_dice_5);
+
+            m_dice_6.Dicenumber = Farkle.Dices.Dice_6;
+            m_dice_6.Roll();
             diceList.Add(m_dice_6);
             return diceList;
         }
