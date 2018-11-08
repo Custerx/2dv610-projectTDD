@@ -39,10 +39,15 @@ namespace ProjectTDD.model
             m_dice_1.Dicenumber = Farkle.Dices.Dice_1;
             m_dice_1.Roll();
             diceList.Add(m_dice_1);
+
             m_dice_2.Dicenumber = Farkle.Dices.Dice_2;
             m_dice_2.Roll();
             diceList.Add(m_dice_2);
+
+            m_dice_3.Dicenumber = Farkle.Dices.Dice_3;
+            m_dice_3.Roll();
             diceList.Add(m_dice_3);
+
             diceList.Add(m_dice_4);
             diceList.Add(m_dice_5);
             diceList.Add(m_dice_6);
