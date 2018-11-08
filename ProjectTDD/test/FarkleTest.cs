@@ -61,6 +61,7 @@ namespace ProjectTDD.test
             Assert.InRange(actual, expectedLow, expectedHigh);
         }
 
+        [Fact]
         public void Play_GetValueFromDice4_InRange1to6()
         {
             List<model.Dice> diceList = m_farkle.Play();
@@ -72,6 +73,7 @@ namespace ProjectTDD.test
             Assert.InRange(actual, expectedLow, expectedHigh);
         }
 
+        [Fact]
         public void Play_GetValueFromDice5_InRange1to6()
         {
             List<model.Dice> diceList = m_farkle.Play();
@@ -83,6 +85,7 @@ namespace ProjectTDD.test
             Assert.InRange(actual, expectedLow, expectedHigh);
         }
 
+        [Fact]
         public void Play_GetValueFromDice6_InRange1to6()
         {
             List<model.Dice> diceList = m_farkle.Play();
