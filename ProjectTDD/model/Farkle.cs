@@ -36,7 +36,12 @@ namespace ProjectTDD.model
         public List<model.Dice> Play()
         {
             List<model.Dice> diceList = new List<model.Dice>();
-
+            diceList.Add(m_dice_1);
+            diceList.Add(m_dice_2);
+            diceList.Add(m_dice_3);
+            diceList.Add(m_dice_4);
+            diceList.Add(m_dice_5);
+            diceList.Add(m_dice_6);
             return diceList;
         }
     }
