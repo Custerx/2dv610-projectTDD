@@ -13,11 +13,11 @@ namespace ProjectTDD.model
         {
             m_value = 0;
         }
-        /*
-        public int GetValue()
+
+        public void Roll()
         {
-            return m_random.Next(1, 7);
-        }*/
+            m_value = m_random.Next(1, 7);
+        }
 
         public int GetValue()
         {

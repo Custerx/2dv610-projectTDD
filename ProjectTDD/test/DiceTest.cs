@@ -13,7 +13,7 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetValue_RandomValue_InRange1to6()
+        public void GetValue_Roll_InRange1to6()
         {
             m_dice.Roll();
 
