@@ -46,7 +46,7 @@ namespace ProjectTDD.model
             return m_diceList;
         }
 
-        private void AddDiceNumberRollDiceAddToList(model.Dice a_dice, int a_diceNumber)
+        internal void AddDiceNumberRollDiceAddToList(model.Dice a_dice, int a_diceNumber)
         {
             if (a_diceNumber < 1 || a_diceNumber > 6)
             {

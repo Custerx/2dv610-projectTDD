@@ -96,5 +96,14 @@ namespace ProjectTDD.test
 
             Assert.InRange(actual, expectedLow, expectedHigh);
         }
+
+        [Fact]
+        public void AddDiceNumberRollDiceAddToList_UseWrongArgumentInt8_ThrowsArgumentOutOfRangeException()
+        {
+            model.Dice dice = new model.Dice();
+            int outOfRangeNumber = 8;
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => m_farkle.AddDiceNumberRollDiceAddToList(dice, outOfRangeNumber));
+        }
     }
 }
