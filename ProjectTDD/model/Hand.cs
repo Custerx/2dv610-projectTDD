@@ -45,7 +45,7 @@ namespace ProjectTDD.model
 
         public List<model.Dice> ShowSaved()
         {
-            return null;
+            return m_savedDiceList;
         }
 
         public void Play()
