@@ -43,7 +43,7 @@ namespace ProjectTDD.model
             return m_diceList;
         }
 
-        public List<model.Dice> Play()
+        public void Play()
         {
             AddDiceNrAndRollThenAddToList(m_dice_1, 1);
             AddDiceNrAndRollThenAddToList(m_dice_2, 2);
@@ -51,7 +51,6 @@ namespace ProjectTDD.model
             AddDiceNrAndRollThenAddToList(m_dice_4, 4);
             AddDiceNrAndRollThenAddToList(m_dice_5, 5);
             AddDiceNrAndRollThenAddToList(m_dice_6, 6);
-            return m_diceList;
         }
 
         internal void AddDiceNrAndRollThenAddToList(model.Dice a_dice, int a_diceNumber)

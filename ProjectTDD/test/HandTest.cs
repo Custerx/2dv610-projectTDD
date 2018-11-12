@@ -16,9 +16,20 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Play_ListWith6Dices_return6()
+        public void Show_GetListWith0Dices_EmptyList()
         {
-            List<model.Dice> input = sut.Play();
+            List<model.Dice> input = sut.Show();
+            int actual = input.Count;
+            int expected = 0;
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Show_ListWith6Dices_return6()
+        {
+            sut.Play();
+            List<model.Dice> input = sut.Show();
             int actual = input.Count;
             int expected = 6;
 
@@ -28,7 +39,8 @@ namespace ProjectTDD.test
         [Fact]
         public void Play_GetValueFromDice1_InRange1to6()
         {
-            List<model.Dice> input = sut.Play();
+            sut.Play();
+            List<model.Dice> input = sut.Show();
 
             int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_1).GetValue();
             int expectedLow = 1;
@@ -40,7 +52,8 @@ namespace ProjectTDD.test
         [Fact]
         public void Play_GetValueFromDice2_InRange1to6()
         {
-            List<model.Dice> input = sut.Play();
+            sut.Play();
+            List<model.Dice> input = sut.Show();
 
             int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_2).GetValue();
             int expectedLow = 1;
@@ -52,7 +65,8 @@ namespace ProjectTDD.test
         [Fact]
         public void Play_GetValueFromDice3_InRange1to6()
         {
-            List<model.Dice> input = sut.Play();
+            sut.Play();
+            List<model.Dice> input = sut.Show();
 
             int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_3).GetValue();
             int expectedLow = 1;
@@ -64,7 +78,8 @@ namespace ProjectTDD.test
         [Fact]
         public void Play_GetValueFromDice4_InRange1to6()
         {
-            List<model.Dice> input = sut.Play();
+            sut.Play();
+            List<model.Dice> input = sut.Show();
 
             int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_4).GetValue();
             int expectedLow = 1;
@@ -76,7 +91,8 @@ namespace ProjectTDD.test
         [Fact]
         public void Play_GetValueFromDice5_InRange1to6()
         {
-            List<model.Dice> input = sut.Play();
+            sut.Play();
+            List<model.Dice> input = sut.Show();
 
             int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_5).GetValue();
             int expectedLow = 1;
@@ -88,7 +104,8 @@ namespace ProjectTDD.test
         [Fact]
         public void Play_GetValueFromDice6_InRange1to6()
         {
-            List<model.Dice> input = sut.Play();
+            sut.Play();
+            List<model.Dice> input = sut.Show();
 
             int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_6).GetValue();
             int expectedLow = 1;
@@ -118,33 +135,13 @@ namespace ProjectTDD.test
         [Fact]
         public void Save_Dice1_Success()
         {
-            List<model.Dice> input = sut.Play();
+            sut.Play();
+            List<model.Dice> input = sut.Show();
             model.Dice dice1 = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_1);
 
             bool success = sut.Save(dice1);
 
             Assert.True(success);
-        }
-
-        [Fact]
-        public void Show_GetListWith0Dices_EmptyList()
-        {
-            List<model.Dice> input = sut.Show();
-            int actual = input.Count;
-            int expected = 0;
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Show_GetListWith6Dices_6DiceList()
-        {
-            sut.Play();
-            List<model.Dice> input = sut.Show();
-            int actual = input.Count;
-            int expected = 6;
-
-            Assert.Equal(expected, actual);
         }
     }
 }
