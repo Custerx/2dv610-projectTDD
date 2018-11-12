@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ProjectTDD.model
@@ -7,6 +8,7 @@ namespace ProjectTDD.model
     class Farkle
     {
         List<model.Dice> m_diceList;
+        List<model.Dice> m_savedDiceList;
         private Dice m_dice_1;
         private Dice m_dice_2;
         private Dice m_dice_3;
@@ -27,6 +29,7 @@ namespace ProjectTDD.model
         public Farkle()
         {
             m_diceList = new List<model.Dice>();
+            m_savedDiceList = new List<model.Dice>();
             m_dice_1 = new Dice();
             m_dice_2 = new Dice();
             m_dice_3 = new Dice();
@@ -48,6 +51,17 @@ namespace ProjectTDD.model
 
         public bool Save(model.Dice a_dice)
         {
+            m_savedDiceList.Add(a_dice);
+            m_diceList.Remove(a_dice);
+
+            bool diceIsSaved = m_savedDiceList.Any(dice => dice.Dicenumber == a_dice.Dicenumber);
+            bool diceIsRemoved = m_diceList.Any(dice => dice.Dicenumber != a_dice.Dicenumber);
+
+            if (diceIsSaved && diceIsRemoved)
+            {
+                return true;
+            }
+
             return false;
         }
 

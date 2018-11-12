@@ -120,7 +120,6 @@ namespace ProjectTDD.test
         {
             List<model.Dice> input = sut.Play();
             model.Dice dice1 = input.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_1);
-            // input.Remove(dice1); // Should be used in the real model?
 
             bool success = sut.Save(dice1);
 
