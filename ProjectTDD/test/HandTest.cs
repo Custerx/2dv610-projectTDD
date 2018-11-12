@@ -135,5 +135,16 @@ namespace ProjectTDD.test
 
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void Show_GetListWith6Dices_6DiceList()
+        {
+            sut.Play();
+            List<model.Dice> input = sut.Show();
+            int actual = input.Count;
+            int expected = 6;
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
