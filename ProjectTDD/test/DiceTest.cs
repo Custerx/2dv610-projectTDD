@@ -5,19 +5,19 @@ namespace ProjectTDD.test
 {
     public class DiceTest
     {
-        private model.Dice m_dice;
+        private model.Dice sut;
 
         public DiceTest()
         {
-            m_dice = new model.Dice();
+            sut = new model.Dice();
         }
 
         [Fact]
         public void GetValue_Roll_InRange1to6()
         {
-            m_dice.Roll();
+            sut.Roll();
 
-            int actual = m_dice.GetValue();
+            int actual = sut.GetValue();
             int expectedLow = 1;
             int expectedHigh = 6;
 
@@ -27,7 +27,7 @@ namespace ProjectTDD.test
         [Fact]
         public void GetValue_BeforeDiceRoll_Return0()
         {
-            int actual = m_dice.GetValue();
+            int actual = sut.GetValue();
             int expected = 0;
 
             Assert.Equal(expected, actual);

@@ -37,16 +37,16 @@ namespace ProjectTDD.model
 
         public List<model.Dice> Play()
         {
-            AddDiceNumberRollDiceAddToList(m_dice_1, 1);
-            AddDiceNumberRollDiceAddToList(m_dice_2, 2);
-            AddDiceNumberRollDiceAddToList(m_dice_3, 3);
-            AddDiceNumberRollDiceAddToList(m_dice_4, 4);
-            AddDiceNumberRollDiceAddToList(m_dice_5, 5);
-            AddDiceNumberRollDiceAddToList(m_dice_6, 6);
+            AddDiceNrAndRollThenAddToList(m_dice_1, 1);
+            AddDiceNrAndRollThenAddToList(m_dice_2, 2);
+            AddDiceNrAndRollThenAddToList(m_dice_3, 3);
+            AddDiceNrAndRollThenAddToList(m_dice_4, 4);
+            AddDiceNrAndRollThenAddToList(m_dice_5, 5);
+            AddDiceNrAndRollThenAddToList(m_dice_6, 6);
             return m_diceList;
         }
 
-        internal void AddDiceNumberRollDiceAddToList(model.Dice a_dice, int a_diceNumber)
+        internal void AddDiceNrAndRollThenAddToList(model.Dice a_dice, int a_diceNumber)
         {
             if (a_diceNumber < 1 || a_diceNumber > 6)
             {
