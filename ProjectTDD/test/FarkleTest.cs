@@ -114,5 +114,17 @@ namespace ProjectTDD.test
 
             Assert.Throws<ArgumentOutOfRangeException>(() => sut.AddDiceNrAndRollThenAddToList(dice, input));
         }
+
+        [Fact]
+        public void Save_Dice1_Success()
+        {
+            List<model.Dice> input = sut.Play();
+            model.Dice dice1 = input.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_1);
+            // input.Remove(dice1); // Should be used in the real model?
+
+            bool success = sut.Save(dice1);
+
+            Assert.True(success);
+        }
     }
 }

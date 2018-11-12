@@ -46,6 +46,11 @@ namespace ProjectTDD.model
             return m_diceList;
         }
 
+        public bool Save(model.Dice a_dice)
+        {
+            return false;
+        }
+
         internal void AddDiceNrAndRollThenAddToList(model.Dice a_dice, int a_diceNumber)
         {
             if (a_diceNumber < 1 || a_diceNumber > 6)
