@@ -51,13 +51,9 @@ namespace ProjectTDD.model
 
         public bool Save(model.Dice a_dice)
         {
-            m_savedDiceList.Add(a_dice);
-            m_diceList.Remove(a_dice);
+            SaveAndRemoveDice(a_dice);
 
-            bool diceIsSaved = m_savedDiceList.Any(dice => dice.Dicenumber == a_dice.Dicenumber);
-            bool diceIsRemoved = m_diceList.Any(dice => dice.Dicenumber != a_dice.Dicenumber);
-
-            if (diceIsSaved && diceIsRemoved)
+            if (IsDiceSaved(a_dice) && IsDiceRemoved(a_dice))
             {
                 return true;
             }
@@ -75,6 +71,22 @@ namespace ProjectTDD.model
             a_dice.Dicenumber = (Dices)a_diceNumber;
             a_dice.Roll();
             m_diceList.Add(a_dice);
+        }
+
+        private void SaveAndRemoveDice(model.Dice a_dice)
+        {
+            m_savedDiceList.Add(a_dice);
+            m_diceList.Remove(a_dice);
+        }
+
+        private bool IsDiceSaved(model.Dice a_dice)
+        {
+            return m_savedDiceList.Any(dice => dice.Dicenumber == a_dice.Dicenumber);
+        }
+
+        private bool IsDiceRemoved(model.Dice a_dice)
+        {
+            return m_diceList.Any(dice => dice.Dicenumber != a_dice.Dicenumber);
         }
     }
 }
