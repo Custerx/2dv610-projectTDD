@@ -4,11 +4,11 @@ using System.Text;
 
 namespace ProjectTDD.view
 {
-    class Console
+    class FarkleView
     {
         public void DisplayDiceValues(int a_diceValue)
         {
-
+            Console.WriteLine(a_diceValue);
         }
     }
 }

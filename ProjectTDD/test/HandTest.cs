@@ -125,15 +125,15 @@ namespace ProjectTDD.test
 
             Assert.True(success);
         }
-/*
-        [Fact]
-        public void Show_GetValuesOfThe6Dices_int()
-        {
-            int expected = 
-            sut.Start();
-            int expected;
 
-            Assert.True(success);
-        } */
+        [Fact]
+        public void Show_GetListWith0Dices_EmptyList()
+        {
+            List<model.Dice> input = sut.Show();
+            int actual = input.Count;
+            int expected = 0;
+
+            Assert.Equal(expected, actual);
+        }
     }
 }

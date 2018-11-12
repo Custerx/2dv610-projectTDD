@@ -38,6 +38,11 @@ namespace ProjectTDD.model
             m_dice_6 = new Dice();
         }
 
+        public List<model.Dice> Show()
+        {
+            return null;
+        }
+
         public List<model.Dice> Play()
         {
             AddDiceNrAndRollThenAddToList(m_dice_1, 1);
