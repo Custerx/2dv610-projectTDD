@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProjectTDD.model
 {
-    class Farkle
+    class Hand
     {
         List<model.Dice> m_diceList;
         List<model.Dice> m_savedDiceList;
@@ -26,7 +26,7 @@ namespace ProjectTDD.model
             Dice_6
         }
 
-        public Farkle()
+        public Hand()
         {
             m_diceList = new List<model.Dice>();
             m_savedDiceList = new List<model.Dice>();
@@ -49,18 +49,6 @@ namespace ProjectTDD.model
             return m_diceList;
         }
 
-        public bool Save(model.Dice a_dice)
-        {
-            SaveAndRemoveDice(a_dice);
-
-            if (IsDiceSaved(a_dice) && IsDiceRemoved(a_dice))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         internal void AddDiceNrAndRollThenAddToList(model.Dice a_dice, int a_diceNumber)
         {
             if (a_diceNumber < 1 || a_diceNumber > 6)
@@ -71,6 +59,18 @@ namespace ProjectTDD.model
             a_dice.Dicenumber = (Dices)a_diceNumber;
             a_dice.Roll();
             m_diceList.Add(a_dice);
+        }
+
+        public bool Save(model.Dice a_dice)
+        {
+            SaveAndRemoveDice(a_dice);
+
+            if (IsDiceSaved(a_dice) && IsDiceNotRemoved(a_dice) == false)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void SaveAndRemoveDice(model.Dice a_dice)
@@ -84,9 +84,9 @@ namespace ProjectTDD.model
             return m_savedDiceList.Any(dice => dice.Dicenumber == a_dice.Dicenumber);
         }
 
-        private bool IsDiceRemoved(model.Dice a_dice)
+        private bool IsDiceNotRemoved(model.Dice a_dice)
         {
-            return m_diceList.Any(dice => dice.Dicenumber != a_dice.Dicenumber);
+            return m_diceList.Any(dice => dice.Dicenumber == a_dice.Dicenumber);
         }
     }
 }

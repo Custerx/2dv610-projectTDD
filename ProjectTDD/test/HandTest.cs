@@ -6,13 +6,13 @@ using Xunit;
 
 namespace ProjectTDD.test
 {
-    public class FarkleTest
+    public class HandTest
     {
-        private model.Farkle sut;
+        private model.Hand sut;
 
-        public FarkleTest()
+        public HandTest()
         {
-            sut = new model.Farkle();
+            sut = new model.Hand();
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace ProjectTDD.test
         {
             List<model.Dice> input = sut.Play();
 
-            int actual = input.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_1).GetValue();
+            int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_1).GetValue();
             int expectedLow = 1;
             int expectedHigh = 6;
 
@@ -42,7 +42,7 @@ namespace ProjectTDD.test
         {
             List<model.Dice> input = sut.Play();
 
-            int actual = input.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_2).GetValue();
+            int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_2).GetValue();
             int expectedLow = 1;
             int expectedHigh = 6;
 
@@ -54,7 +54,7 @@ namespace ProjectTDD.test
         {
             List<model.Dice> input = sut.Play();
 
-            int actual = input.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_3).GetValue();
+            int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_3).GetValue();
             int expectedLow = 1;
             int expectedHigh = 6;
 
@@ -66,7 +66,7 @@ namespace ProjectTDD.test
         {
             List<model.Dice> input = sut.Play();
 
-            int actual = input.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_4).GetValue();
+            int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_4).GetValue();
             int expectedLow = 1;
             int expectedHigh = 6;
 
@@ -78,7 +78,7 @@ namespace ProjectTDD.test
         {
             List<model.Dice> input = sut.Play();
 
-            int actual = input.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_5).GetValue();
+            int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_5).GetValue();
             int expectedLow = 1;
             int expectedHigh = 6;
 
@@ -90,7 +90,7 @@ namespace ProjectTDD.test
         {
             List<model.Dice> input = sut.Play();
 
-            int actual = input.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_6).GetValue();
+            int actual = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_6).GetValue();
             int expectedLow = 1;
             int expectedHigh = 6;
 
@@ -119,11 +119,21 @@ namespace ProjectTDD.test
         public void Save_Dice1_Success()
         {
             List<model.Dice> input = sut.Play();
-            model.Dice dice1 = input.First(dice => dice.Dicenumber == model.Farkle.Dices.Dice_1);
+            model.Dice dice1 = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_1);
 
             bool success = sut.Save(dice1);
 
             Assert.True(success);
         }
+/*
+        [Fact]
+        public void Show_GetValuesOfThe6Dices_int()
+        {
+            int expected = 
+            sut.Start();
+            int expected;
+
+            Assert.True(success);
+        } */
     }
 }

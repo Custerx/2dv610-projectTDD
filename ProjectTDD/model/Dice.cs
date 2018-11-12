@@ -24,6 +24,6 @@ namespace ProjectTDD.model
             return m_value;
         }
 
-        public model.Farkle.Dices Dicenumber { get; set; }
+        public model.Hand.Dices Dicenumber { get; set; }
     }
 }
