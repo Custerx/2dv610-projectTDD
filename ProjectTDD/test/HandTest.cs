@@ -143,5 +143,15 @@ namespace ProjectTDD.test
 
             Assert.True(success);
         }
+
+        [Fact]
+        public void ShowSaved_GetListWith0Dices_EmptyList()
+        {
+            List<model.Dice> input = sut.ShowSaved();
+            int actual = input.Count;
+            int expected = 0;
+
+            Assert.Equal(expected, actual);
+        }
     }
 }

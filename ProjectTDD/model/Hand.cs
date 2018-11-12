@@ -43,6 +43,11 @@ namespace ProjectTDD.model
             return m_diceList;
         }
 
+        public List<model.Dice> ShowSaved()
+        {
+            return null;
+        }
+
         public void Play()
         {
             AddDiceNrAndRollThenAddToList(m_dice_1, 1);
