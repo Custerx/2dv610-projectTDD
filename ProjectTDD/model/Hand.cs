@@ -40,7 +40,7 @@ namespace ProjectTDD.model
 
         public List<model.Dice> Show()
         {
-            return null;
+            return m_diceList;
         }
 
         public List<model.Dice> Play()
