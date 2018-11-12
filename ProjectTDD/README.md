@@ -3,7 +3,7 @@ This is a test driven development c# project. The aim of this project is to crea
 
 ## Frameworks
 XUnit for Unit-testing.
-To be decided for Mocking.
+Moq 4.10.0 for Mocking.
 To be decided for Code Coverage.
 
 ## Farkle rules
