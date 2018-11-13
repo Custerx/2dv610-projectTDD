@@ -45,7 +45,7 @@ namespace ProjectTDD.model
         {
             if (m_diceList.Count < 1)
             {
-                throw new NotImplementedException();
+                throw new EmptyListException();
             }
 
             RollNonSavedDices();
