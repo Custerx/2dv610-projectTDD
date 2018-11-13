@@ -20,6 +20,11 @@ namespace ProjectTDD.controller
             m_hand.Play();
 
             m_farkleView.DisplayDiceValues(5);
+
+            if (m_farkleView.WantsToRollDice())
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
