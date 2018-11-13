@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ProjectTDD.view
 {
-    class FarkleView
+    public class FarkleView
     {
-        public void DisplayDiceValues(int a_diceValue)
+        public virtual void DisplayDiceValues(int a_diceValue)
         {
             Console.WriteLine(a_diceValue);
         }

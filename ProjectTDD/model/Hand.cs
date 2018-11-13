@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProjectTDD.model
 {
-    class Hand
+    public class Hand
     {
         List<model.Dice> m_diceList;
         List<model.Dice> m_savedDiceList;
@@ -48,7 +48,7 @@ namespace ProjectTDD.model
             return m_savedDiceList;
         }
 
-        public void Play()
+        public virtual void Play()
         {
             AddDiceNrAndRollThenAddToList(m_dice_1, 1);
             AddDiceNrAndRollThenAddToList(m_dice_2, 2);
@@ -58,7 +58,7 @@ namespace ProjectTDD.model
             AddDiceNrAndRollThenAddToList(m_dice_6, 6);
         }
 
-        internal void AddDiceNrAndRollThenAddToList(model.Dice a_dice, int a_diceNumber)
+        public void AddDiceNrAndRollThenAddToList(model.Dice a_dice, int a_diceNumber)
         {
             if (a_diceNumber < 1 || a_diceNumber > 6)
             {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjectTDD.controller
 {
-    class Farkle
+    public class Farkle
     {
         private model.Hand m_hand;
         private view.FarkleView m_farkleView;

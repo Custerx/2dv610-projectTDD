@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjectTDD.model
 {
-    class Dice
+    public class Dice
     {
         private static Random m_random = new Random();
         private int m_value;
