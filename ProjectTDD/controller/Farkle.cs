@@ -19,7 +19,7 @@ namespace ProjectTDD.controller
         {
             m_hand.Play();
 
-            m_farkleView.DisplayDiceValues(1);
+            m_farkleView.DisplayDiceValues(5);
         }
     }
 }
