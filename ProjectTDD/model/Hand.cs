@@ -45,7 +45,7 @@ namespace ProjectTDD.model
         {
             if (m_diceList.Count < 1)
             {
-                throw new EmptyListException();
+                throw new EmptyDiceListException();
             }
 
             foreach (model.Dice dice in m_diceList)

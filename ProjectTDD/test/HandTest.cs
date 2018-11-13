@@ -157,7 +157,7 @@ namespace ProjectTDD.test
         [Fact]
         public void Roll_WithEmptyList_ThrowsEmptyListException()
         {
-            Assert.Throws<model.exception.EmptyListException>(() => sut.Roll());
+            Assert.Throws<model.exception.EmptyDiceListException>(() => sut.Roll());
         }
     }
 }
