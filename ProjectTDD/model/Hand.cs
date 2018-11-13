@@ -1,8 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using ProjectTDD.model.exception;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xunit.Sdk;
 
 namespace ProjectTDD.model
 {
@@ -39,20 +41,19 @@ namespace ProjectTDD.model
             m_dice_6 = new Dice();
         }
 
-        public bool RollNonSavedDices()
+        public void Roll()
         {
-            if (m_savedDiceList.Count > 0)
+            if (m_diceList.Count < 1)
             {
-                Roll();
-                return true;
+                throw new NotImplementedException();
             }
 
-            return false;
+            RollNonSavedDices();
         }
 
-        private void Roll()
+        private void RollNonSavedDices()
         {
-            foreach (model.Dice dice in m_savedDiceList)
+            foreach (model.Dice dice in m_diceList)
             {
                 dice.Roll();
             }

@@ -155,10 +155,9 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void RollNonSavedDices_RollRemainingDices_void()
+        public void Roll_WithEmptyList_ThrowsEmptyListException()
         {
-            bool success = sut.RollNonSavedDices();
-            Assert.False(success);
+            Assert.Throws<model.exception.EmptyListException>(() => sut.Roll());
         }
     }
 }
