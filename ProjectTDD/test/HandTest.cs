@@ -153,5 +153,12 @@ namespace ProjectTDD.test
 
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void RollNonSavedDices_RollRemainingDices_void()
+        {
+            bool success = sut.RollNonSavedDices();
+            Assert.False(success);
+        }
     }
 }

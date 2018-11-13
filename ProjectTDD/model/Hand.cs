@@ -38,6 +38,16 @@ namespace ProjectTDD.model
             m_dice_6 = new Dice();
         }
 
+        public bool RollNonSavedDices()
+        {
+            if (m_savedDiceList.Count < 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public List<model.Dice> Show()
         {
             return m_diceList;
