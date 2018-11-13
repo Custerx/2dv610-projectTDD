@@ -28,6 +28,13 @@ namespace ProjectTDD.test
             mock_hand.Verify(mock => mock.Play(), Times.Once());
         }
 
+        [Fact]
+        public void Start_Should_Call_DisplayDiceValue5()
+        {
+            sut.Start();
+            mock_farkleview.Verify(mock => mock.DisplayDiceValues(5), Times.Once());
+        }
+
         private void mock_hand_setup()
         {
             mock_hand.Setup(mock => mock.Play()).Verifiable();
@@ -35,7 +42,7 @@ namespace ProjectTDD.test
 
         private void mock_farkleview_setup()
         {
-            mock_farkleview.Setup(mock => mock.DisplayDiceValues(5));
+            mock_farkleview.Setup(mock => mock.DisplayDiceValues(5)).Verifiable();
         }
     }
 }
