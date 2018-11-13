@@ -12,7 +12,7 @@ namespace ProjectTDD.view
             Console.WriteLine(a_diceValue);
         }
 
-        public bool WantsToRollDice()
+        public virtual bool WantsToRollDice()
         {
             // TODO Make readkey testable.
 
