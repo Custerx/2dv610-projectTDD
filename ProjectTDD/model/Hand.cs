@@ -48,11 +48,6 @@ namespace ProjectTDD.model
                 throw new EmptyListException();
             }
 
-            RollNonSavedDices();
-        }
-
-        private void RollNonSavedDices()
-        {
             foreach (model.Dice dice in m_diceList)
             {
                 dice.Roll();
