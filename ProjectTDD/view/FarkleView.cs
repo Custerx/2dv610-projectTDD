@@ -12,9 +12,11 @@ namespace ProjectTDD.view
             Console.WriteLine(a_diceValue);
         }
 
-        public bool WantsToPlay()
+        public bool WantsToRollDice()
         {
-            throw new NotImplementedException();
+            // TODO Make readkey testable.
+
+            return false;
         }
     }
 }

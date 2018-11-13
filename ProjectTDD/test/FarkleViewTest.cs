@@ -22,10 +22,10 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void WantsToPlay_DisplayView_True()
+        public void WantsToRollDice_NotPressingCharacterR_False()
         {
-            bool success = sut.WantsToPlay();
-            Assert.True(success);
+            bool success = sut.WantsToRollDice();
+            Assert.False(success);
         }
     }
 }
