@@ -20,5 +20,12 @@ namespace ProjectTDD.test
             int input = 5;
             sut.DisplayDiceValues(input); // How to check view output?
         }
+
+        [Fact]
+        public void WantsToPlay_DisplayView_True()
+        {
+            bool success = sut.WantsToPlay();
+            Assert.True(success);
+        }
     }
 }
