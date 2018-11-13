@@ -40,7 +40,7 @@ namespace ProjectTDD.model
 
         public bool RollNonSavedDices()
         {
-            if (m_savedDiceList.Count < 1)
+            if (m_savedDiceList.Count > 0)
             {
                 return true;
             }
