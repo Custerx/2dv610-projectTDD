@@ -42,6 +42,7 @@ namespace ProjectTDD.model
 
         public virtual int CalculateScore()
         {
+            int score = 0;
             throw new NotImplementedException();
         }
     }
