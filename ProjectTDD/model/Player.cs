@@ -15,6 +15,11 @@ namespace ProjectTDD.model
 
         public virtual List<model.Dice> GetHand()
         {
+            return m_hand.Show();
+        }
+
+        public virtual void Play()
+        {
             throw new NotImplementedException();
         }
     }

@@ -9,17 +9,22 @@ namespace ProjectTDD.test
     public class PlayerTest
     {
         private model.Player sut;
+        private model.Player sutRealHand;
         private Mock<model.Hand> fake_hand;
+        private model.Hand real_hand;
 
         public PlayerTest()
         {
+            real_hand = new model.Hand();
+            sutRealHand = new model.Player(real_hand);
+
             fake_hand = new Mock<model.Hand>();
             fake_hand_setup();
             sut = new model.Player(fake_hand.Object);
         }
 
         [Fact]
-        public void GetHand_Show_Return6DiceList()
+        public void GetHand_Show_ReturnFake6DiceList()
         {
             int actual = sut.GetHand().Count;
             int expected = 6;
@@ -27,9 +32,18 @@ namespace ProjectTDD.test
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void GetHand_Show_Return6DiceList()
+        {
+            sutRealHand.Play();
+            int actual = sutRealHand.GetHand().Count;
+            int expected = 6;
+
+            Assert.Equal(expected, actual);
+        }
+
         private void fake_hand_setup()
         {
-            fake_hand.Setup(mock => mock.Play()).Verifiable();
             fake_hand.Setup(mock => mock.Show()).Returns(fake_6dice_list());
         }
 
