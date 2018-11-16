@@ -86,7 +86,7 @@ namespace ProjectTDD.model
             m_diceList.Add(a_dice);
         }
 
-        public bool Save(model.Dice a_dice)
+        public virtual bool Save(model.Dice a_dice)
         {
             SaveAndRemoveDice(a_dice);
 

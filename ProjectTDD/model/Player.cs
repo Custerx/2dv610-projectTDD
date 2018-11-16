@@ -35,7 +35,14 @@ namespace ProjectTDD.model
 
         public virtual void Save(model.Dice a_dice)
         {
-            throw new NotImplementedException();
+            if (m_hand.Save(a_dice))
+            {
+                m_hand.Save(a_dice);
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
     }
 }

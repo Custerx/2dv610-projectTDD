@@ -64,15 +64,18 @@ namespace ProjectTDD.test
             sutRealHand.Play();
             List<model.Dice> diceList = sutRealHand.GetHand();
 
-            foreach (model.Dice d in diceList)
+            for (int i=0; i < diceList.Count; i++)
             {
-                sutRealHand.Save(d);
+                sutRealHand.Save(diceList[i]);
             }
 
             int actual = sutRealHand.GetSavedHand().Count;
             int expected = 6;
-
             Assert.Equal(expected, actual);
+
+            int notSavedActual = sutRealHand.GetHand().Count;
+            int notSavedExpected = 0;
+            Assert.Equal(notSavedExpected, notSavedActual);
         }
 
         private void fake_hand_setup()
