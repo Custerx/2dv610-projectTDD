@@ -63,16 +63,24 @@ namespace ProjectTDD.test
         {
             sutRealHand.Play();
             List<model.Dice> diceList = sutRealHand.GetHand();
+            List<model.Dice> toBeSaved = new List<model.Dice>();
 
-            for (int i=0; i < diceList.Count; i++)
+            // IMPORTANT! Done to avoid index issues.
+            foreach (model.Dice d in diceList)
             {
-                sutRealHand.Save(diceList[i]);
+                toBeSaved.Add(d);
+            }
+
+            for (int i=0; i < toBeSaved.Count; i++)
+            {
+                sutRealHand.Save(toBeSaved[i]);
             }
 
             int actual = sutRealHand.GetSavedHand().Count;
             int expected = 6;
             Assert.Equal(expected, actual);
 
+            // Confirm roll list is empty.
             int notSavedActual = sutRealHand.GetHand().Count;
             int notSavedExpected = 0;
             Assert.Equal(notSavedExpected, notSavedActual);

@@ -10,8 +10,8 @@ namespace ProjectTDD.model
 {
     public class Hand
     {
-        List<model.Dice> m_diceList;
-        List<model.Dice> m_savedDiceList;
+        private List<model.Dice> m_diceList;
+        private List<model.Dice> m_savedDiceList;
         private Dice m_dice_1;
         private Dice m_dice_2;
         private Dice m_dice_3;
@@ -100,8 +100,18 @@ namespace ProjectTDD.model
 
         private void SaveAndRemoveDice(model.Dice a_dice)
         {
-            m_savedDiceList.Add(a_dice);
-            m_diceList.Remove(a_dice);
+            int index = m_diceList.FindIndex(d => d.Dicenumber == a_dice.Dicenumber);
+
+            if (index == -1) // Dice not found.
+            {
+                throw new DiceNotFoundException();
+            } else
+            {
+                model.Dice dice = m_diceList[index];
+                m_savedDiceList.Add(dice);
+                m_diceList.RemoveAt(index);
+            }
+
         }
 
         private bool IsDiceSaved(model.Dice a_dice)
