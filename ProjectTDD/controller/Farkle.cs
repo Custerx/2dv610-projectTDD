@@ -23,9 +23,7 @@ namespace ProjectTDD.controller
         {
             m_hand.Play();
 
-            m_diceList = m_hand.Show();
-
-            m_farkleView.DisplayRolledDices(placeholderPlayer, m_diceList, placeholderScore);
+            m_farkleView.DisplayRolledDices(placeholderPlayer, m_hand.Show(), placeholderScore);
 
             if (m_farkleView.WantsToRollDice())
             {
