@@ -43,7 +43,7 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetHand_CallRollAnd_Verify()
+        public void Roll_CallRollAnd_Verify()
         {
             sut.Roll();
             fake_hand.Verify(mock => mock.Roll(), Times.Once());
