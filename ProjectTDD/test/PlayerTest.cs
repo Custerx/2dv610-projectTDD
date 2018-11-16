@@ -33,7 +33,7 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetHand_Show_Return6DiceList()
+        public void GetHand_CallPlayAnd_Return6DiceList()
         {
             sutRealHand.Play();
             int actual = sutRealHand.GetHand().Count;

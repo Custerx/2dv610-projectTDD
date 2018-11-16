@@ -20,7 +20,7 @@ namespace ProjectTDD.model
 
         public virtual void Play()
         {
-            throw new NotImplementedException();
+            m_hand.Play();
         }
     }
 }
