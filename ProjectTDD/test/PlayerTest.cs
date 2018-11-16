@@ -1,0 +1,74 @@
+﻿using Moq;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Xunit;
+
+namespace ProjectTDD.test
+{
+    public class PlayerTest
+    {
+        private model.Player sut;
+        private Mock<model.Hand> fake_hand;
+
+        public PlayerTest()
+        {
+            fake_hand = new Mock<model.Hand>();
+            fake_hand_setup();
+            sut = new model.Player(fake_hand.Object);
+        }
+
+        [Fact]
+        public void GetHand_Show_Return6DiceList()
+        {
+            int actual = sut.GetHand().Count;
+            int expected = 6;
+
+            Assert.Equal(expected, actual);
+        }
+
+        private void fake_hand_setup()
+        {
+            fake_hand.Setup(mock => mock.Play()).Verifiable();
+            fake_hand.Setup(mock => mock.Show()).Returns(fake_6dice_list());
+        }
+
+        private List<model.Dice> fake_6dice_list()
+        {
+            List<model.Dice> dicelist = new List<model.Dice>();
+
+            Mock<model.Dice> fake_dice1 = new Mock<model.Dice>();
+            fake_dice1.Setup(mock => mock.GetValue()).Returns(5);
+            fake_dice1.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_1);
+
+            Mock<model.Dice> fake_dice2 = new Mock<model.Dice>();
+            fake_dice2.Setup(mock => mock.GetValue()).Returns(1);
+            fake_dice2.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_2);
+
+            Mock<model.Dice> fake_dice3 = new Mock<model.Dice>();
+            fake_dice3.Setup(mock => mock.GetValue()).Returns(1);
+            fake_dice3.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_3);
+
+            Mock<model.Dice> fake_dice4 = new Mock<model.Dice>();
+            fake_dice4.Setup(mock => mock.GetValue()).Returns(6);
+            fake_dice4.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_4);
+
+            Mock<model.Dice> fake_dice5 = new Mock<model.Dice>();
+            fake_dice5.Setup(mock => mock.GetValue()).Returns(4);
+            fake_dice5.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_5);
+
+            Mock<model.Dice> fake_dice6 = new Mock<model.Dice>();
+            fake_dice6.Setup(mock => mock.GetValue()).Returns(1);
+            fake_dice6.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_6);
+
+            dicelist.Add(fake_dice1.Object);
+            dicelist.Add(fake_dice2.Object);
+            dicelist.Add(fake_dice3.Object);
+            dicelist.Add(fake_dice4.Object);
+            dicelist.Add(fake_dice5.Object);
+            dicelist.Add(fake_dice6.Object);
+
+            return dicelist;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ProjectTDD.model
+{
+    public class Player
+    {
+        private model.Hand m_hand;
+
+        public Player(model.Hand a_hand)
+        {
+            m_hand = a_hand;
+        }
+
+        public virtual List<model.Dice> GetHand()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
