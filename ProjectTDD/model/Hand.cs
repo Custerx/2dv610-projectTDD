@@ -41,7 +41,7 @@ namespace ProjectTDD.model
             m_dice_6 = new Dice();
         }
 
-        public void Roll()
+        public virtual void Roll()
         {
             if (m_diceList.Count < 1)
             {

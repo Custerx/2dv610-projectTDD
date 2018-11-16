@@ -22,5 +22,10 @@ namespace ProjectTDD.model
         {
             m_hand.Play();
         }
+
+        public virtual void Roll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -42,8 +42,16 @@ namespace ProjectTDD.test
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void GetHand_CallRollAnd_Verify()
+        {
+            sut.Roll();
+            fake_hand.Verify(mock => mock.Roll(), Times.Once());
+        }
+
         private void fake_hand_setup()
         {
+            fake_hand.Setup(mock => mock.Roll()).Verifiable();
             fake_hand.Setup(mock => mock.Show()).Returns(fake_6dice_list());
         }
 
