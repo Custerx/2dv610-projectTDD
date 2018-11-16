@@ -20,7 +20,7 @@ namespace ProjectTDD.model
 
         public virtual List<model.Dice> GetSavedHand()
         {
-            throw new NotImplementedException();
+            return m_hand.ShowSaved();
         }
 
         public virtual void Play()
