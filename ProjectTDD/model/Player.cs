@@ -18,6 +18,11 @@ namespace ProjectTDD.model
             return m_hand.Show();
         }
 
+        public virtual List<model.Dice> GetSavedHand()
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual void Play()
         {
             m_hand.Play();

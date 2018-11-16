@@ -49,10 +49,20 @@ namespace ProjectTDD.test
             fake_hand.Verify(mock => mock.Roll(), Times.Once());
         }
 
+        [Fact]
+        public void GetSavedHand_ShowSaved_ReturnFake6DiceList()
+        {
+            int actual = sut.GetSavedHand().Count;
+            int expected = 6;
+
+            Assert.Equal(expected, actual);
+        }
+
         private void fake_hand_setup()
         {
             fake_hand.Setup(mock => mock.Roll()).Verifiable();
             fake_hand.Setup(mock => mock.Show()).Returns(fake_6dice_list());
+            fake_hand.Setup(mock => mock.ShowSaved()).Returns(fake_6dice_list());
         }
 
         private List<model.Dice> fake_6dice_list()

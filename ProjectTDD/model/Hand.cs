@@ -59,7 +59,7 @@ namespace ProjectTDD.model
             return m_diceList;
         }
 
-        public List<model.Dice> ShowSaved()
+        public virtual List<model.Dice> ShowSaved()
         {
             return m_savedDiceList;
         }
