@@ -69,13 +69,13 @@ namespace ProjectTDD.test
 
         private void SimulateOutputFromDisplayRolledDices(String a_player, List<model.Dice> a_hand, int a_score)
         {
-            Console.WriteLine("{0} Rolled: ", a_player);
+            m_output.WriteLine("{0} Rolled: ", a_player);
             foreach (model.Dice d in a_hand)
             {
                 SimulateOutputFromDisplayDice(d);
             }
-            Console.WriteLine("Score: {0}", a_score);
-            Console.WriteLine("");
+            m_output.WriteLine("Score: {0}", a_score);
+            m_output.WriteLine("");
         }
     }
 }
