@@ -12,6 +12,17 @@ namespace ProjectTDD.view
             Console.WriteLine("{0} : {1}", a_dice.Dicenumber, a_dice.GetValue());
         }
 
+        public virtual void DisplayRolledDices(String a_player, List<model.Dice> a_hand, int a_score)
+        {
+            Console.WriteLine("{0} Rolled: ", a_player);
+            foreach (model.Dice d in a_hand)
+            {
+                DisplayDice(d);
+            }
+            Console.WriteLine("Score: {0}", a_score);
+            Console.WriteLine("");
+        }
+
         public virtual bool WantsToRollDice()
         {
             // TODO Make readkey testable.

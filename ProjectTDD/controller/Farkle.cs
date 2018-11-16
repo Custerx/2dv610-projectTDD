@@ -10,6 +10,9 @@ namespace ProjectTDD.controller
         private view.FarkleView m_farkleView;
         private List<model.Dice> m_diceList;
 
+        private string placeholderPlayer = "Rogge";
+        private int placeholderScore = 300;
+
         public Farkle(model.Hand a_hand, view.FarkleView a_farkleView)
         {
             m_hand = a_hand;
@@ -22,10 +25,7 @@ namespace ProjectTDD.controller
 
             m_diceList = m_hand.Show();
 
-            foreach(model.Dice dice in m_diceList)
-            {
-                m_farkleView.DisplayDice(dice);
-            }
+            m_farkleView.DisplayRolledDices(placeholderPlayer, m_diceList, placeholderScore);
 
             if (m_farkleView.WantsToRollDice())
             {

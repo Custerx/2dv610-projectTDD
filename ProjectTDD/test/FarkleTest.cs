@@ -33,10 +33,10 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Start_Should_Call_DisplayDice()
+        public void Start_Should_Call_DisplayRolledDices()
         {
             sut.Start();
-            mock_farkleview.Verify(mock => mock.DisplayDice(fake_dice.Object), Times.Once());
+            mock_farkleview.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>()), Times.Once());
         }
 
         [Fact]
@@ -60,7 +60,10 @@ namespace ProjectTDD.test
 
         private void mock_farkleview_setup()
         {
-            mock_farkleview.Setup(mock => mock.DisplayDice(fake_dice.Object)).Verifiable();
+            string fakeName = "Rogge";
+            int fakeScore = 300;
+
+            mock_farkleview.Setup(mock => mock.DisplayRolledDices(fakeName, fake_dice_list(), fakeScore)).Verifiable();
             mock_farkleview.Setup(mock => mock.WantsToRollDice()).Verifiable();
         }
 
