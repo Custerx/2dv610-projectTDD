@@ -19,11 +19,11 @@ namespace ProjectTDD.model
             m_value = m_random.Next(1, 7);
         }
 
-        public int GetValue()
+        public virtual int GetValue()
         {
             return m_value;
         }
 
-        public model.Hand.Dices Dicenumber { get; set; }
+        public virtual model.Hand.Dices Dicenumber { get; set; }
     }
 }

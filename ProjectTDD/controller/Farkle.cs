@@ -8,6 +8,7 @@ namespace ProjectTDD.controller
     {
         private model.Hand m_hand;
         private view.FarkleView m_farkleView;
+        private List<model.Dice> m_diceList;
 
         public Farkle(model.Hand a_hand, view.FarkleView a_farkleView)
         {
@@ -19,7 +20,12 @@ namespace ProjectTDD.controller
         {
             m_hand.Play();
 
-            m_farkleView.DisplayDiceValues(5);
+            m_diceList = m_hand.Show();
+
+            foreach(model.Dice dice in m_diceList)
+            {
+                m_farkleView.DisplayDice(dice);
+            }
 
             if (m_farkleView.WantsToRollDice())
             {

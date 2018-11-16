@@ -54,7 +54,7 @@ namespace ProjectTDD.model
             }
         }
 
-        public List<model.Dice> Show()
+        public virtual List<model.Dice> Show()
         {
             return m_diceList;
         }
@@ -74,7 +74,7 @@ namespace ProjectTDD.model
             AddDiceNrAndRollThenAddToList(m_dice_6, 6);
         }
 
-        public void AddDiceNrAndRollThenAddToList(model.Dice a_dice, int a_diceNumber)
+        internal void AddDiceNrAndRollThenAddToList(model.Dice a_dice, int a_diceNumber)
         {
             if (a_diceNumber < 1 || a_diceNumber > 6)
             {

@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
+using Xunit.Abstractions;
+using Xunit.Sdk;
 
 namespace ProjectTDD.test
 {
     public class FarkleViewTest
     {
         private view.FarkleView sut;
+        private readonly ITestOutputHelper output; // Capturing output.
 
         public FarkleViewTest()
         {
             sut = new view.FarkleView();
+            output = new TestOutputHelper(); // https://xunit.github.io/docs/capturing-output
         }
 
         [Fact]
-        public void GetValue_BeforeDiceRoll_Return0()
+        public void DisplayDiceValues_ArgumentInt5_Output5()
         {
-            int input = 5;
-            sut.DisplayDiceValues(input); // How to check view output?
+            model.Dice input = new model.Dice();
+            sut.DisplayDice(input);
+            // output.WriteLine(input);
         }
 
         [Fact]
