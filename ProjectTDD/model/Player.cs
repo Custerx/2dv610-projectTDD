@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Xunit.Sdk;
 
 namespace ProjectTDD.model
 {
@@ -36,6 +38,11 @@ namespace ProjectTDD.model
         public virtual void Save(model.Dice a_dice)
         {
             m_hand.Save(a_dice);
+        }
+
+        public virtual int CalculateScore()
+        {
+            throw new NotImplementedException();
         }
     }
 }
