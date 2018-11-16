@@ -32,5 +32,10 @@ namespace ProjectTDD.model
         {
             m_hand.Roll();
         }
+
+        public virtual void Save(model.Dice a_dice)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

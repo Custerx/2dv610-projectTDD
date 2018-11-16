@@ -50,9 +50,26 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetSavedHand_ShowSaved_ReturnFake6DiceList()
+        public void GetSavedHand_ShowSaved_ReturnFake6SavedDiceList()
         {
             int actual = sut.GetSavedHand().Count;
+            int expected = 6;
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GetSavedHand_CallPlayAnd_Return6SavedDiceList()
+        {
+            sutRealHand.Play();
+            List<model.Dice> diceList = sutRealHand.GetHand();
+
+            foreach (model.Dice d in diceList)
+            {
+                sutRealHand.Save(d);
+            }
+
+            int actual = sutRealHand.GetSavedHand().Count;
             int expected = 6;
 
             Assert.Equal(expected, actual);
