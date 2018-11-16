@@ -86,6 +86,16 @@ namespace ProjectTDD.test
             Assert.Equal(notSavedExpected, notSavedActual);
         }
 
+        [Fact]
+        public void Save_FakeDiceWithoutCallingPlay_ThrowsDiceNotFoundException()
+        {
+            Mock<model.Dice> fake_dice1 = new Mock<model.Dice>();
+            fake_dice1.Setup(mock => mock.GetValue()).Returns(5);
+            fake_dice1.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_1);
+
+            Assert.Throws<model.exception.DiceNotFoundException>(() => sutRealHand.Save(fake_dice1.Object));
+        }
+
         private void fake_hand_setup()
         {
             fake_hand.Setup(mock => mock.Roll()).Verifiable();

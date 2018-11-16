@@ -104,7 +104,7 @@ namespace ProjectTDD.model
 
             if (index == -1) // Dice not found.
             {
-                throw new DiceNotFoundException();
+                throw new NotImplementedException();
             } else
             {
                 model.Dice dice = m_diceList[index];
