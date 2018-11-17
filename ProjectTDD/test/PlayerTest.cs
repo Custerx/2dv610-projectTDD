@@ -50,10 +50,10 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetSavedHand_ShowSaved_ReturnFake6SavedDiceList()
+        public void GetSavedHand_ShowSaved_ReturnFakeEmptySavedDiceList()
         {
             int actual = sut.GetSavedHand().Count;
-            int expected = 6;
+            int expected = 0;
 
             Assert.Equal(expected, actual);
         }
@@ -108,7 +108,7 @@ namespace ProjectTDD.test
         {
             fake_hand.Setup(mock => mock.Roll()).Verifiable();
             fake_hand.Setup(mock => mock.Show()).Returns(fake_6dice_list());
-            fake_hand.Setup(mock => mock.ShowSaved()).Returns(fake_6dice_list());
+            fake_hand.Setup(mock => mock.ShowSaved()).Returns(fake_emptydice_list());
         }
 
         private List<model.Dice> fake_6dice_list()
@@ -147,6 +147,12 @@ namespace ProjectTDD.test
             dicelist.Add(fake_dice6.Object);
 
             return dicelist;
+        }
+
+        private List<model.Dice> fake_emptydice_list()
+        {
+            List<model.Dice> emptyDiceList = new List<model.Dice>();
+            return emptyDiceList;
         }
     }
 }

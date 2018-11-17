@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit.Sdk;
+using ProjectTDD.model.exception;
 
 namespace ProjectTDD.model
 {
@@ -50,12 +51,17 @@ namespace ProjectTDD.model
             int fives = 0;
             int sixes = 0;
 
-            foreach(model.Dice dice in GetHand())
+            foreach (model.Dice dice in GetHand())
             {
                 scoreList.Add(dice.GetValue());
             }
 
-            foreach(int value in scoreList)
+            foreach (model.Dice dice in GetSavedHand())
+            {
+                scoreList.Add(dice.GetValue());
+            }
+
+            foreach (int value in scoreList)
             {
                 if(value == 1)
                 {
