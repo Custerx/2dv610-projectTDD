@@ -44,7 +44,7 @@ namespace ProjectTDD.model
 
         public bool NoMoreThan6DicesInPlay()
         {
-            throw new NotImplementedException();
+            return ((m_diceList.Count + m_savedDiceList.Count) == 6);
         }
 
         public virtual void Roll()
