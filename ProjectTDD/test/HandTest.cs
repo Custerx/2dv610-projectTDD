@@ -159,5 +159,14 @@ namespace ProjectTDD.test
         {
             Assert.Throws<model.exception.EmptyDiceListException>(() => sut.Roll());
         }
+
+        [Fact]
+        public void NoMoreThan6DicesInPlay_CheckBothLists_true()
+        {
+            sut.Play(); // Generates the 6 dices.
+            bool success = sut.NoMoreThan6DicesInPlay();
+
+            Assert.True(success);
+        }
     }
 }

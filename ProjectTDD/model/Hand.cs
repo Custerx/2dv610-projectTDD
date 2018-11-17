@@ -3,6 +3,7 @@ using ProjectTDD.model.exception;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Xunit.Sdk;
 
@@ -39,6 +40,11 @@ namespace ProjectTDD.model
             m_dice_4 = new Dice();
             m_dice_5 = new Dice();
             m_dice_6 = new Dice();
+        }
+
+        public bool NoMoreThan6DicesInPlay()
+        {
+            throw new NotImplementedException();
         }
 
         public virtual void Roll()
