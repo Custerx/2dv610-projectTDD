@@ -129,17 +129,6 @@ namespace ProjectTDD.model
             int score = 0;
             int pairs = 0;
 
-            // Score for 1 and 5.
-            if (a_ones == 1)
-            {
-                score += 100;
-            }
-
-            if (a_fives == 1)
-            {
-                score += 50;
-            }
-
             // Score for 3 of a kind.
             if (a_ones == 3)
             {
@@ -219,6 +208,31 @@ namespace ProjectTDD.model
                 if (pairs == 1)
                 {
                     score += 1500;
+                }
+            }
+
+            // Score for 1 and 5.
+            if (a_ones == 1)
+            {
+                score += 100;
+            }
+
+            if (a_fives == 1)
+            {
+                score += 50;
+            }
+
+            // Score for pair of 1's and pair if 5's when 3 pair score combination not been hit.
+            if (pairs < 3)
+            {
+                if (a_ones == 2)
+                {
+                    score += 100 * 2;
+                }
+
+                if (a_fives == 2)
+                {
+                    score += 50 * 2;
                 }
             }
 

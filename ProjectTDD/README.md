@@ -12,9 +12,9 @@ Equipment: Six 6-sided dices.
 Number of players: 2-8.
 
 ### Assumptions
-User wants the highest possible score of the saved dice combination.
-User wants the highest possible score from rolled dice combination.
-User wins if total score is 10 000 or more.
+##### User wants the highest possible score of the saved dice combination.
+##### User wants the highest possible score from rolled dice combination.
+##### User can roll max 2 times.
 
 ### How to play Farkle (https://www.dicegamedepot.com/farkle-rules/)
 One player is chosen to begin and play moves clockwise around the table. Each player in turn rolls all six dice and checks to see if they have rolled any scoring dice or combinations. (See Scoring below.) Any dice that score may be set aside and then the player may choose to roll all the remaining dice. The player must set aside at least one scoring die of their choice if possible but is not required to set aside all scoring dice.
@@ -23,7 +23,7 @@ For example, if a player rolled 1-2-2-5-5-6 on their turn, they could set aside 
 
 If all six dice have been set aside for scoring (known as having “hot dice”), the player can choose to roll all six dice again and continue adding to their accumulated score or they can bank their points, end their turn, and pass the dice to the next player.
 
-A player’s turn continues until either they decide to stop and score their accumulated points or until they fail to roll any scoring dice on a throw.
+A player’s turn continues until either they decide to stop and score their accumulated points or until they fail to roll any scoring dice on a throw. "Each player have a maximum of 2 rolls. /Modified rule". 
 
 If a player scores no points on a roll, this is known as a Farkle. The player may continue to roll any dice that have not been previously set aside for scoring, but all of their points gained so far that turn are lost.
 
@@ -49,6 +49,8 @@ Sometimes a single roll will provide multiple ways to score. For example, a play
 150 points for the 1 and a 5
 500 points for the three 5's
 600 points for the 1 and the three 5's
+
+The highest possible score will automatically be used, in this case 600 points.
 
 #### WINNING 
 The first player to score a total of 10,000 or more points wins, provided that no other players with a remaining turn can exceed that score.
