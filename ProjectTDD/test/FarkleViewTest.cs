@@ -43,6 +43,14 @@ namespace ProjectTDD.test
             Assert.False(success);
         }
 
+        [Fact]
+        public void GetAmountOfPlayers_UserInput3Players_ReturnsInt3()
+        {
+            int actual = sut.GetAmountOfPlayers();
+            int expected = 3;
+            Assert.Equal(expected, actual);
+        }
+
         private void fake_dice_setup()
         {
             fake_dice.Setup(mock => mock.GetValue()).Returns(model.Dice.DiceValue.Five);

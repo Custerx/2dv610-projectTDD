@@ -21,6 +21,7 @@ namespace ProjectTDD.controller
         public void Start()
         {
             int players = m_farkleView.GetAmountOfPlayers();
+
             m_hand.Play();
 
             m_farkleView.DisplayRolledDices(placeholderPlayer, m_hand.Show(), placeholderScore);
