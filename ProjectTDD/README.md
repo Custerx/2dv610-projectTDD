@@ -25,7 +25,7 @@ If all six dice have been set aside for scoring (known as having “hot dice”)
 
 A player’s turn continues until either they decide to stop and score their accumulated points or until they fail to roll any scoring dice on a throw. "Each player have a maximum of 2 rolls. /Modified rule". 
 
-If a player scores no points on a roll, this is known as a Farkle. The player may continue to roll any dice that have not been previously set aside for scoring, but all of their points gained so far that turn are lost.
+If a player scores no points on a roll, this is known as a Farkle. The player may continue to roll the dices if it is the first roll. But, if it is the second roll, then all of points gained in that turn are lost.
 
 At the end of a player’s turn, any points they have scored are written down and the dice are passed to the next player.
 

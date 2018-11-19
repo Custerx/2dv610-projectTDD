@@ -57,8 +57,19 @@ namespace ProjectTDD.model
         {
             int savedDicesScore = CalculateDiceStateScore(DiceState.Saved);
             int rolledDicesScore = CalculateDiceStateScore(DiceState.Rolled);
+
+            if (IsFarkle(savedDicesScore, rolledDicesScore))
+            {
+                return 0;
+            }
+
             UpdateScore(savedDicesScore + rolledDicesScore);
             return savedDicesScore + rolledDicesScore;
+        }
+
+        internal virtual bool IsFarkle(int a_savedDiceScore, int a_rolledDiceScore)
+        {
+            throw new NotImplementedException();
         }
 
         private int CalculateDiceStateScore(DiceState diceState)

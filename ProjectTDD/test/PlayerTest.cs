@@ -159,6 +159,16 @@ namespace ProjectTDD.test
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void IsFarkle_SavedScoreAbove0RolledScore0_true()
+        {
+            int inputSavedScore = 100;
+            int inputRolledScore = 0;
+            bool success = sut.IsFarkle(inputSavedScore, inputRolledScore);
+
+            Assert.True(success);
+        }
+
         private void fake_hand_setup()
         {
             fake_hand.Setup(mock => mock.Roll()).Verifiable();
