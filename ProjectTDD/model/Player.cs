@@ -57,6 +57,7 @@ namespace ProjectTDD.model
         {
             int savedDicesScore = CalculateDiceStateScore(DiceState.Saved);
             int rolledDicesScore = CalculateDiceStateScore(DiceState.Rolled);
+            UpdateScore(savedDicesScore + rolledDicesScore);
             return savedDicesScore + rolledDicesScore;
         }
 
@@ -220,8 +221,6 @@ namespace ProjectTDD.model
                     score += 1500;
                 }
             }
-
-            UpdateScore(score);
 
             return score;
         }

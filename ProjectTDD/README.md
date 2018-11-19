@@ -11,6 +11,11 @@ Object of the game: Score 10 000 points.
 Equipment: Six 6-sided dices.
 Number of players: 2-8.
 
+### Assumptions
+User wants the highest possible score of the saved dice combination.
+User wants the highest possible score from rolled dice combination.
+User wins if total score is 10 000 or more.
+
 ### How to play Farkle (https://www.dicegamedepot.com/farkle-rules/)
 One player is chosen to begin and play moves clockwise around the table. Each player in turn rolls all six dice and checks to see if they have rolled any scoring dice or combinations. (See Scoring below.) Any dice that score may be set aside and then the player may choose to roll all the remaining dice. The player must set aside at least one scoring die of their choice if possible but is not required to set aside all scoring dice.
 
