@@ -104,6 +104,15 @@ namespace ProjectTDD.test
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void GetTotalScore_GetPlayerTotalScore_returnsIntScore1050()
+        {
+            sut.CalculateScore();
+            int actual = sut.GetTotalScore();
+            int expected = 1000 + 50; // Three 1's: 1000 points. 5: 50 points.
+            Assert.Equal(expected, actual);
+        }
+
         private void fake_hand_setup()
         {
             fake_hand.Setup(mock => mock.Roll()).Verifiable();

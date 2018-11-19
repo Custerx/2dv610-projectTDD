@@ -10,6 +10,7 @@ namespace ProjectTDD.model
     public class Player
     {
         private model.Hand m_hand;
+        private int m_score;
 
         public Player(model.Hand a_hand)
         {
@@ -39,6 +40,11 @@ namespace ProjectTDD.model
         public virtual void Save(model.Dice a_dice)
         {
             m_hand.Save(a_dice);
+        }
+
+        public virtual int GetTotalScore()
+        {
+            throw new NotImplementedException();
         }
 
         public virtual int CalculateScore()
@@ -187,7 +193,23 @@ namespace ProjectTDD.model
                 score += 1500;
             }
 
+            // Score for 4 of a kind and 1 pair.
+            if (a_ones == 4 || a_twos == 4 || a_threes == 4 || a_fours == 4 || a_fives == 4 || a_sixes == 4)
+            {
+                if (pairs == 1)
+                {
+                    score += 1500;
+                }
+            }
+
+            UpdateScore(score);
+
             return score;
+        }
+
+        private void UpdateScore(int a_score)
+        {
+            m_score += a_score;
         }
     }
 }
