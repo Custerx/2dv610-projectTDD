@@ -44,11 +44,12 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetAmountOfPlayers_UserInput3Players_ReturnsInt3()
+        public void GetAmountOfPlayers_UserInput_ReturnsEnumPlayerInRangeOneToEight()
         {
             int actual = sut.GetAmountOfPlayers();
-            int expected = 3;
-            Assert.Equal(expected, actual);
+            int expectedLow = 1;
+            int expectedHigh = 8;
+            Assert.InRange(actual, expectedLow, expectedHigh);
         }
 
         private void fake_dice_setup()
