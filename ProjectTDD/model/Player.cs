@@ -17,6 +17,12 @@ namespace ProjectTDD.model
             m_hand = a_hand;
         }
 
+        public enum DiceState
+        {
+            Saved,
+            Rolled
+        }
+
         public virtual List<model.Dice> GetHand()
         {
             return m_hand.Show();
@@ -49,6 +55,13 @@ namespace ProjectTDD.model
 
         public virtual int CalculateScore()
         {
+            int savedDicesScore = CalculateDiceStateScore(DiceState.Saved);
+            int rolledDicesScore = CalculateDiceStateScore(DiceState.Rolled);
+            return savedDicesScore + rolledDicesScore;
+        }
+
+        private int CalculateDiceStateScore(DiceState diceState)
+        {
             List<int> scoreList = new List<int>();
             int ones = 0;
             int twos = 0;
@@ -57,14 +70,20 @@ namespace ProjectTDD.model
             int fives = 0;
             int sixes = 0;
 
-            foreach (model.Dice dice in GetHand())
+            if (diceState == DiceState.Rolled)
             {
-                scoreList.Add(dice.GetValue());
+                foreach (model.Dice dice in GetHand())
+                {
+                    scoreList.Add(dice.GetValue());
+                }
             }
 
-            foreach (model.Dice dice in GetSavedHand())
+            if (diceState == DiceState.Saved)
             {
-                scoreList.Add(dice.GetValue());
+                foreach (model.Dice dice in GetSavedHand())
+                {
+                    scoreList.Add(dice.GetValue());
+                }
             }
 
             foreach (int value in scoreList)
