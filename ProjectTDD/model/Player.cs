@@ -119,11 +119,11 @@ namespace ProjectTDD.model
                 }
             }
 
-            return PointsForCombinations(ones, twos, threes, fours, fives, sixes);
+            return MaxPointCombination(ones, twos, threes, fours, fives, sixes);
         }
 
         // https://www.dicegamedepot.com/farkle-rules/
-        private int PointsForCombinations(int a_ones, int a_twos, int a_threes, int a_fours, int a_fives, int a_sixes)
+        private int MaxPointCombination(int a_ones, int a_twos, int a_threes, int a_fours, int a_fives, int a_sixes)
         {
             int score = 0;
             int pairs = 0;
