@@ -155,7 +155,7 @@ namespace ProjectTDD.test
             model.Player sutScore = new model.Player(fake_hand_223466.Object);
 
             int actual = sutScore.CalculateScore();
-            int expected = (0); // Rolled Dices (3 3 3 3 3 3), Six 3's: 3000 points.
+            int expected = (0);
             Assert.Equal(expected, actual);
         }
 
@@ -167,6 +167,16 @@ namespace ProjectTDD.test
             bool success = sut.IsFarkle(inputSavedScore, inputRolledScore);
 
             Assert.True(success);
+        }
+
+        [Fact]
+        public void IsFarkle_SavedScore0RolledScore0_false()
+        {
+            int inputSavedScore = 0;
+            int inputRolledScore = 0;
+            bool actual = sut.IsFarkle(inputSavedScore, inputRolledScore);
+
+            Assert.False(actual);
         }
 
         private void fake_hand_setup()
