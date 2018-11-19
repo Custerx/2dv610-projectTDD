@@ -45,7 +45,7 @@ namespace ProjectTDD.test
 
         private void fake_dice_setup()
         {
-            fake_dice.Setup(mock => mock.GetValue()).Returns(5);
+            fake_dice.Setup(mock => mock.GetValue()).Returns(model.Dice.DiceValue.Five);
             fake_dice.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_1);
         }
 
@@ -54,7 +54,7 @@ namespace ProjectTDD.test
             List<model.Dice> dicelist = new List<model.Dice>();
 
             Mock<model.Dice> fake_dice2 = new Mock<model.Dice>();
-            fake_dice2.Setup(mock => mock.GetValue()).Returns(3);
+            fake_dice2.Setup(mock => mock.GetValue()).Returns(model.Dice.DiceValue.Three);
             fake_dice2.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_2);
 
             dicelist.Add(fake_dice.Object);

@@ -13,24 +13,24 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetValue_Roll_InRange1to6()
+        public void GetValue_BeforeDiceRoll_Return0()
         {
-            sut.Roll();
+            model.Dice.DiceValue actual = sut.GetValue();
+            model.Dice.DiceValue expected = 0;
 
-            int actual = sut.GetValue();
-            int expectedLow = 1;
-            int expectedHigh = 6;
-
-            Assert.InRange(actual, expectedLow, expectedHigh);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void GetValue_BeforeDiceRoll_Return0()
+        public void GetValue_RollDice_ReturnEnumDiceValueInRangeOneToSix()
         {
-            int actual = sut.GetValue();
-            int expected = 0;
+            sut.Roll();
+            model.Dice.DiceValue actual = sut.GetValue();
 
-            Assert.Equal(expected, actual);
+            model.Dice.DiceValue expectedLow = model.Dice.DiceValue.One;
+            model.Dice.DiceValue expectedHigh = model.Dice.DiceValue.Six;
+
+            Assert.InRange(actual, expectedLow, expectedHigh);
         }
     }
 }

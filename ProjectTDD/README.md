@@ -5,6 +5,7 @@ This is a test driven development c# project. The aim of this project is to crea
 XUnit for Unit-testing.
 Moq 4.10.0 for Mocking.
 OpenCover 4.6.519 for Code Coverage.
+ReportGenerator for 
 
 ## Farkle rules
 Object of the game: Score 10 000 points.
@@ -16,7 +17,7 @@ Number of players: 2-8.
 ##### User wants the highest possible score from rolled dice combination.
 ##### User can roll max 2 times.
 
-### How to play Farkle (https://www.dicegamedepot.com/farkle-rules/)
+### How to play Farkle (https://www.dicegamedepot.com/farkle-rules/), with some modifications.
 One player is chosen to begin and play moves clockwise around the table. Each player in turn rolls all six dice and checks to see if they have rolled any scoring dice or combinations. (See Scoring below.) Any dice that score may be set aside and then the player may choose to roll all the remaining dice. The player must set aside at least one scoring die of their choice if possible but is not required to set aside all scoring dice.
 
 For example, if a player rolled 1-2-2-5-5-6 on their turn, they could set aside the 1 and the two 5's for scoring, or they could choose to set aside only the 1. Any scoring dice that are not set aside may be rerolled along with the non-scoring dice.
