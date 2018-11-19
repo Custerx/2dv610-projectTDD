@@ -124,7 +124,7 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void CalculateScore_Roll114555_returnsIntScore700()
+        public void CalculateScore_Save555ThenRoll114_returnsIntScore700()
         {
             Mock<model.Hand> fake_hand_114555 = new Mock<model.Hand>();
             fake_hand_114555 = fake_hand_114555_setup(fake_hand_114555);
