@@ -47,6 +47,13 @@ namespace ProjectTDD.test
         }
 
         [Fact]
+        public void Start_Should_Call_GetAmountOfPlayers()
+        {
+            sut.Start();
+            mock_farkleview.Verify(mock => mock.GetAmountOfPlayers(), Times.Once());
+        }
+
+        [Fact]
         public void CreatePlayer_Input3_ReturnsListWith3Players()
         {
             List<model.Player> playerList = sut.CreatePlayer(3);
@@ -74,6 +81,7 @@ namespace ProjectTDD.test
 
             mock_farkleview.Setup(mock => mock.DisplayRolledDices(fakeName, fake_dice_list(), fakeScore)).Verifiable();
             mock_farkleview.Setup(mock => mock.WantsToRollDice()).Verifiable();
+            mock_farkleview.Setup(mock => mock.GetAmountOfPlayers()).Verifiable();
         }
 
         private List<model.Dice> fake_dice_list()

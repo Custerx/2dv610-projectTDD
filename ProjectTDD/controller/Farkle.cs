@@ -20,6 +20,7 @@ namespace ProjectTDD.controller
 
         public void Start()
         {
+
             m_hand.Play();
 
             m_farkleView.DisplayRolledDices(placeholderPlayer, m_hand.Show(), placeholderScore);
