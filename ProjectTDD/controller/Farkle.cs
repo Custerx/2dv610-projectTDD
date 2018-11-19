@@ -8,7 +8,6 @@ namespace ProjectTDD.controller
     {
         private model.Hand m_hand;
         private view.FarkleView m_farkleView;
-        private List<model.Dice> m_diceList;
 
         private string placeholderPlayer = "Rogge";
         private int placeholderScore = 300;
@@ -29,6 +28,11 @@ namespace ProjectTDD.controller
             {
                 throw new NotImplementedException();
             }
+        }
+
+        internal virtual List<model.Player> CreatePlayer(int players)
+        {
+            throw new NotImplementedException();
         }
     }
 }

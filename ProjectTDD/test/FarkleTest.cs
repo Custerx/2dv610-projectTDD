@@ -46,6 +46,15 @@ namespace ProjectTDD.test
             mock_farkleview.Verify(mock => mock.WantsToRollDice(), Times.Once());
         }
 
+        [Fact]
+        public void CreatePlayer_Input3_ReturnsListWith3Players()
+        {
+            List<model.Player> playerList = sut.CreatePlayer(3);
+            int actual = playerList.Count;
+            int expected = 3;
+            Assert.Equal(expected, actual);
+        }
+
         private void fake_dice_setup()
         {
             fake_dice.Setup(mock => mock.GetValue()).Returns(model.Dice.DiceValue.Five);
