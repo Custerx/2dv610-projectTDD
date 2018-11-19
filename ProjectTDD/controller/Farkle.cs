@@ -32,7 +32,14 @@ namespace ProjectTDD.controller
 
         internal virtual List<model.Player> CreatePlayer(int players)
         {
-            throw new NotImplementedException();
+            List<model.Player> playerList = new List<model.Player>();
+
+            for (int i = 0; i < players; i++)
+            {
+                playerList.Add(new model.Player(new model.Hand()));
+            }
+
+            return playerList;
         }
     }
 }
