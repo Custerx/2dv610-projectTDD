@@ -236,7 +236,11 @@ namespace ProjectTDD.model
                 }
             }
 
-
+            // Score for 6 of a kind.
+            if (a_ones == 6 || a_twos == 6 || a_threes == 6 || a_fours == 6 || a_fives == 6 || a_sixes == 6)
+            {
+                score += 3000;
+            }
 
             return score;
         }
