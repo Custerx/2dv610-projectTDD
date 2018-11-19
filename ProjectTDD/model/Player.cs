@@ -236,6 +236,8 @@ namespace ProjectTDD.model
                 }
             }
 
+
+
             return score;
         }
 
