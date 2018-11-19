@@ -105,11 +105,21 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetTotalScore_GetPlayerTotalScore_returnsIntScore1050()
+        public void GetTotalScore_RunCalculateScore_returnsIntScore1050()
         {
             sut.CalculateScore();
             int actual = sut.GetTotalScore();
             int expected = 1000 + 50; // Three 1's: 1000 points. 5: 50 points.
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GetTotalScore_RunCalculateScoreTwice_returnsIntScore2100()
+        {
+            sut.CalculateScore();
+            sut.CalculateScore();
+            int actual = sut.GetTotalScore();
+            int expected = (1000 + 50) * 2; // Three 1's: 1000 points. 5: 50 points.
             Assert.Equal(expected, actual);
         }
 
