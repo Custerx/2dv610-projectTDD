@@ -29,7 +29,7 @@ namespace ProjectTDD.test
         [Fact]
         public void CreatePlayer_Input3_ReturnsListWith3Players()
         {
-            List<model.Player> playerList = sut.CreatePlayer(3);
+            List<model.IPlayer> playerList = sut.CreatePlayer(3);
             int actual = playerList.Count;
             int expected = 3;
             Assert.Equal(expected, actual);
@@ -37,7 +37,7 @@ namespace ProjectTDD.test
 
         private void mock_farkleview_setup()
         {
-            mock_farkleview.Setup(mock => mock.GetAmountOfPlayers()).Verifiable();
+            mock_farkleview.Setup(mock => mock.GetAmountOfPlayers()).Returns(3).Verifiable();
         }
     }
 }

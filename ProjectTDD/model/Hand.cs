@@ -9,7 +9,7 @@ using Xunit.Sdk;
 
 namespace ProjectTDD.model
 {
-    public class Hand
+    public class Hand : IHand
     {
         private List<model.Dice> m_diceList;
         private List<model.Dice> m_savedDiceList;

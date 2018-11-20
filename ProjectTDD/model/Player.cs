@@ -7,12 +7,12 @@ using ProjectTDD.model.exception;
 
 namespace ProjectTDD.model
 {
-    public class Player
+    public class Player : IPlayer
     {
-        private model.Hand m_hand;
+        private IHand m_hand;
         private int m_score;
 
-        public Player(model.Hand a_hand)
+        public Player(IHand a_hand)
         {
             m_hand = a_hand;
         }
