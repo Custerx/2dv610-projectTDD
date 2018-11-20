@@ -50,7 +50,7 @@ namespace ProjectTDD.test
         public void Start_Should_Call_DisplayRolledDices()
         {
             sut.Start();
-            mock_farkleview.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>()), Times.Once());
+            mock_farkleview.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>()), Times.Between(1, 8, Range.Inclusive));
         }
 
         private void mock_farkleview_setup()

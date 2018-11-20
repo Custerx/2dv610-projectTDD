@@ -40,6 +40,7 @@ namespace ProjectTDD.controller
             foreach(IPlayer player in a_playerList)
             {
                 player.Play();
+                m_farkleView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore());
             }
         }
     }
