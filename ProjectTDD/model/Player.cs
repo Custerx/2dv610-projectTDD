@@ -69,7 +69,7 @@ namespace ProjectTDD.model
 
         internal virtual bool IsFarkle(int a_savedDiceScore, int a_rolledDiceScore)
         {
-            return (a_savedDiceScore > 0 && a_rolledDiceScore == 0);
+            return (a_savedDiceScore >= 50 && a_rolledDiceScore == 0);
         }
 
         private int CalculateDiceStateScore(DiceState diceState)
