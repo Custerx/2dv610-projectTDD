@@ -20,6 +20,7 @@ namespace ProjectTDD.controller
         {
             int players = m_farkleView.GetAmountOfPlayers();
             List<IPlayer> playerList = CreatePlayer(players);
+            Play(playerList);
         }
 
         internal virtual List<IPlayer> CreatePlayer(int a_players)
