@@ -23,7 +23,7 @@ namespace ProjectTDD.test
         public void Start_Should_Call_GetAmountOfPlayers()
         {
             sut.Start();
-            mock_farkleview.Verify(mock => mock.GetAmountOfPlayers(), Times.Once());
+            mock_farkleview.Verify(mock => mock.GetAmountOfPlayers(false), Times.Once());
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace ProjectTDD.test
 
         private void mock_farkleview_setup()
         {
-            mock_farkleview.Setup(mock => mock.GetAmountOfPlayers()).Returns(3).Verifiable();
+            mock_farkleview.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
         }
     }
 }

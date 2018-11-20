@@ -31,7 +31,7 @@ namespace ProjectTDD.view
             return false;
         }
 
-        public virtual int GetAmountOfPlayers()
+        public virtual int GetAmountOfPlayers(bool a_isThisATest = false)
         {
             string input;
 
@@ -45,7 +45,7 @@ namespace ProjectTDD.view
                     Console.WriteLine("\n [1], [2], [3], [4], [5], [6], [7] or [8]. Chose by typing a number between 1 and 8.\n");
                     Console.ResetColor();
 
-                    input = "3"; // Console.ReadLine();
+                    input = GetNumberInput(a_isThisATest);
 
                     if (!input.All(c => c >= '1' && c <= '8'))
                     {
@@ -61,6 +61,17 @@ namespace ProjectTDD.view
                     Console.WriteLine("\nError! Your choice must contain a number between 1 and 8.\n");
                     Console.ResetColor();
                 }
+            }
+        }
+
+        private string GetNumberInput(bool a_isThisATest)
+        {
+            if(a_isThisATest)
+            {
+                return "3";
+            } else
+            {
+                return Console.ReadLine();
             }
         }
     }
