@@ -12,9 +12,12 @@ namespace ProjectTDD.test
     {
         private Mock<view.FarkleView> mock_farkleview;
         private controller.Farkle sut;
+        private Mock<model.Dice> fake_dice;
 
         public FarkleTest()
         {
+            fake_dice = new Mock<model.Dice>();
+            fake_dice_setup();
             mock_farkleview = new Mock<view.FarkleView>();
             mock_farkleview_setup();
             sut = new controller.Farkle(mock_farkleview.Object);
@@ -43,9 +46,30 @@ namespace ProjectTDD.test
             sut.Play(playerList);
         }
 
+        [Fact]
+        public void Start_Should_Call_DisplayRolledDices()
+        {
+            sut.Start();
+            mock_farkleview.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>()), Times.Once());
+        }
+
         private void mock_farkleview_setup()
         {
             mock_farkleview.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
+            mock_farkleview.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300)).Verifiable();
+        }
+
+        private void fake_dice_setup()
+        {
+            fake_dice.Setup(mock => mock.GetValue()).Returns(model.Dice.DiceValue.Three).Verifiable();
+            fake_dice.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_1).Verifiable();
+        }
+
+        private List<model.Dice> FakeDiceList()
+        {
+            List<model.Dice> fakedicelist = new List<model.Dice>();
+            fakedicelist.Add(fake_dice.Object);
+            return fakedicelist;
         }
     }
 }
