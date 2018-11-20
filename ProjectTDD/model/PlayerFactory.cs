@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ProjectTDD.model
 {
-    class PlayerFactory
+    public class PlayerFactory
     {
-        public IPlayer CreateNewPlayer()
+        public virtual IPlayer CreateNewPlayer()
         {
             return new Player(CreateNewHand());
         }

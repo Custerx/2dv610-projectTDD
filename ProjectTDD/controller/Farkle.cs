@@ -37,7 +37,10 @@ namespace ProjectTDD.controller
 
         internal virtual void Play(List<IPlayer> a_playerList)
         {
-            throw new NotImplementedException();
+            foreach(IPlayer player in a_playerList)
+            {
+                player.Play();
+            }
         }
     }
 }
