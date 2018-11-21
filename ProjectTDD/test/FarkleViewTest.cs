@@ -70,9 +70,18 @@ namespace ProjectTDD.test
             mock_player.Verify(mock => mock.Roll(), Times.Once());
         }
 
+        [Fact]
+        public void GetAction_PressKeyN_Should_Call_Play()
+        {
+            string input = "n";
+            sut.GetAction(mock_player.Object, input);
+            mock_player.Verify(mock => mock.Play(), Times.Once());
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
+            mock_player.Setup(mock => mock.Play()).Verifiable();
         }
 
         private void fake_dice_setup()
