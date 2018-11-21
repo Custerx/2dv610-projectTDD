@@ -33,6 +33,11 @@ namespace ProjectTDD.view
 
         public bool GetAction(model.IPlayer player, string a_letter)
         {
+            if (!a_letter.All(c => c == 'r' || c == 'n' || c == 's' || c == 'q'))
+            {
+                throw new ArgumentException();
+            }
+
             if (a_letter == "r")
             {
                 player.Roll();

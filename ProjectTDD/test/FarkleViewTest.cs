@@ -95,11 +95,11 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetAction_UseWrongArgumentStringE_ThrowsArgumentOutOfRangeException()
+        public void GetAction_UseWrongArgumentStringE_ThrowsArgumentException()
         {
             string input = "e";
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => sut.GetAction(mock_player.Object, input));
+            Assert.Throws<ArgumentException>(() => sut.GetAction(mock_player.Object, input));
         }
 
         private void mock_player_setup()
