@@ -54,7 +54,8 @@ namespace ProjectTDD.test
         [Fact]
         public void GetAction_PressKeyQ_False()
         {
-            bool fail = sut.GetAction();
+            string input = "q";
+            bool fail = sut.GetAction(input);
             Assert.False(fail);
         }
 

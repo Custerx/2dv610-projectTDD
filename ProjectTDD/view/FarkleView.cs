@@ -31,9 +31,9 @@ namespace ProjectTDD.view
             return false;
         }
 
-        public bool GetAction()
+        public bool GetAction(string a_letter)
         {
-            throw new NotImplementedException();
+            return a_letter != "q";
         }
 
         public virtual int GetAmountOfPlayers(bool a_isThisATest = false)
