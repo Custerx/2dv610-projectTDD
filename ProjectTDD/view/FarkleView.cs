@@ -31,7 +31,7 @@ namespace ProjectTDD.view
             return false;
         }
 
-        public bool GetAction(string a_letter)
+        public bool GetAction(model.IPlayer player, string a_letter)
         {
             return a_letter != "q";
         }

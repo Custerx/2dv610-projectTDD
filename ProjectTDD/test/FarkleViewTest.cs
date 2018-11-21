@@ -13,11 +13,14 @@ namespace ProjectTDD.test
         private Mock<model.Dice> fake_dice;
         private view.FarkleView sut;
         private readonly ITestOutputHelper m_output; // Capturing output.
+        private Mock<model.IPlayer> mock_player;
 
         public FarkleViewTest(ITestOutputHelper a_output)
         {
             fake_dice = new Mock<model.Dice>();
             fake_dice_setup();
+            mock_player = new Mock<model.IPlayer>();
+            mock_player_setup();
             sut = new view.FarkleView();
             m_output = a_output; // https://xunit.github.io/docs/capturing-output
         }
@@ -55,8 +58,21 @@ namespace ProjectTDD.test
         public void GetAction_PressKeyQ_False()
         {
             string input = "q";
-            bool fail = sut.GetAction(input);
+            bool fail = sut.GetAction(mock_player.Object, input);
             Assert.False(fail);
+        }
+
+        [Fact]
+        public void GetAction_PressKeyR_Should_Call_Roll()
+        {
+            string input = "r";
+            sut.GetAction(mock_player.Object, input);
+            mock_player.Verify(mock => mock.Roll(), Times.Once());
+        }
+
+        private void mock_player_setup()
+        {
+            mock_player.Setup(mock => mock.Roll()).Verifiable();
         }
 
         private void fake_dice_setup()
