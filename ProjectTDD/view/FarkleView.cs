@@ -45,7 +45,11 @@ namespace ProjectTDD.view
 
             if (a_letter == "s") // TODO: Enable user to chose what dice to save.
             {
-                throw new NotImplementedException();
+                List<model.Dice> diceList = player.GetHand();
+                foreach (model.Dice d in diceList)
+                {
+                    player.Save(d);
+                }
             }
 
             return a_letter != "q";
