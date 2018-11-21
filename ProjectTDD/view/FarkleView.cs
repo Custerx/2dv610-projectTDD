@@ -41,13 +41,12 @@ namespace ProjectTDD.view
                 {
                     Console.BackgroundColor = ConsoleColor.DarkBlue;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("Chose amount of players");
-                    Console.WriteLine("\n [1], [2], [3], [4], [5], [6], [7] or [8]. Chose by typing a number between 1 and 8.\n");
+                    Console.Write("Chose amount of players. Between [2] and [8] :");
                     Console.ResetColor();
 
                     input = GetNumberInput(a_isThisATest);
 
-                    if (!input.All(c => c >= '1' && c <= '8'))
+                    if (!input.All(c => c >= '2' && c <= '8'))
                     {
                         throw new ApplicationException();
                     }
@@ -58,7 +57,7 @@ namespace ProjectTDD.view
                 {
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nError! Your choice must contain a number between 1 and 8.\n");
+                    Console.WriteLine("\nError! Your choice must contain a number between 2 and 8.\n");
                     Console.ResetColor();
                 }
             }

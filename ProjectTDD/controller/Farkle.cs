@@ -16,6 +16,11 @@ namespace ProjectTDD.controller
             m_playerFactory = new PlayerFactory();
         }
 
+        public bool Action()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Start()
         {
             int players = m_farkleView.GetAmountOfPlayers();
