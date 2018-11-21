@@ -33,6 +33,11 @@ namespace ProjectTDD.view
 
         public bool GetAction(model.IPlayer player, string a_letter)
         {
+            if (a_letter == "r")
+            {
+                player.Roll();
+            }
+
             return a_letter != "q";
         }
 
