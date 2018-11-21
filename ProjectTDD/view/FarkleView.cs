@@ -38,6 +38,11 @@ namespace ProjectTDD.view
                 player.Roll();
             }
 
+            if (a_letter == "n")
+            {
+                player.Play();
+            }
+
             return a_letter != "q";
         }
 
