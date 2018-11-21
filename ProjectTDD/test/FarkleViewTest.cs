@@ -51,6 +51,13 @@ namespace ProjectTDD.test
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void GetAction_PressKeyQ_False()
+        {
+            bool fail = sut.GetAction();
+            Assert.False(fail);
+        }
+
         private void fake_dice_setup()
         {
             fake_dice.Setup(mock => mock.GetValue()).Returns(model.Dice.DiceValue.Five);

@@ -31,6 +31,11 @@ namespace ProjectTDD.view
             return false;
         }
 
+        public bool GetAction()
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual int GetAmountOfPlayers(bool a_isThisATest = false)
         {
             string input;

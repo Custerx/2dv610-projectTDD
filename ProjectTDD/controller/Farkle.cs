@@ -18,7 +18,7 @@ namespace ProjectTDD.controller
 
         public bool Action()
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public void Start()
