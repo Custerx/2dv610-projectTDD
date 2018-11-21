@@ -78,10 +78,19 @@ namespace ProjectTDD.test
             mock_player.Verify(mock => mock.Play(), Times.Once());
         }
 
+        [Fact]
+        public void GetAction_PressKeyS_Should_Call_Save()
+        {
+            string input = "s";
+            sut.GetAction(mock_player.Object, input);
+            mock_player.Verify(mock => mock.Save(fake_dice.Object), Times.Once());
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
             mock_player.Setup(mock => mock.Play()).Verifiable();
+            mock_player.Setup(mock => mock.Save(fake_dice.Object)).Verifiable();
         }
 
         private void fake_dice_setup()
