@@ -31,11 +31,21 @@ namespace ProjectTDD.view
             return false;
         }
 
-        public bool GetAction(model.IPlayer player, string a_letter)
+        public bool GetAction(model.IPlayer player, string a_letter = null, bool a_test = false)
         {
-            if (!a_letter.All(c => c == 'r' || c == 'n' || c == 's' || c == 'q'))
+            if (a_test && !a_letter.All(c => c == 'r' || c == 'n' || c == 's' || c == 'q'))
             {
-                throw new ArgumentException();
+                throw new model.exception.TestStringArgumentException();
+            }
+
+            if (a_test == false && a_letter != null)
+            {
+                throw new NotImplementedException();
+            }
+
+            if (a_test == false)
+            {
+                a_letter = Console.ReadLine();
             }
 
             if (a_letter == "r")
@@ -58,11 +68,6 @@ namespace ProjectTDD.view
             }
 
             return a_letter != "q";
-        }
-
-        private void GetDicesToSave()
-        {
-
         }
 
         public virtual int GetAmountOfPlayers(bool a_isThisATest = false)

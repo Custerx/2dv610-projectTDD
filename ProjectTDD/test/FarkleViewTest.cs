@@ -58,7 +58,7 @@ namespace ProjectTDD.test
         public void GetAction_PressKeyQ_False()
         {
             string input = "q";
-            bool fail = sut.GetAction(mock_player.Object, input);
+            bool fail = sut.GetAction(mock_player.Object, input, true);
             Assert.False(fail);
         }
 
@@ -66,7 +66,7 @@ namespace ProjectTDD.test
         public void GetAction_PressKeyR_Should_Call_Roll()
         {
             string input = "r";
-            sut.GetAction(mock_player.Object, input);
+            sut.GetAction(mock_player.Object, input, true);
             mock_player.Verify(mock => mock.Roll(), Times.Once());
         }
 
@@ -74,7 +74,7 @@ namespace ProjectTDD.test
         public void GetAction_PressKeyN_Should_Call_Play()
         {
             string input = "n";
-            sut.GetAction(mock_player.Object, input);
+            sut.GetAction(mock_player.Object, input, true);
             mock_player.Verify(mock => mock.Play(), Times.Once());
         }
 
@@ -82,7 +82,7 @@ namespace ProjectTDD.test
         public void GetAction_PressKeyS_Should_Call_Save()
         {
             string input = "s";
-            sut.GetAction(mock_player.Object, input);
+            sut.GetAction(mock_player.Object, input, true);
             mock_player.Verify(mock => mock.Save(fake_dice.Object), Times.Once());
         }
 
@@ -90,16 +90,14 @@ namespace ProjectTDD.test
         public void GetAction_PressKeyS_Should_Call_GetHand()
         {
             string input = "s";
-            sut.GetAction(mock_player.Object, input);
-            mock_player.Verify(mock => mock.GetHand(), Times.Once());
+            Assert.Throws<model.exception.InvalidStringArgumentException>(() => sut.GetAction(mock_player.Object, input));
         }
 
         [Fact]
         public void GetAction_UseWrongArgumentStringE_ThrowsArgumentException()
         {
             string input = "e";
-
-            Assert.Throws<ArgumentException>(() => sut.GetAction(mock_player.Object, input));
+            Assert.Throws<model.exception.TestStringArgumentException>(() => sut.GetAction(mock_player.Object, input, true));
         }
 
         private void mock_player_setup()
