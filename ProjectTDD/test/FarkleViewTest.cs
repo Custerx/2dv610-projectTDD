@@ -94,6 +94,14 @@ namespace ProjectTDD.test
             mock_player.Verify(mock => mock.GetHand(), Times.Once());
         }
 
+        [Fact]
+        public void GetAction_UseWrongArgumentStringE_ThrowsArgumentOutOfRangeException()
+        {
+            string input = "e";
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => sut.GetAction(mock_player.Object, input));
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
