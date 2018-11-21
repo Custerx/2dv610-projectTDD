@@ -13,11 +13,14 @@ namespace ProjectTDD.test
         private Mock<view.FarkleView> mock_farkleview;
         private controller.Farkle sut;
         private Mock<model.Dice> fake_dice;
+        private Mock<IPlayer> fake_player;
 
         public FarkleTest()
         {
             fake_dice = new Mock<model.Dice>();
             fake_dice_setup();
+            fake_player = new Mock<IPlayer>();
+            fake_player_setup();
             mock_farkleview = new Mock<view.FarkleView>();
             mock_farkleview_setup();
             sut = new controller.Farkle(mock_farkleview.Object);
@@ -45,7 +48,7 @@ namespace ProjectTDD.test
             List<model.IPlayer> playerList = sut.CreatePlayer(3);
             sut.Play(playerList);
         }
-
+        
         [Fact]
         public void Start_Should_Call_DisplayRolledDices()
         {
@@ -56,7 +59,7 @@ namespace ProjectTDD.test
         [Fact]
         public void Action_WhenPlayerHitQ_ReturnFalse()
         {
-            bool fail = sut.Action();
+            bool fail = sut.Action(fake_player.Object, "q", true);
             Assert.False(fail);
         }
 
@@ -70,6 +73,11 @@ namespace ProjectTDD.test
         {
             fake_dice.Setup(mock => mock.GetValue()).Returns(model.Dice.DiceValue.Three).Verifiable();
             fake_dice.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_1).Verifiable();
+        }
+
+        private void fake_player_setup()
+        {
+            fake_player.Setup(mock => mock.GetHand()).Returns(FakeDiceList()).Verifiable();
         }
 
         private List<model.Dice> FakeDiceList()

@@ -16,9 +16,9 @@ namespace ProjectTDD.controller
             m_playerFactory = new PlayerFactory();
         }
 
-        public bool Action()
+        public bool Action(IPlayer player, string a_letter = null, bool a_test = false)
         {
-            return false;
+            return m_farkleView.GetAction(player, a_letter, a_test);
         }
 
         public void Start()

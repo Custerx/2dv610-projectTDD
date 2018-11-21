@@ -40,7 +40,7 @@ namespace ProjectTDD.view
 
             if (a_test == false && a_letter != null)
             {
-                throw new NotImplementedException();
+                throw new model.exception.InvalidStringArgumentException();
             }
 
             if (a_test == false)
