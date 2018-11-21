@@ -43,7 +43,17 @@ namespace ProjectTDD.view
                 player.Play();
             }
 
+            if (a_letter == "s") // TODO: Enable user to chose what dice to save.
+            {
+                throw new NotImplementedException();
+            }
+
             return a_letter != "q";
+        }
+
+        private void GetDicesToSave()
+        {
+
         }
 
         public virtual int GetAmountOfPlayers(bool a_isThisATest = false)
