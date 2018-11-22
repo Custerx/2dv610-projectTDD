@@ -189,7 +189,7 @@ namespace ProjectTDD.test
         [Fact]
         public void IsPlayerWinner_TotalScoreOf10500Points_true()
         {
-            for (int i = 0; i < 9; i++) // Total: 9450 points.
+            for (int i = 0; i < 10; i++) // Total: 10500 points.
             {
                 sut.CalculateScore(); // 1050 points.
             }
