@@ -9,6 +9,7 @@ namespace ProjectTDD.model
 {
     public class Player : IPlayer
     {
+        const int WinningScore = 10000;
         private IHand m_hand;
         private int m_score;
 
@@ -55,7 +56,7 @@ namespace ProjectTDD.model
 
         public bool IsPlayerWinner()
         {
-            throw new NotImplementedException();
+            return m_score >= WinningScore;
         }
 
         public virtual int CalculateScore()
