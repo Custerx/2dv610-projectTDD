@@ -179,6 +179,13 @@ namespace ProjectTDD.test
             Assert.False(actual);
         }
 
+        [Fact]
+        public void IsPlayerWinner_TotalScoreOf0Points_false()
+        {
+            bool no = sut.IsPlayerWinner();
+            Assert.False(no);
+        }
+
         private void fake_hand_setup()
         {
             fake_hand.Setup(mock => mock.Roll()).Verifiable();

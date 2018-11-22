@@ -53,6 +53,11 @@ namespace ProjectTDD.model
             return m_score;
         }
 
+        public bool IsPlayerWinner()
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual int CalculateScore()
         {
             int savedDicesScore = CalculateDiceStateScore(DiceState.Saved);
