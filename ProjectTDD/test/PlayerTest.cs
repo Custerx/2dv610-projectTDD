@@ -186,6 +186,18 @@ namespace ProjectTDD.test
             Assert.False(no);
         }
 
+        [Fact]
+        public void IsPlayerWinner_TotalScoreOf10500Points_true()
+        {
+            for (int i = 0; i < 9; i++) // Total: 9450 points.
+            {
+                sut.CalculateScore(); // 1050 points.
+            }
+
+            bool yes = sut.IsPlayerWinner();
+            Assert.True(yes);
+        }
+
         private void fake_hand_setup()
         {
             fake_hand.Setup(mock => mock.Roll()).Verifiable();
