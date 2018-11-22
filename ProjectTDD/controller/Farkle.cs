@@ -7,23 +7,23 @@ namespace ProjectTDD.controller
 {
     public class Farkle
     {
-        private view.FarkleView m_farkleView;
+        private view.IView m_IView;
         private model.PlayerFactory m_playerFactory;
 
-        public Farkle(view.FarkleView a_farkleView)
+        public Farkle(view.IView a_IView)
         {
-            m_farkleView = a_farkleView;
+            m_IView = a_IView;
             m_playerFactory = new PlayerFactory();
         }
 
         public bool Action(IPlayer player, string a_letter = null, bool a_test = false)
         {
-            return m_farkleView.GetAction(player, a_letter, a_test);
+            return m_IView.GetAction(player, a_letter, a_test);
         }
 
         public void Start()
         {
-            int players = m_farkleView.GetAmountOfPlayers();
+            int players = m_IView.GetAmountOfPlayers();
             List<IPlayer> playerList = CreatePlayer(players);
             Play(playerList);
         }
@@ -45,7 +45,7 @@ namespace ProjectTDD.controller
             foreach(IPlayer player in a_playerList)
             {
                 player.Play();
-                m_farkleView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore());
+                m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore());
             }
         }
     }

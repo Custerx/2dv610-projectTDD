@@ -13,5 +13,7 @@ namespace ProjectTDD.model
         void Save(model.Dice a_dice);
         int GetTotalScore();
         int CalculateScore();
+        bool IsPlayerWinner();
+        bool IsFarkle(int a_savedDiceScore, int a_rolledDiceScore);
     }
 }

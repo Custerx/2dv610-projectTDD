@@ -8,8 +8,8 @@ namespace ProjectTDD.test
 {
     public class PlayerTest
     {
-        private model.Player sut;
-        private model.Player sutRealHand;
+        private model.IPlayer sut;
+        private model.IPlayer sutRealHand;
         private Mock<model.Hand> fake_hand;
         private model.Hand real_hand;
 

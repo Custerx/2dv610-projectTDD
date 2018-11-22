@@ -12,7 +12,7 @@ namespace ProjectTDD.test
     public class FarkleViewTest
     {
         private Mock<model.Dice> fake_dice;
-        private view.FarkleView sut;
+        private view.IView sut;
         private readonly ITestOutputHelper m_output; // Capturing output.
         private Mock<model.IPlayer> mock_player;
 

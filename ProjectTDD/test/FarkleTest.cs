@@ -10,7 +10,7 @@ namespace ProjectTDD.test
 {
     public class FarkleTest
     {
-        private Mock<view.FarkleView> mock_farkleview;
+        private Mock<view.IView> fake_IView;
         private controller.Farkle sut;
         private Mock<model.Dice> fake_dice;
         private Mock<IPlayer> fake_player;
@@ -21,16 +21,16 @@ namespace ProjectTDD.test
             fake_dice_setup();
             fake_player = new Mock<IPlayer>();
             fake_player_setup();
-            mock_farkleview = new Mock<view.FarkleView>();
+            fake_IView = new Mock<view.IView>();
             mock_farkleview_setup();
-            sut = new controller.Farkle(mock_farkleview.Object);
+            sut = new controller.Farkle(fake_IView.Object);
         }
 
         [Fact]
         public void Start_Should_Call_GetAmountOfPlayers()
         {
             sut.Start();
-            mock_farkleview.Verify(mock => mock.GetAmountOfPlayers(false), Times.Once());
+            fake_IView.Verify(mock => mock.GetAmountOfPlayers(false), Times.Once());
         }
 
         [Fact]
@@ -53,7 +53,7 @@ namespace ProjectTDD.test
         public void Start_Should_Call_DisplayRolledDices()
         {
             sut.Start();
-            mock_farkleview.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>()), Times.Between(2, 8, Range.Inclusive));
+            fake_IView.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>()), Times.Between(2, 8, Range.Inclusive));
         }
 
         [Fact]
@@ -65,8 +65,8 @@ namespace ProjectTDD.test
 
         private void mock_farkleview_setup()
         {
-            mock_farkleview.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
-            mock_farkleview.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300)).Verifiable();
+            fake_IView.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
+            fake_IView.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300)).Verifiable();
         }
 
         private void fake_dice_setup()

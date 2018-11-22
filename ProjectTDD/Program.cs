@@ -8,7 +8,7 @@ namespace ProjectTDD
     {
         static void Main(string[] args)
         {
-            view.FarkleView v = new view.FarkleView();
+            view.IView v = new view.FarkleView();
             controller.Farkle c = new controller.Farkle(v);
             c.Start();
         }

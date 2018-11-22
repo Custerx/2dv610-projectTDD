@@ -24,32 +24,32 @@ namespace ProjectTDD.model
             Rolled
         }
 
-        public virtual List<model.Dice> GetHand()
+        public List<model.Dice> GetHand()
         {
             return m_hand.Show();
         }
 
-        public virtual List<model.Dice> GetSavedHand()
+        public List<model.Dice> GetSavedHand()
         {
             return m_hand.ShowSaved();
         }
 
-        public virtual void Play()
+        public void Play()
         {
             m_hand.Play();
         }
 
-        public virtual void Roll()
+        public void Roll()
         {
             m_hand.Roll();
         }
 
-        public virtual void Save(model.Dice a_dice)
+        public void Save(model.Dice a_dice)
         {
             m_hand.Save(a_dice);
         }
 
-        public virtual int GetTotalScore()
+        public int GetTotalScore()
         {
             return m_score;
         }
@@ -59,7 +59,7 @@ namespace ProjectTDD.model
             return m_score >= WinningScore;
         }
 
-        public virtual int CalculateScore()
+        public int CalculateScore()
         {
             int savedDicesScore = CalculateDiceStateScore(DiceState.Saved);
             int rolledDicesScore = CalculateDiceStateScore(DiceState.Rolled);
@@ -73,7 +73,7 @@ namespace ProjectTDD.model
             return savedDicesScore + rolledDicesScore;
         }
 
-        internal virtual bool IsFarkle(int a_savedDiceScore, int a_rolledDiceScore)
+        public bool IsFarkle(int a_savedDiceScore, int a_rolledDiceScore)
         {
             return (a_savedDiceScore >= 50 && a_rolledDiceScore == 0);
         }
