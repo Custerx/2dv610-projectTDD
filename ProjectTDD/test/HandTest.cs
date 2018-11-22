@@ -16,19 +16,8 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Show_GetListWith0Dices_EmptyList()
-        {
-            List<model.Dice> input = sut.Show();
-            int actual = input.Count;
-            int expected = 0;
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void Show_ListWith6Dices_return6()
         {
-            sut.Play();
             List<model.Dice> input = sut.Show();
             int actual = input.Count;
             int expected = 6;
@@ -57,7 +46,6 @@ namespace ProjectTDD.test
         [Fact]
         public void Save_Dice1_Success()
         {
-            sut.Play();
             List<model.Dice> input = sut.Show();
             model.Dice dice1 = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_1);
 
@@ -79,15 +67,27 @@ namespace ProjectTDD.test
         [Fact]
         public void Roll_WithEmptyList_ThrowsEmptyDiceListException()
         {
+            List<model.Dice> diceList = sut.Show();
+            List<model.Dice> toBeSaved = new List<model.Dice>();
+
+            // IMPORTANT! Done to avoid index issues.
+            foreach (model.Dice d in diceList)
+            {
+                toBeSaved.Add(d);
+            }
+            // Save all dices.
+            for (int i = 0; i < toBeSaved.Count; i++)
+            {
+                sut.Save(toBeSaved[i]);
+            }
+            // Call roll with an empty list.
             Assert.Throws<model.exception.EmptyDiceListException>(() => sut.Roll());
         }
 
         [Fact]
         public void NoMoreThan6DicesInPlay_CheckBothLists_true()
         {
-            sut.Play(); // Generates the 6 dices.
             bool success = sut.NoMoreThan6DicesInPlay();
-
             Assert.True(success);
         }
     }

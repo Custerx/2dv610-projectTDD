@@ -51,11 +51,6 @@ namespace ProjectTDD.view
                 player.Roll();
             }
 
-            if (a_letter == "n")
-            {
-                player.Play();
-            }
-
             if (a_letter == "s") // TODO: Enable user to chose what dice to save.
             {
                 List<model.Dice> diceList = player.GetHand();

@@ -35,7 +35,6 @@ namespace ProjectTDD.test
         [Fact]
         public void GetHand_CallPlayAnd_Return6DiceList()
         {
-            sutRealHand.Play();
             int actual = sutRealHand.GetHand().Count;
             int expected = 6;
 
@@ -61,7 +60,6 @@ namespace ProjectTDD.test
         [Fact]
         public void GetSavedHand_CallPlayAnd_Return6SavedDiceList()
         {
-            sutRealHand.Play();
             List<model.Dice> diceList = sutRealHand.GetHand();
             List<model.Dice> toBeSaved = new List<model.Dice>();
 
@@ -71,7 +69,7 @@ namespace ProjectTDD.test
                 toBeSaved.Add(d);
             }
 
-            for (int i=0; i < toBeSaved.Count; i++)
+            for (int i = 0; i < toBeSaved.Count; i++)
             {
                 sutRealHand.Save(toBeSaved[i]);
             }
@@ -87,11 +85,11 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Save_FakeDiceWithoutCallingPlay_ThrowsDiceNotFoundException()
+        public void Save_FakeDice_ThrowsDiceNotFoundException()
         {
             Mock<model.Dice> fake_dice1 = new Mock<model.Dice>();
-            fake_dice1.Setup(mock => mock.GetValue()).Returns(model.Dice.DiceValue.Five);
-            fake_dice1.Setup(mock => mock.Dicenumber).Returns(model.Hand.Dices.Dice_1);
+            fake_dice1.Setup(mock => mock.GetValue()).Returns(null);
+            fake_dice1.Setup(mock => mock.Dicenumber).Returns(null);
 
             Assert.Throws<model.exception.DiceNotFoundException>(() => sutRealHand.Save(fake_dice1.Object));
         }

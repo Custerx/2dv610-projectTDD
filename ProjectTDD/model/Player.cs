@@ -34,11 +34,6 @@ namespace ProjectTDD.model
             return m_hand.ShowSaved();
         }
 
-        public void Play()
-        {
-            m_hand.Play();
-        }
-
         public void Roll()
         {
             m_hand.Roll();

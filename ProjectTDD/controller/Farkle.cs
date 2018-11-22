@@ -44,7 +44,6 @@ namespace ProjectTDD.controller
         {
             foreach(IPlayer player in a_playerList)
             {
-                player.Play();
                 m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore());
             }
         }

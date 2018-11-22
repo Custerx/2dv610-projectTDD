@@ -10,7 +10,6 @@ namespace ProjectTDD.model
         void Roll();
         List<model.Dice> Show();
         List<model.Dice> ShowSaved();
-        void Play();
         bool Save(model.Dice a_dice);
     }
 }

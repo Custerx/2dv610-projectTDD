@@ -40,6 +40,7 @@ namespace ProjectTDD.model
             m_dice_4 = new Dice();
             m_dice_5 = new Dice();
             m_dice_6 = new Dice();
+            Play();
         }
 
         public bool NoMoreThan6DicesInPlay()
@@ -70,7 +71,7 @@ namespace ProjectTDD.model
             return m_savedDiceList;
         }
 
-        public virtual void Play()
+        internal virtual void Play()
         {
             AddDiceNrAndRollThenAddToList(m_dice_1, 1);
             AddDiceNrAndRollThenAddToList(m_dice_2, 2);

@@ -8,7 +8,6 @@ namespace ProjectTDD.model
     {
         List<model.Dice> GetHand();
         List<model.Dice> GetSavedHand();
-        void Play();
         void Roll();
         void Save(model.Dice a_dice);
         int GetTotalScore();
