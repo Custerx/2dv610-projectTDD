@@ -41,13 +41,6 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void WantsToRollDice_NotPressingCharacterR_False()
-        {
-            bool success = sut.WantsToRollDice();
-            Assert.False(success);
-        }
-
-        [Fact]
         public void GetAmountOfPlayers_SetArgumentToTrue_ReturnsInt3()
         {
             int actual = sut.GetAmountOfPlayers(true);

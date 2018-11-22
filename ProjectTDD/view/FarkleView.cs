@@ -6,7 +6,7 @@ using Xunit.Sdk;
 
 namespace ProjectTDD.view
 {
-    public class FarkleView
+    public class FarkleView : IView
     {
         public void DisplayGameKeys()
         {
@@ -27,13 +27,6 @@ namespace ProjectTDD.view
             }
             Console.WriteLine("Score: {0}", a_score);
             Console.WriteLine("");
-        }
-
-        public virtual bool WantsToRollDice()
-        {
-            // TODO Make readkey testable.
-
-            return false;
         }
 
         public bool GetAction(model.IPlayer player, string a_letter = null, bool a_test = false)
