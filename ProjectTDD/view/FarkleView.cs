@@ -8,9 +8,22 @@ namespace ProjectTDD.view
 {
     public class FarkleView : IView
     {
+        public enum Action
+        {
+            NewGame = 1,
+            Roll,
+            Save,
+            Quit
+        }
+
+        public Action PlayerAction(bool a_isThisATest = false)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DisplayGameKeys()
         {
-            Console.Write("Start new game: [n]. Roll non-saved dice(s): [r]. Save dice(s): [s]. Quit game: [q].\n");
+            Console.Write("Start new game: [1]. Roll non-saved dice(s): [2]. Save dice(s): [3]. Quit game: [4].\n");
         }
 
         public void DisplayDice(model.Dice a_dice)
