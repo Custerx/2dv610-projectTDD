@@ -28,7 +28,7 @@ namespace ProjectTDD.controller
             Play(playerList);
         }
 
-        internal virtual List<IPlayer> CreatePlayer(int a_players)
+        internal List<IPlayer> CreatePlayer(int a_players)
         {
             List<IPlayer> playerList = new List<IPlayer>();
 
@@ -40,7 +40,7 @@ namespace ProjectTDD.controller
             return playerList;
         }
 
-        internal virtual void Play(List<IPlayer> a_playerList)
+        internal void Play(List<IPlayer> a_playerList)
         {
             foreach(IPlayer player in a_playerList)
             {
