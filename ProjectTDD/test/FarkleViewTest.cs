@@ -1,6 +1,7 @@
 ﻿using Moq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Xunit;
 using Xunit.Abstractions;
@@ -99,6 +100,20 @@ namespace ProjectTDD.test
             string input = "e";
             Assert.Throws<model.exception.TestStringArgumentException>(() => sut.GetAction(mock_player.Object, input, true));
         }
+
+        [Fact]
+        public void DisplayGameKeys_CompareWithConsoleOuput_Equal()
+        {
+            // Part of this code is inspired by code found in 2DV610 slack channel.
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                sut.DisplayGameKeys();
+                string expected = string.Format("Start new game: [n]. Roll non-saved dice(s): [r]. Save dice(s): [s]. Quit game: [q].\n");
+                Assert.Equal(expected, sw.ToString());
+            }
+        }
+
 
         private void mock_player_setup()
         {

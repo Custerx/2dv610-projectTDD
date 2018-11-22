@@ -8,6 +8,10 @@ namespace ProjectTDD.view
 {
     public class FarkleView
     {
+        public void DisplayGameKeys()
+        {
+            throw new NotImplementedException();
+        }
         public virtual void DisplayDice(model.Dice a_dice)
         {
             Console.WriteLine("{0} : {1}", a_dice.Dicenumber, a_dice.GetValue());
