@@ -59,6 +59,7 @@ namespace ProjectTDD.view
                 DisplayDice(d);
             }
             Console.Write("Score: {0}\n", a_score);
+            Console.Write("Total-score: {0}\n", a_totalScore);
         }
 
         public bool GetAction(model.IPlayer player, string a_letter = null, bool a_test = false)
