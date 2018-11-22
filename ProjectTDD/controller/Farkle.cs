@@ -48,6 +48,7 @@ namespace ProjectTDD.controller
                 {
                     m_IView.DisplayGameKeys();
                     m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore());
+                    var action = m_IView.PlayerAction();
                 }
             } while (a_noTest);
         }
