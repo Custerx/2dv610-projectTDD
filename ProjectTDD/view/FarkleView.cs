@@ -13,12 +13,12 @@ namespace ProjectTDD.view
             Console.Write("Start new game: [n]. Roll non-saved dice(s): [r]. Save dice(s): [s]. Quit game: [q].\n");
         }
 
-        public virtual void DisplayDice(model.Dice a_dice)
+        public void DisplayDice(model.Dice a_dice)
         {
             Console.WriteLine("{0} : {1}", a_dice.Dicenumber, a_dice.GetValue());
         }
 
-        public virtual void DisplayRolledDices(String a_player, List<model.Dice> a_hand, int a_score)
+        public void DisplayRolledDices(String a_player, List<model.Dice> a_hand, int a_score)
         {
             Console.WriteLine("{0} Rolled: ", a_player);
             foreach (model.Dice d in a_hand)
@@ -68,7 +68,7 @@ namespace ProjectTDD.view
             return a_letter != "q";
         }
 
-        public virtual int GetAmountOfPlayers(bool a_isThisATest = false)
+        public int GetAmountOfPlayers(bool a_isThisATest = false)
         {
             string input;
 
