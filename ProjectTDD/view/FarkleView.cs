@@ -18,7 +18,27 @@ namespace ProjectTDD.view
 
         public Action PlayerAction(bool a_isThisATest = false)
         {
-            throw new NotImplementedException();
+            while (true)
+            {
+                try
+                {
+                    string input = GetNumberInput(a_isThisATest);
+
+                    if (!input.All(c => c >= '1' && c <= '4'))
+                    {
+                        throw new ApplicationException();
+                    }
+
+                    return (Action)int.Parse(input);
+                }
+                catch (Exception)
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\nError! Your choice must contain a number between 1 and 4.\n");
+                    Console.ResetColor();
+                }
+            }
         }
 
         public void DisplayGameKeys()
