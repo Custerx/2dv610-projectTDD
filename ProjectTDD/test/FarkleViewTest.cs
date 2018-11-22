@@ -37,7 +37,7 @@ namespace ProjectTDD.test
         public void DisplayRolledDices_ArgumentFakeDiceList_Dice_1Value5_Dice_2Value3()
         {
             // This is a copy of FarkleView.DisplayRolledDices(string a_player, List<model.Dice> a_hand, int a_score)
-            SimulateOutputFromDisplayRolledDices("Rogge", fake_dice_list(), 300);
+            SimulateOutputFromDisplayRolledDices("Rogge", fake_dice_list(), 300, 3000);
         }
 
         [Fact]
@@ -108,6 +108,17 @@ namespace ProjectTDD.test
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void DisplayRolledDices_CompareWithConsoleOuput_Equal()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                sut.DisplayRolledDices("Rogge", fake_dice_list(), 300, 3000);
+                string expected = string.Format("Rogge Rolled: \nDice_1 : Five\nDice_2 : Three\nScore: 300\nTotal-score: 3000\n");
+                Assert.Equal(expected, sw.ToString());
+            }
+        }
 
         private void mock_player_setup()
         {
@@ -140,7 +151,7 @@ namespace ProjectTDD.test
             m_output.WriteLine("{0} : {1}", a_fakedice.Dicenumber, a_fakedice.GetValue());
         }
 
-        private void SimulateOutputFromDisplayRolledDices(String a_player, List<model.Dice> a_hand, int a_score)
+        private void SimulateOutputFromDisplayRolledDices(String a_player, List<model.Dice> a_hand, int a_score, int a_totalScore)
         {
             m_output.WriteLine("{0} Rolled: ", a_player);
             foreach (model.Dice d in a_hand)
@@ -148,6 +159,8 @@ namespace ProjectTDD.test
                 SimulateOutputFromDisplayDice(d);
             }
             m_output.WriteLine("Score: {0}", a_score);
+            m_output.WriteLine("");
+            m_output.WriteLine("Total-score: {0}", a_totalScore);
             m_output.WriteLine("");
         }
     }

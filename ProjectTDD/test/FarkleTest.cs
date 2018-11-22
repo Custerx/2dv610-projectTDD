@@ -53,7 +53,7 @@ namespace ProjectTDD.test
         public void Start_Should_Call_DisplayRolledDices()
         {
             sut.Start(false);
-            fake_IView.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>()), Times.Between(2, 8, Range.Inclusive));
+            fake_IView.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>(), It.IsAny<int>()), Times.Between(2, 8, Range.Inclusive));
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace ProjectTDD.test
         private void mock_farkleview_setup()
         {
             fake_IView.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
-            fake_IView.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300)).Verifiable();
+            fake_IView.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300, 2400)).Verifiable();
             fake_IView.Setup(mock => mock.PlayerAction(true)).Verifiable();
         }
 
@@ -79,6 +79,7 @@ namespace ProjectTDD.test
         private void fake_player_setup()
         {
             fake_player.Setup(mock => mock.GetHand()).Returns(FakeDiceList()).Verifiable();
+            fake_player.Setup(mock => mock.Roll()).Verifiable();
         }
 
         private List<model.Dice> FakeDiceList()

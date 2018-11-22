@@ -48,18 +48,17 @@ namespace ProjectTDD.view
 
         public void DisplayDice(model.Dice a_dice)
         {
-            Console.WriteLine("{0} : {1}", a_dice.Dicenumber, a_dice.GetValue());
+            Console.Write("{0} : {1}\n", a_dice.Dicenumber, a_dice.GetValue());
         }
 
-        public void DisplayRolledDices(String a_player, List<model.Dice> a_hand, int a_score)
+        public void DisplayRolledDices(String a_player, List<model.Dice> a_hand, int a_score, int a_totalScore)
         {
-            Console.WriteLine("{0} Rolled: ", a_player);
+            Console.Write("{0} Rolled: \n", a_player);
             foreach (model.Dice d in a_hand)
             {
                 DisplayDice(d);
             }
-            Console.WriteLine("Score: {0}", a_score);
-            Console.WriteLine("");
+            Console.Write("Score: {0}\n", a_score);
         }
 
         public bool GetAction(model.IPlayer player, string a_letter = null, bool a_test = false)

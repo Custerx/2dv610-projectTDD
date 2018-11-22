@@ -47,7 +47,7 @@ namespace ProjectTDD.controller
                 foreach (IPlayer player in a_playerList)
                 {
                     m_IView.DisplayGameKeys();
-                    m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore());
+                    m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore(), player.GetTotalScore());
                     var action = m_IView.PlayerAction();
                 }
             } while (a_noTest);
