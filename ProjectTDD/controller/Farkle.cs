@@ -21,11 +21,11 @@ namespace ProjectTDD.controller
             return m_IView.GetAction(player, a_letter, a_test);
         }
 
-        public void Start()
+        public void Start(bool a_noTest = true)
         {
             int players = m_IView.GetAmountOfPlayers();
             List<IPlayer> playerList = CreatePlayer(players);
-            Play(playerList);
+            Play(playerList, a_noTest);
         }
 
         internal List<IPlayer> CreatePlayer(int a_players)
@@ -40,12 +40,16 @@ namespace ProjectTDD.controller
             return playerList;
         }
 
-        internal void Play(List<IPlayer> a_playerList)
+        internal void Play(List<IPlayer> a_playerList, bool a_noTest = true)
         {
-            foreach(IPlayer player in a_playerList)
+            do
             {
-                m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore());
-            }
+                foreach (IPlayer player in a_playerList)
+                {
+                    m_IView.DisplayGameKeys();
+                    m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore());
+                }
+            } while (a_noTest);
         }
     }
 }

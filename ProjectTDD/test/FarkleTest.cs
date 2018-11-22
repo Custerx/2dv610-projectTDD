@@ -29,7 +29,7 @@ namespace ProjectTDD.test
         [Fact]
         public void Start_Should_Call_GetAmountOfPlayers()
         {
-            sut.Start();
+            sut.Start(false);
             fake_IView.Verify(mock => mock.GetAmountOfPlayers(false), Times.Once());
         }
 
@@ -43,16 +43,16 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Play_InputPlayerListWith3Players_VoidSmokeSignal()
+        public void Play_InputPlayerListWith3Players_Should_Call_PlayerAction3Times()
         {
-            List<model.IPlayer> playerList = sut.CreatePlayer(3);
-            sut.Play(playerList);
+            sut.Start(false);
+            fake_IView.Verify(mock => mock.PlayerAction(It.IsAny<bool>()), Times.Exactly(3));
         }
-        
+
         [Fact]
         public void Start_Should_Call_DisplayRolledDices()
         {
-            sut.Start();
+            sut.Start(false);
             fake_IView.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>()), Times.Between(2, 8, Range.Inclusive));
         }
 
@@ -67,6 +67,7 @@ namespace ProjectTDD.test
         {
             fake_IView.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
             fake_IView.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300)).Verifiable();
+            fake_IView.Setup(mock => mock.PlayerAction(true)).Verifiable();
         }
 
         private void fake_dice_setup()
