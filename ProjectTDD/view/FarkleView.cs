@@ -10,8 +10,9 @@ namespace ProjectTDD.view
     {
         public void DisplayGameKeys()
         {
-            throw new NotImplementedException();
+            Console.Write("Start new game: [n]. Roll non-saved dice(s): [r]. Save dice(s): [s]. Quit game: [q].\n");
         }
+
         public virtual void DisplayDice(model.Dice a_dice)
         {
             Console.WriteLine("{0} : {1}", a_dice.Dicenumber, a_dice.GetValue());
