@@ -47,7 +47,7 @@ namespace ProjectTDD.model
             return ((m_diceList.Count + m_savedDiceList.Count) == 6);
         }
 
-        public virtual void Roll()
+        public void Roll()
         {
             if (m_diceList.Count < 1)
             {
@@ -60,12 +60,12 @@ namespace ProjectTDD.model
             }
         }
 
-        public virtual List<model.Dice> Show()
+        public List<model.Dice> Show()
         {
             return m_diceList;
         }
 
-        public virtual List<model.Dice> ShowSaved()
+        public List<model.Dice> ShowSaved()
         {
             return m_savedDiceList;
         }
@@ -92,7 +92,7 @@ namespace ProjectTDD.model
             m_diceList.Add(a_dice);
         }
 
-        public virtual bool Save(model.Dice a_dice)
+        public bool Save(model.Dice a_dice)
         {
             SaveAndRemoveDice(a_dice);
 

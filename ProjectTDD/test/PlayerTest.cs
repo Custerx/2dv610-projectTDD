@@ -10,15 +10,15 @@ namespace ProjectTDD.test
     {
         private model.IPlayer sut;
         private model.IPlayer sutRealHand;
-        private Mock<model.Hand> fake_hand;
-        private model.Hand real_hand;
+        private Mock<model.IHand> fake_hand;
+        private model.IHand real_hand;
 
         public PlayerTest()
         {
             real_hand = new model.Hand();
             sutRealHand = new model.Player(real_hand);
 
-            fake_hand = new Mock<model.Hand>();
+            fake_hand = new Mock<model.IHand>();
             fake_hand_setup();
             sut = new model.Player(fake_hand.Object);
         }
@@ -126,9 +126,9 @@ namespace ProjectTDD.test
         [Fact]
         public void CalculateScore_Save555ThenRoll114_returnsIntScore700()
         {
-            Mock<model.Hand> fake_hand_114555 = new Mock<model.Hand>();
+            Mock<model.IHand> fake_hand_114555 = new Mock<model.IHand>();
             fake_hand_114555 = fake_hand_114555_setup(fake_hand_114555);
-            model.Player sutScore = new model.Player(fake_hand_114555.Object);
+            model.IPlayer sutScore = new model.Player(fake_hand_114555.Object);
 
             int actual = sutScore.CalculateScore();
             int expected = (700); // Saved Dices (5 5 5) = Three 5's: 500 points. Rolled Dices (1 1 4), Two 1's: 100 * 2 = 200 points.
@@ -138,9 +138,9 @@ namespace ProjectTDD.test
         [Fact]
         public void CalculateScore_Roll333333_returnsIntScore3000()
         {
-            Mock<model.Hand> fake_hand_333333 = new Mock<model.Hand>();
+            Mock<model.IHand> fake_hand_333333 = new Mock<model.IHand>();
             fake_hand_333333 = fake_hand_333333_setup(fake_hand_333333);
-            model.Player sutScore = new model.Player(fake_hand_333333.Object);
+            model.IPlayer sutScore = new model.Player(fake_hand_333333.Object);
 
             int actual = sutScore.CalculateScore();
             int expected = (3000); // Rolled Dices (3 3 3 3 3 3), Six 3's: 3000 points.
@@ -150,9 +150,9 @@ namespace ProjectTDD.test
         [Fact]
         public void CalculateScore_Roll223466_returnsIntScore0()
         {
-            Mock<model.Hand> fake_hand_223466 = new Mock<model.Hand>();
+            Mock<model.IHand> fake_hand_223466 = new Mock<model.IHand>();
             fake_hand_223466 = fake_hand_223466_setup(fake_hand_223466);
-            model.Player sutScore = new model.Player(fake_hand_223466.Object);
+            model.IPlayer sutScore = new model.Player(fake_hand_223466.Object);
 
             int actual = sutScore.CalculateScore();
             int expected = (0);
@@ -249,7 +249,7 @@ namespace ProjectTDD.test
             return emptyDiceList;
         }
 
-        private Mock<model.Hand> fake_hand_114555_setup(Mock<model.Hand> a_mockHand)
+        private Mock<model.IHand> fake_hand_114555_setup(Mock<model.IHand> a_mockHand)
         {
             a_mockHand.Setup(mock => mock.Roll()).Verifiable();
             a_mockHand.Setup(mock => mock.Show()).Returns(fake_rolled3dice_list114()); 
@@ -303,7 +303,7 @@ namespace ProjectTDD.test
             return dicelist;
         }
 
-        private Mock<model.Hand> fake_hand_333333_setup(Mock<model.Hand> a_mockHand)
+        private Mock<model.IHand> fake_hand_333333_setup(Mock<model.IHand> a_mockHand)
         {
             a_mockHand.Setup(mock => mock.Roll()).Verifiable();
             a_mockHand.Setup(mock => mock.Show()).Returns(fake_rolled6dice_list333333());
@@ -349,7 +349,7 @@ namespace ProjectTDD.test
             return dicelist;
         }
 
-        private Mock<model.Hand> fake_hand_223466_setup(Mock<model.Hand> a_mockHand)
+        private Mock<model.IHand> fake_hand_223466_setup(Mock<model.IHand> a_mockHand)
         {
             a_mockHand.Setup(mock => mock.Roll()).Verifiable();
             a_mockHand.Setup(mock => mock.Show()).Returns(fake_rolled6dice_list223466());
