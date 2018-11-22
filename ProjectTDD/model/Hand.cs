@@ -43,6 +43,28 @@ namespace ProjectTDD.model
             Play();
         }
 
+        internal virtual void Play()
+        {
+            AddDiceNrAndRollThenAddToList(m_dice_1, 1);
+            AddDiceNrAndRollThenAddToList(m_dice_2, 2);
+            AddDiceNrAndRollThenAddToList(m_dice_3, 3);
+            AddDiceNrAndRollThenAddToList(m_dice_4, 4);
+            AddDiceNrAndRollThenAddToList(m_dice_5, 5);
+            AddDiceNrAndRollThenAddToList(m_dice_6, 6);
+        }
+
+        internal void AddDiceNrAndRollThenAddToList(model.Dice a_dice, int a_diceNumber)
+        {
+            if (a_diceNumber < 1 || a_diceNumber > 6)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            a_dice.Dicenumber = (Dices)a_diceNumber;
+            a_dice.Roll();
+            m_diceList.Add(a_dice);
+        }
+
         public bool NoMoreThan6DicesInPlay()
         {
             return ((m_diceList.Count + m_savedDiceList.Count) == 6);
@@ -71,28 +93,6 @@ namespace ProjectTDD.model
             return m_savedDiceList;
         }
 
-        internal virtual void Play()
-        {
-            AddDiceNrAndRollThenAddToList(m_dice_1, 1);
-            AddDiceNrAndRollThenAddToList(m_dice_2, 2);
-            AddDiceNrAndRollThenAddToList(m_dice_3, 3);
-            AddDiceNrAndRollThenAddToList(m_dice_4, 4);
-            AddDiceNrAndRollThenAddToList(m_dice_5, 5);
-            AddDiceNrAndRollThenAddToList(m_dice_6, 6);
-        }
-
-        internal void AddDiceNrAndRollThenAddToList(model.Dice a_dice, int a_diceNumber)
-        {
-            if (a_diceNumber < 1 || a_diceNumber > 6)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-
-            a_dice.Dicenumber = (Dices)a_diceNumber;
-            a_dice.Roll();
-            m_diceList.Add(a_dice);
-        }
-
         public bool Save(model.Dice a_dice)
         {
             SaveAndRemoveDice(a_dice);
@@ -109,7 +109,7 @@ namespace ProjectTDD.model
         {
             int index = m_diceList.FindIndex(d => d.Dicenumber == a_dice.Dicenumber);
 
-            if (index == -1) // Dice not found.
+            if (index == -1)
             {
                 throw new DiceNotFoundException();
             } else
