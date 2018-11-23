@@ -205,6 +205,12 @@ namespace ProjectTDD.test
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void SetPlayername_Emptystring_ArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => sut.SetPlayername(""));
+        }
+
         private void fake_hand_setup()
         {
             fake_hand.Setup(mock => mock.Roll()).Verifiable();
