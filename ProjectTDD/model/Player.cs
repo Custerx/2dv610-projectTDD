@@ -68,7 +68,7 @@ namespace ProjectTDD.model
         }
 
 
-        public void UpdateScore()
+        public void UpdateTotalScore()
         {
             int savedDicesScore = CalculateDiceStateScore(DiceState.Saved);
             int rolledDicesScore = CalculateDiceStateScore(DiceState.Rolled);

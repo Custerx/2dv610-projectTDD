@@ -105,7 +105,7 @@ namespace ProjectTDD.test
         [Fact]
         public void GetTotalScore_RunCalculateScore_returnsIntScore1050()
         {
-            sut.UpdateScore();
+            sut.UpdateTotalScore();
             int actual = sut.GetTotalScore();
             int expected = 1000 + 50; // Three 1's: 1000 points. 5: 50 points.
             Assert.Equal(expected, actual);
@@ -114,8 +114,8 @@ namespace ProjectTDD.test
         [Fact]
         public void GetTotalScore_RunCalculateScoreTwice_returnsIntScore2100()
         {
-            sut.UpdateScore();
-            sut.UpdateScore();
+            sut.UpdateTotalScore();
+            sut.UpdateTotalScore();
             int actual = sut.GetTotalScore();
             int expected = (1000 + 50) * 2; // Three 1's: 1000 points. 5: 50 points.
             Assert.Equal(expected, actual);
@@ -189,7 +189,7 @@ namespace ProjectTDD.test
         {
             for (int i = 0; i < 10; i++) // Total: 10500 points.
             {
-                sut.UpdateScore(); // 1050 points.
+                sut.UpdateTotalScore(); // 1050 points.
             }
 
             bool yes = sut.IsPlayerWinner();
