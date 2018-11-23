@@ -131,12 +131,13 @@ namespace ProjectTDD.test
         {
             var fake_IView_local = new Mock<view.IView>();
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Roll);
+            fake_IView_local.Setup(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>())).Verifiable();
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
 
             sut_local.Play(FakePlayerList(), false);
 
-            fake_IView.Verify(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>()), Times.Once());
+            fake_IView_local.Verify(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>()), Times.Once());
         }
 
         [Fact]
