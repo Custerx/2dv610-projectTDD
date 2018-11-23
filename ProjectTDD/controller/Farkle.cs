@@ -77,6 +77,10 @@ namespace ProjectTDD.controller
 
                     if (action == view.FarkleView.Action.Quit)
                     {
+                        if (a_noTest)
+                        {
+                            Environment.Exit(0);
+                        }
 
                         throw new model.exception.ValidateQuitException();
                     }
