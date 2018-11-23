@@ -75,6 +75,12 @@ namespace ProjectTDD.controller
                         if (player.IsPlayerWinner())
                         {
                             m_IView.DisplayWinner("Rogge", player.GetTotalScore());
+
+                            if (a_noTest) // To avoid 5 sec delay when testing.
+                            {
+                                System.Threading.Thread.Sleep(5000);
+                                Start();
+                            }
                         }
 
                         continue;
