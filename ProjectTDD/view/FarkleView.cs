@@ -43,7 +43,11 @@ namespace ProjectTDD.view
 
         public void DisplayWinner(String a_player, int a_totalScore)
         {
-
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("\n{0} WON!\n", a_player);
+            Console.Write("With a total-score of: {0}\n", a_totalScore);
+            Console.ResetColor();
         }
 
         public void DisplayGameKeys()
