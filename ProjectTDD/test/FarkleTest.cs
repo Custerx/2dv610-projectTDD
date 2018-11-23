@@ -127,6 +127,19 @@ namespace ProjectTDD.test
         }
 
         [Fact]
+        public void Play_PlayerActionReturnEnumActionSave_Should_Call_DisplayWinner()
+        {
+            var fake_IView_local = new Mock<view.IView>();
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Roll);
+
+            var sut_local = new controller.Farkle(fake_IView_local.Object);
+
+            sut_local.Play(FakePlayerList(), false);
+
+            fake_IView.Verify(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>()), Times.Once());
+        }
+
+        [Fact]
         public void Action_WhenPlayerHitQ_ReturnFalse()
         {
             bool fail = sut.Action(fake_player.Object, "q", true);
@@ -138,6 +151,7 @@ namespace ProjectTDD.test
             fake_IView.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
             fake_IView.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300, 2400)).Verifiable();
             fake_IView.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Roll).Verifiable();
+            fake_IView.Setup(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>())).Verifiable();
         }
 
         private void fake_dice_setup()
