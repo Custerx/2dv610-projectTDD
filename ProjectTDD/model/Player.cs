@@ -27,6 +27,10 @@ namespace ProjectTDD.model
 
         public void SetPlayername(string a_name)
         {
+            if(a_name.Length < 1)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             m_playername = a_name;
         }
 
