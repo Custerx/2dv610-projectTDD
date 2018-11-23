@@ -27,12 +27,12 @@ namespace ProjectTDD.model
 
         public void SetPlayername(string a_name)
         {
-            throw new NotImplementedException();
+            m_playername = a_name;
         }
 
         public string GetPlayername()
         {
-            throw new NotImplementedException();
+            return m_playername;
         }
 
         public List<model.Dice> GetHand()
