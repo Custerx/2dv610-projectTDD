@@ -41,6 +41,11 @@ namespace ProjectTDD.view
             }
         }
 
+        public void DisplayWinner(String a_player, int a_totalScore)
+        {
+
+        }
+
         public void DisplayGameKeys()
         {
             Console.BackgroundColor = ConsoleColor.DarkBlue;

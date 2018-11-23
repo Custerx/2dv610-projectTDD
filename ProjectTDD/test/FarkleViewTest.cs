@@ -120,6 +120,18 @@ namespace ProjectTDD.test
             }
         }
 
+        [Fact]
+        public void DisplayWinner_CompareWithConsoleOuput_Equal()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                sut.DisplayWinner("Rogge", 10000);
+                string expected = string.Format("\nRogge WON!\nWith a total-score of: 10000\n");
+                Assert.Equal(expected, sw.ToString());
+            }
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
