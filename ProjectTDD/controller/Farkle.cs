@@ -54,6 +54,8 @@ namespace ProjectTDD.controller
                     {
                         player.Roll();
 
+                        m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore(), player.GetTotalScore());
+
 
                     }
                 }
