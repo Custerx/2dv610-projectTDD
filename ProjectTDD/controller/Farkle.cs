@@ -74,7 +74,7 @@ namespace ProjectTDD.controller
 
                         if (player.IsPlayerWinner())
                         {
-
+                            m_IView.DisplayWinner("Rogge", player.GetTotalScore());
                         }
 
                         continue;
