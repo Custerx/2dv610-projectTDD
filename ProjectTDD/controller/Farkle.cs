@@ -64,6 +64,12 @@ namespace ProjectTDD.controller
                         continue;
                     }
 
+                    if (action == view.FarkleView.Action.Save)
+                    {
+                        List<model.Dice> diceList = player.GetHand();
+                        // TODO: Solve the save issue.
+                    }
+
 
                 }
             } while (a_noTest);
