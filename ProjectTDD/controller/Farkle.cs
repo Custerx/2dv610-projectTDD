@@ -63,6 +63,7 @@ namespace ProjectTDD.controller
                     if (action == view.FarkleView.Action.Roll)
                     {
                         player.Roll();
+                        player.UpdateScore();
 
                         m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore(), player.GetTotalScore());
 
