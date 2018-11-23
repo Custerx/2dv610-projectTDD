@@ -147,6 +147,14 @@ namespace ProjectTDD.test
             Assert.False(fail);
         }
 
+        [Fact]
+        public void AddName_Should_Call_GetPlayername3Times()
+        {
+            List<model.IPlayer> playerList = sut.CreatePlayer(3);
+            sut.AddName(playerList);
+            fake_IView.Verify(mock => mock.GetPlayername(It.IsAny<bool>()), Times.Exactly(3));
+        }
+
         private void fake_IView_setup()
         {
             fake_IView.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();

@@ -40,6 +40,11 @@ namespace ProjectTDD.controller
             return playerList;
         }
 
+        internal List<IPlayer> AddName(List<IPlayer> a_playerList)
+        {
+            throw new NotImplementedException();
+        }
+
         internal void Play(List<IPlayer> a_playerList, bool a_noTest = true)
         {
             do

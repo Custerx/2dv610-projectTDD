@@ -132,6 +132,14 @@ namespace ProjectTDD.test
             }
         }
 
+        [Fact]
+        public void GetPlayername_ArgumentTrue_ReturnsStringRogge()
+        {
+            string actual = sut.GetPlayername(true);
+            string expected = "Rogge";
+            Assert.Equal(expected, actual);
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();

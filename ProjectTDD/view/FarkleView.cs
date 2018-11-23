@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Castle.Core.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,11 @@ namespace ProjectTDD.view
             Roll,
             Save,
             Quit
+        }
+
+        public string GetPlayername(bool a_isThisATest = false)
+        {
+            throw new NotImplementedException();
         }
 
         public Action PlayerAction(bool a_isThisATest = false)
