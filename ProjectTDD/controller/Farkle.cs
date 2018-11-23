@@ -56,8 +56,15 @@ namespace ProjectTDD.controller
 
                         m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore(), player.GetTotalScore());
 
+                        if (a_noTest) // To avoid 2 sec delay when testing.
+                        {
+                            System.Threading.Thread.Sleep(2000);
+                        }
 
+                        continue;
                     }
+
+
                 }
             } while (a_noTest);
         }
