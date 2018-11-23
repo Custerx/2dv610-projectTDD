@@ -22,7 +22,7 @@ namespace ProjectTDD.test
             fake_player = new Mock<IPlayer>();
             fake_player_setup();
             fake_IView = new Mock<view.IView>();
-            mock_farkleview_setup();
+            fake_IView_setup();
             sut = new controller.Farkle(fake_IView.Object);
         }
 
@@ -43,7 +43,7 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Play_InputPlayerListWith3Players_Should_Call_PlayerAction3Times()
+        public void Start_InputPlayerListWith3Players_Should_Call_PlayerAction3Times()
         {
             sut.Start(false);
             fake_IView.Verify(mock => mock.PlayerAction(It.IsAny<bool>()), Times.Exactly(3));
@@ -57,17 +57,24 @@ namespace ProjectTDD.test
         }
 
         [Fact]
+        public void Play_Should_Call_Roll1Time()
+        {
+            sut.Play(FakePlayerList(), false);
+            fake_player.Verify(mock => mock.Roll(), Times.Once());
+        }
+
+        [Fact]
         public void Action_WhenPlayerHitQ_ReturnFalse()
         {
             bool fail = sut.Action(fake_player.Object, "q", true);
             Assert.False(fail);
         }
 
-        private void mock_farkleview_setup()
+        private void fake_IView_setup()
         {
             fake_IView.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
             fake_IView.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300, 2400)).Verifiable();
-            fake_IView.Setup(mock => mock.PlayerAction(true)).Verifiable();
+            fake_IView.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Roll).Verifiable();
         }
 
         private void fake_dice_setup()
@@ -87,6 +94,13 @@ namespace ProjectTDD.test
             List<model.Dice> fakedicelist = new List<model.Dice>();
             fakedicelist.Add(fake_dice.Object);
             return fakedicelist;
+        }
+
+        private List<IPlayer> FakePlayerList()
+        {
+            List<IPlayer> fakelist = new List<IPlayer>();
+            fakelist.Add(fake_player.Object);
+            return fakelist;
         }
     }
 }

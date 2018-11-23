@@ -43,7 +43,10 @@ namespace ProjectTDD.view
 
         public void DisplayGameKeys()
         {
-            Console.Write("Start new game: [1]. Roll non-saved dice(s): [2]. Save dice(s): [3]. Quit game: [4].\n");
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("\nStart new game: [1]. Roll non-saved dice(s): [2]. Save dice(s): [3]. Quit game: [4].\n");
+            Console.ResetColor();
         }
 
         public void DisplayDice(model.Dice a_dice)

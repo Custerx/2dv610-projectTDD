@@ -94,7 +94,7 @@ namespace ProjectTDD.test
             {
                 Console.SetOut(sw);
                 sut.DisplayGameKeys();
-                string expected = string.Format("Start new game: [1]. Roll non-saved dice(s): [2]. Save dice(s): [3]. Quit game: [4].\n");
+                string expected = string.Format("\nStart new game: [1]. Roll non-saved dice(s): [2]. Save dice(s): [3]. Quit game: [4].\n");
                 Assert.Equal(expected, sw.ToString());
             }
         }
