@@ -75,15 +75,24 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionSave_Should_Call_PlayerGetHand2Times()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
-            fake_IView_local.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300, 2400)).Verifiable();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save).Verifiable();
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
 
             sut_local.Play(FakePlayerList(), false);
 
             fake_player.Verify(mock => mock.GetHand(), Times.Exactly(2));
+        }
+
+        [Fact]
+        public void Play_PlayerActionReturnEnumActionQuit_Should_Throw_ValidateQuitException()
+        {
+            var fake_IView_local = new Mock<view.IView>();
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Quit);
+
+            var sut_local = new controller.Farkle(fake_IView_local.Object);
+
+            Assert.Throws<model.exception.ValidateQuitException>(() => sut_local.Play(FakePlayerList(), false));
         }
 
         [Fact]

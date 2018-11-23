@@ -21,7 +21,7 @@ namespace ProjectTDD.controller
             return m_IView.GetAction(player, a_letter, a_test);
         }
 
-        public void Start(bool a_noTest = true)
+        public virtual void Start(bool a_noTest = true)
         {
             int players = m_IView.GetAmountOfPlayers();
             List<IPlayer> playerList = CreatePlayer(players);
@@ -40,7 +40,7 @@ namespace ProjectTDD.controller
             return playerList;
         }
 
-        internal void Play(List<IPlayer> a_playerList, bool a_noTest = true)
+        public virtual void Play(List<IPlayer> a_playerList, bool a_noTest = true)
         {
             do
             {
@@ -49,6 +49,11 @@ namespace ProjectTDD.controller
                     m_IView.DisplayGameKeys();
                     m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore(), player.GetTotalScore());
                     var action = m_IView.PlayerAction();
+
+                    if (action == view.FarkleView.Action.NewGame)
+                    {
+                        throw new NotImplementedException();
+                    }
 
                     if (action == view.FarkleView.Action.Roll)
                     {
@@ -70,7 +75,11 @@ namespace ProjectTDD.controller
                         // TODO: Solve the save issue.
                     }
 
+                    if (action == view.FarkleView.Action.Quit)
+                    {
 
+                        throw new NotImplementedException();
+                    }
                 }
             } while (a_noTest);
         }
