@@ -72,6 +72,11 @@ namespace ProjectTDD.controller
                             System.Threading.Thread.Sleep(2000);
                         }
 
+                        if (player.IsPlayerWinner())
+                        {
+
+                        }
+
                         continue;
                     }
 
