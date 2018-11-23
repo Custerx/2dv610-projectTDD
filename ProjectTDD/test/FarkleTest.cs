@@ -96,6 +96,17 @@ namespace ProjectTDD.test
         }
 
         [Fact]
+        public void Play_PlayerActionReturnEnumActionNewGame_Should_Throw_ValidateNewGameException()
+        {
+            var fake_IView_local = new Mock<view.IView>();
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.NewGame);
+
+            var sut_local = new controller.Farkle(fake_IView_local.Object);
+
+            Assert.Throws<model.exception.ValidateNewGameException>(() => sut_local.Play(FakePlayerList(), false));
+        }
+
+        [Fact]
         public void Action_WhenPlayerHitQ_ReturnFalse()
         {
             bool fail = sut.Action(fake_player.Object, "q", true);
