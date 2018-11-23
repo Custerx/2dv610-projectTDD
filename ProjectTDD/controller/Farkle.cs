@@ -52,6 +52,11 @@ namespace ProjectTDD.controller
 
                     if (action == view.FarkleView.Action.NewGame)
                     {
+                        if (a_noTest)
+                        {
+                            Start();
+                        }
+
                         throw new model.exception.ValidateNewGameException();
                     }
 
