@@ -42,7 +42,13 @@ namespace ProjectTDD.controller
 
         internal List<IPlayer> AddName(List<IPlayer> a_playerList)
         {
-            throw new NotImplementedException();
+            foreach (IPlayer player in a_playerList)
+            {
+                string name = m_IView.GetPlayername();
+                player.SetPlayername(name);
+            }
+
+            return a_playerList;
         }
 
         internal void Play(List<IPlayer> a_playerList, bool a_noTest = true)
