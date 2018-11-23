@@ -25,6 +25,7 @@ namespace ProjectTDD.controller
         {
             int players = m_IView.GetAmountOfPlayers();
             List<IPlayer> playerList = CreatePlayer(players);
+            playerList = AddName(playerList);
             Play(playerList, a_noTest);
         }
 
@@ -58,7 +59,7 @@ namespace ProjectTDD.controller
                 foreach (IPlayer player in a_playerList)
                 {
                     m_IView.DisplayGameKeys();
-                    m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore(), player.GetTotalScore());
+                    m_IView.DisplayRolledDices(player.GetPlayername(), player.GetHand(), player.CalculateScore(), player.GetTotalScore());
                     var action = m_IView.PlayerAction();
 
                     if (action == view.FarkleView.Action.NewGame)
@@ -76,7 +77,7 @@ namespace ProjectTDD.controller
                         player.Roll();
                         player.UpdateTotalScore();
 
-                        m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore(), player.GetTotalScore());
+                        m_IView.DisplayRolledDices(player.GetPlayername(), player.GetHand(), player.CalculateScore(), player.GetTotalScore());
 
                         if (a_noTest) // To avoid 2 sec delay when testing.
                         {
@@ -85,7 +86,7 @@ namespace ProjectTDD.controller
 
                         if (player.IsPlayerWinner())
                         {
-                            m_IView.DisplayWinner("Rogge", player.GetTotalScore());
+                            m_IView.DisplayWinner(player.GetPlayername(), player.GetTotalScore());
 
                             if (a_noTest) // To avoid 5 sec delay when testing.
                             {
