@@ -52,7 +52,7 @@ namespace ProjectTDD.controller
 
                     if (action == view.FarkleView.Action.NewGame)
                     {
-                        throw new NotImplementedException();
+                        throw new model.exception.ValidateNewGameException();
                     }
 
                     if (action == view.FarkleView.Action.Roll)
