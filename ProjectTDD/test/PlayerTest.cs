@@ -196,6 +196,15 @@ namespace ProjectTDD.test
             Assert.True(yes);
         }
 
+        [Fact]
+        public void GetPlayername_SetPlayernameRogge_stringRogge()
+        {
+            sut.SetPlayername("Rogge");
+            string actual = sut.GetPlayername();
+            string expected = "Rogge";
+            Assert.Equal(expected, actual);
+        }
+
         private void fake_hand_setup()
         {
             fake_hand.Setup(mock => mock.Roll()).Verifiable();

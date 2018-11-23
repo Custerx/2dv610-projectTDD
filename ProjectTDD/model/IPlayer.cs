@@ -15,5 +15,7 @@ namespace ProjectTDD.model
         bool IsPlayerWinner();
         bool IsFarkle(int a_savedDiceScore, int a_rolledDiceScore);
         void UpdateTotalScore();
+        void SetPlayername(string a_name);
+        string GetPlayername();
     }
 }

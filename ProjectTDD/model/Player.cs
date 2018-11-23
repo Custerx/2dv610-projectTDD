@@ -12,6 +12,7 @@ namespace ProjectTDD.model
         const int WinningScore = 10000;
         private IHand m_hand;
         private int m_score;
+        private string m_playername;
 
         public Player(IHand a_hand)
         {
@@ -22,6 +23,16 @@ namespace ProjectTDD.model
         {
             Saved,
             Rolled
+        }
+
+        public void SetPlayername(string a_name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetPlayername()
+        {
+            throw new NotImplementedException();
         }
 
         public List<model.Dice> GetHand()
