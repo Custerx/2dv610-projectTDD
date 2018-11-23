@@ -64,8 +64,15 @@ namespace ProjectTDD.model
                 return 0;
             }
 
-            UpdateScore(savedDicesScore + rolledDicesScore);
             return savedDicesScore + rolledDicesScore;
+        }
+
+
+        public void UpdateScore()
+        {
+            int savedDicesScore = CalculateDiceStateScore(DiceState.Saved);
+            int rolledDicesScore = CalculateDiceStateScore(DiceState.Rolled);
+            m_score += savedDicesScore + rolledDicesScore;
         }
 
         public bool IsFarkle(int a_savedDiceScore, int a_rolledDiceScore)
@@ -261,11 +268,6 @@ namespace ProjectTDD.model
             }
 
             return score;
-        }
-
-        private void UpdateScore(int a_score)
-        {
-            m_score += a_score;
         }
     }
 }
