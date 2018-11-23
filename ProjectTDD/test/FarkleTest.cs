@@ -64,6 +64,13 @@ namespace ProjectTDD.test
         }
 
         [Fact]
+        public void Play_Should_Call_DisplayRolledDices2Times()
+        {
+            sut.Play(FakePlayerList(), false);
+            fake_IView.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>(), It.IsAny<int>()), Times.Exactly(2));
+        }
+
+        [Fact]
         public void Action_WhenPlayerHitQ_ReturnFalse()
         {
             bool fail = sut.Action(fake_player.Object, "q", true);
