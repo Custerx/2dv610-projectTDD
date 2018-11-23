@@ -50,7 +50,12 @@ namespace ProjectTDD.controller
                     m_IView.DisplayRolledDices("Rogge", player.GetHand(), player.CalculateScore(), player.GetTotalScore());
                     var action = m_IView.PlayerAction();
 
+                    if (action == view.FarkleView.Action.Roll)
+                    {
+                        player.Roll();
 
+
+                    }
                 }
             } while (a_noTest);
         }
