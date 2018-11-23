@@ -21,7 +21,7 @@ namespace ProjectTDD.controller
             return m_IView.GetAction(player, a_letter, a_test);
         }
 
-        public virtual void Start(bool a_noTest = true)
+        public void Start(bool a_noTest = true)
         {
             int players = m_IView.GetAmountOfPlayers();
             List<IPlayer> playerList = CreatePlayer(players);
@@ -40,7 +40,7 @@ namespace ProjectTDD.controller
             return playerList;
         }
 
-        public virtual void Play(List<IPlayer> a_playerList, bool a_noTest = true)
+        internal void Play(List<IPlayer> a_playerList, bool a_noTest = true)
         {
             do
             {

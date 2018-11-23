@@ -114,6 +114,19 @@ namespace ProjectTDD.test
         }
 
         [Fact]
+        public void Play_PlayerActionReturnEnumActionSave_Should_Call_PlayerIsPlayerWinner1Time()
+        {
+            var fake_IView_local = new Mock<view.IView>();
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
+
+            var sut_local = new controller.Farkle(fake_IView_local.Object);
+
+            sut_local.Play(FakePlayerList(), false);
+
+            fake_player.Verify(mock => mock.IsPlayerWinner(), Times.Once());
+        }
+
+        [Fact]
         public void Action_WhenPlayerHitQ_ReturnFalse()
         {
             bool fail = sut.Action(fake_player.Object, "q", true);
@@ -138,6 +151,7 @@ namespace ProjectTDD.test
             fake_player.Setup(mock => mock.GetHand()).Returns(FakeDiceList()).Verifiable();
             fake_player.Setup(mock => mock.Roll()).Verifiable();
             fake_player.Setup(mock => mock.UpdateTotalScore()).Verifiable();
+            fake_player.Setup(mock => mock.IsPlayerWinner()).Verifiable();
         }
 
         private List<model.Dice> FakeDiceList()
