@@ -65,6 +65,13 @@ namespace ProjectTDD.test
         }
 
         [Fact]
+        public void Play_Should_Call_UpdateScore1Time()
+        {
+            sut.Play(FakePlayerList(), false);
+            fake_player.Verify(mock => mock.UpdateScore(), Times.Once());
+        }
+
+        [Fact]
         public void Play_Should_Call_DisplayRolledDices2Times()
         {
             sut.Play(FakePlayerList(), false);
@@ -130,6 +137,7 @@ namespace ProjectTDD.test
         {
             fake_player.Setup(mock => mock.GetHand()).Returns(FakeDiceList()).Verifiable();
             fake_player.Setup(mock => mock.Roll()).Verifiable();
+            fake_player.Setup(mock => mock.UpdateScore()).Verifiable();
         }
 
         private List<model.Dice> FakeDiceList()
