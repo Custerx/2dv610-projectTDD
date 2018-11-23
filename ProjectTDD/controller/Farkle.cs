@@ -78,7 +78,7 @@ namespace ProjectTDD.controller
                     if (action == view.FarkleView.Action.Quit)
                     {
 
-                        throw new NotImplementedException();
+                        throw new model.exception.ValidateQuitException();
                     }
                 }
             } while (a_noTest);
