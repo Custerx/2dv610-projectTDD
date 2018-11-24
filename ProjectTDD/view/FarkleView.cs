@@ -33,7 +33,7 @@ namespace ProjectTDD.view
                 {
                     string input = GetNumberInput(a_isThisATest);
 
-                    if (!input.All(c => c >= '1' && c <= '6'))
+                    if (!input.All(c => c >= '1' && c <= '7'))
                     {
                         throw new ApplicationException();
                     }
@@ -44,7 +44,7 @@ namespace ProjectTDD.view
                 {
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nError! Your choice must contain a number between 1 and 6.\n");
+                    Console.WriteLine("\nError! Your choice must contain a number between 1 and 7.\n");
                     Console.ResetColor();
                 }
             }
