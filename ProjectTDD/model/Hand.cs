@@ -27,7 +27,8 @@ namespace ProjectTDD.model
             Dice_3,
             Dice_4,
             Dice_5,
-            Dice_6
+            Dice_6,
+            Done
         }
 
         public Hand()

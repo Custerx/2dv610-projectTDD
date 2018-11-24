@@ -101,7 +101,14 @@ namespace ProjectTDD.controller
                     if (action == view.FarkleView.Action.Save)
                     {
                         List<model.Dice> diceList = player.GetHand();
-                        // TODO: Solve the save issue.
+                        List<model.Dice> tempDiceList = new List<model.Dice>();
+                        List<model.Dice> dicesToBeSavedList = new List<model.Dice>();
+
+                        for (int i = 0; i < diceList.Count; i++)
+                        {
+                            model.Hand.Dices input = m_IView.GetDiceToSave();
+
+                        }
                     }
 
                     if (action == view.FarkleView.Action.Quit)
