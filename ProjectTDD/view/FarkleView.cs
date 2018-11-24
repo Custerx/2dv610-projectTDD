@@ -19,7 +19,7 @@ namespace ProjectTDD.view
 
         public model.Hand.Dices GetDiceToSave(bool a_isThisATest = false)
         {
-            throw new NotImplementedException();
+
         }
 
         public string GetPlayername(bool a_isThisATest = false)
