@@ -108,6 +108,33 @@ namespace ProjectTDD.controller
                         {
                             model.Hand.Dices input = m_IView.GetDiceToSave();
 
+                            if (input == model.Hand.Dices.Done)
+                            {
+                                continue;
+                            }
+
+                            int index = diceList.FindIndex(d => d.Dicenumber == input);
+
+                            if (index == -1)
+                            {
+                                throw new model.exception.DiceNotFoundException();
+                            }
+                            else
+                            {
+                                model.Dice diceToSave = diceList[index];
+                                tempDiceList.Add(diceToSave);
+                                diceList.RemoveAt(index);
+                            }
+                        }
+
+                        foreach (model.Dice d in tempDiceList)
+                        {
+                            dicesToBeSavedList.Add(d);
+                        }
+
+                        for (int i = 0; i < dicesToBeSavedList.Count; i++)
+                        {
+                            player.Save(dicesToBeSavedList[i]);
                         }
                     }
 
