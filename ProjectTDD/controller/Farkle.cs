@@ -106,6 +106,7 @@ namespace ProjectTDD.controller
 
                         for (int i = 0; i < diceList.Count; i++)
                         {
+                            m_IView.DisplaySaveKeys();
                             model.Hand.Dices input = m_IView.GetDiceToSave();
 
                             if (input == model.Hand.Dices.Done)
