@@ -19,7 +19,27 @@ namespace ProjectTDD.view
 
         public model.Hand.Dices GetDiceToSave(bool a_isThisATest = false)
         {
+            while (true)
+            {
+                try
+                {
+                    string input = GetNumberInput(a_isThisATest);
 
+                    if (!input.All(c => c >= '1' && c <= '6'))
+                    {
+                        throw new ApplicationException();
+                    }
+
+                    return (model.Hand.Dices)int.Parse(input);
+                }
+                catch (Exception)
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\nError! Your choice must contain a number between 1 and 6.\n");
+                    Console.ResetColor();
+                }
+            }
         }
 
         public string GetPlayername(bool a_isThisATest = false)
