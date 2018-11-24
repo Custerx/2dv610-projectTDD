@@ -17,6 +17,11 @@ namespace ProjectTDD.view
             Quit
         }
 
+        public void DisplaySaveKeys()
+        {
+
+        }
+
         public model.Hand.Dices GetDiceToSave(bool a_isThisATest = false)
         {
             while (true)
