@@ -19,7 +19,10 @@ namespace ProjectTDD.view
 
         public void DisplaySaveKeys()
         {
-
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("\nSave Dices. Dice_1 = [1], Dice_2 = [2], Dice_3 = [3], Dice_4 = [4], Dice_5 = [5], Dice_6 = [6], EXIT = [7]\n");
+            Console.ResetColor();
         }
 
         public model.Hand.Dices GetDiceToSave(bool a_isThisATest = false)
