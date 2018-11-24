@@ -140,6 +140,14 @@ namespace ProjectTDD.test
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void GetDiceToSave_ArgumentTrue_ReturnsEnumDicesDice_3()
+        {
+            model.Hand.Dices actual = sut.GetDiceToSave(true);
+            model.Hand.Dices expected = model.Hand.Dices.Dice_3;
+            Assert.Equal(expected, actual);
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();

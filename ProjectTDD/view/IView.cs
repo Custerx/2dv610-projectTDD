@@ -14,5 +14,6 @@ namespace ProjectTDD.view
         view.FarkleView.Action PlayerAction(bool a_isThisATest = false);
         void DisplayWinner(String a_player, int a_totalScore);
         string GetPlayername(bool a_isThisATest = false);
+        model.Hand.Dices GetDiceToSave(bool a_isThisATest = false);
     }
 }
