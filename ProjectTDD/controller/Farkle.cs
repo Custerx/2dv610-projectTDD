@@ -175,7 +175,8 @@ namespace ProjectTDD.controller
 
         private void RollRemainingDicesAfterSave(IPlayer player, bool a_noTest)
         {
-
+            player.Roll();
+            player.UpdateTotalScore();
         }
 
         private void Quit(bool a_noTest)
