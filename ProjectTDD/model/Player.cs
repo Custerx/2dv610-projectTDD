@@ -87,7 +87,7 @@ namespace ProjectTDD.model
         {
             int savedDicesScore = CalculateDiceStateScore(DiceState.Saved);
             int rolledDicesScore = CalculateDiceStateScore(DiceState.Rolled);
-            // TODO: Move over saved dices from savedlist to rolllist.
+            m_hand.Reset();
             m_score += savedDicesScore + rolledDicesScore;
         }
 
