@@ -213,6 +213,21 @@ namespace ProjectTDD.test
             fake_player.Verify(mock => mock.UpdateTotalScore(), Times.Once());
         }
 
+        [Fact]
+        public void Play_PlayerActionReturnEnumActionSave_Should_Call_DisplayRolledDices2Times()
+        {
+            var fake_IView_local = new Mock<view.IView>();
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
+            fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(model.Hand.Dices.Dice_1);
+            fake_IView_local.Setup(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>(), It.IsAny<int>())).Verifiable();
+
+            var sut_local = new controller.Farkle(fake_IView_local.Object);
+
+            sut_local.Play(FakePlayerList(), false);
+
+            fake_IView_local.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>(), It.IsAny<int>()), Times.Exactly(2));
+        }
+
         private void fake_IView_setup()
         {
             fake_IView.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
