@@ -96,7 +96,26 @@ namespace ProjectTDD.model
 
         public void Reset()
         {
+            for (int i = 1; i < 7; i++)
+            {
+                MoveAndRemoveDice((Dices)i);
+            }
+        }
 
+        private void MoveAndRemoveDice(Dices a_diceNumber)
+        {
+            int index = m_savedDiceList.FindIndex(d => d.Dicenumber == a_diceNumber);
+
+            if (index == -1)
+            {
+                throw new DiceNotFoundException();
+            }
+            else
+            {
+                model.Dice dice = m_savedDiceList[index];
+                m_diceList.Add(dice);
+                m_savedDiceList.RemoveAt(index);
+            }
         }
 
         public bool Save(model.Dice a_dice)
