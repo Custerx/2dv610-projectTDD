@@ -19,7 +19,10 @@ namespace ProjectTDD.view
 
         public void DisplayCannotSaveDiceTwice()
         {
-
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("\nError! You cannot save the same dice twice.\n");
+            Console.ResetColor();
         }
 
         public void DisplaySaveKeys()
