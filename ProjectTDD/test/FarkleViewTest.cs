@@ -94,17 +94,17 @@ namespace ProjectTDD.test
             {
                 Console.SetOut(sw);
                 sut.DisplayGameKeys();
-                string expected = string.Format("\nStart new game: [1]. Roll non-saved dice(s): [2]. Save dice(s): [3]. Quit game: [4].\n");
+                string expected = string.Format("\n Roll = [1], Save dice(s) = [2], New game = [3], Quit game = [4].\n");
                 Assert.Equal(expected, sw.ToString());
             }
         }
 
         [Fact]
-        public void PlayerAction_SendArgumentTrue_ReturnsActionSave()
+        public void PlayerAction_SendArgumentTrue_ReturnsActionNewGame()
         {
             bool test = true;
             view.FarkleView.Action actual = sut.PlayerAction(test);
-            view.FarkleView.Action expected = view.FarkleView.Action.Save;
+            view.FarkleView.Action expected = view.FarkleView.Action.NewGame;
             Assert.Equal(expected, actual);
         }
 

@@ -11,9 +11,9 @@ namespace ProjectTDD.view
     {
         public enum Action
         {
-            NewGame = 1,
-            Roll,
+            Roll = 1,
             Save,
+            NewGame,
             Quit
         }
 
@@ -132,7 +132,7 @@ namespace ProjectTDD.view
         {
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("\nStart new game: [1]. Roll non-saved dice(s): [2]. Save dice(s): [3]. Quit game: [4].\n");
+            Console.Write("\n Roll = [1], Save dice(s) = [2], New game = [3], Quit game = [4].\n");
             Console.ResetColor();
         }
 

@@ -152,7 +152,10 @@ namespace ProjectTDD.controller
                 if (index == -1)
                 {
                     m_IView.DisplayCannotSaveDiceTwice();
-                    return;
+                    if (a_noTest)
+                    {
+                        i--; // Enables endless loop and player can only exit through own choice.
+                    }
                 }
                 else
                 {
