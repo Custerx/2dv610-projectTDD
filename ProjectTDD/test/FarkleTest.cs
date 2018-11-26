@@ -228,6 +228,20 @@ namespace ProjectTDD.test
             fake_IView_local.Verify(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>(), It.IsAny<int>()), Times.Exactly(2));
         }
 
+        [Fact]
+        public void Play_PlayerActionReturnEnumActionSave_Should_Call_IsMoreDicesToRoll()
+        {
+            var fake_IView_local = new Mock<view.IView>();
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
+            fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(model.Hand.Dices.Dice_1);
+
+            var sut_local = new controller.Farkle(fake_IView_local.Object);
+
+            sut_local.Play(FakePlayerList(), false);
+
+            fake_player.Verify(mock => mock.IsMoreDicesToRoll(), Times.Once());
+        }
+
         private void fake_IView_setup()
         {
             fake_IView.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
@@ -249,6 +263,7 @@ namespace ProjectTDD.test
             fake_player.Setup(mock => mock.Roll()).Verifiable();
             fake_player.Setup(mock => mock.UpdateTotalScore()).Verifiable();
             fake_player.Setup(mock => mock.IsPlayerWinner()).Returns(true).Verifiable();
+            fake_player.Setup(mock => mock.IsMoreDicesToRoll()).Verifiable();
         }
 
         private List<model.Dice> FakeDiceList()

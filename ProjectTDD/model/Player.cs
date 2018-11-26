@@ -69,6 +69,11 @@ namespace ProjectTDD.model
             return m_score >= WinningScore;
         }
 
+        public bool IsMoreDicesToRoll()
+        {
+            return m_hand.MoreDicesToRoll();
+        }
+
         public int CalculateScore()
         {
             int savedDicesScore = CalculateDiceStateScore(DiceState.Saved);

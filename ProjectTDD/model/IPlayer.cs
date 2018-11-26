@@ -17,5 +17,6 @@ namespace ProjectTDD.model
         void UpdateTotalScore();
         void SetPlayername(string a_name);
         string GetPlayername();
+        bool IsMoreDicesToRoll();
     }
 }
