@@ -111,7 +111,7 @@ namespace ProjectTDD.controller
 
                             if (input == model.Hand.Dices.Done)
                             {
-                                continue;
+                                break;
                             }
 
                             int index = diceList.FindIndex(d => d.Dicenumber == input);
@@ -124,7 +124,6 @@ namespace ProjectTDD.controller
                             {
                                 model.Dice diceToSave = diceList[index];
                                 tempDiceList.Add(diceToSave);
-                                diceList.RemoveAt(index);
                             }
                         }
 

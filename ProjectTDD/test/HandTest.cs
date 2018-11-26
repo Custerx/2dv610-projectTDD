@@ -90,5 +90,29 @@ namespace ProjectTDD.test
             bool success = sut.NoMoreThan6DicesInPlay();
             Assert.True(success);
         }
+
+        [Fact]
+        public void Reset_MoveAllDicesFromSavedList_Return0()
+        {
+            List<model.Dice> diceList = sut.Show();
+            List<model.Dice> toBeSaved = new List<model.Dice>();
+
+            // IMPORTANT! Done to avoid index issues.
+            foreach (model.Dice d in diceList)
+            {
+                toBeSaved.Add(d);
+            }
+            // Save all dices.
+            for (int i = 0; i < toBeSaved.Count; i++)
+            {
+                sut.Save(toBeSaved[i]);
+            }
+            // Move all saved dices back to roll list.
+            sut.Reset();
+
+            int actual = sut.ShowSaved().Count;
+            int expected = 0;
+            Assert.Equal(expected, actual);
+        }
     }
 }

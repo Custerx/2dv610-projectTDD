@@ -11,5 +11,6 @@ namespace ProjectTDD.model
         List<model.Dice> Show();
         List<model.Dice> ShowSaved();
         bool Save(model.Dice a_dice);
+        void Reset();
     }
 }

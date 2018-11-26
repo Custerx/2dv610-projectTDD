@@ -94,6 +94,11 @@ namespace ProjectTDD.model
             return m_savedDiceList;
         }
 
+        public void Reset()
+        {
+
+        }
+
         public bool Save(model.Dice a_dice)
         {
             SaveAndRemoveDice(a_dice);
