@@ -30,6 +30,10 @@ namespace ProjectTDD.controller
                 playerList = AddName(playerList);
                 Play(playerList, a_noTest);
             }
+            catch (model.exception.DiceNotFoundException)
+            {
+                throw;
+            }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
@@ -82,7 +86,7 @@ namespace ProjectTDD.controller
 
                     if (action == view.FarkleView.Action.Save)
                     {
-                        Save(player);
+                        Save(player, a_noTest);
                     }
 
                     if (action == view.FarkleView.Action.Quit)
@@ -127,7 +131,7 @@ namespace ProjectTDD.controller
             }
         }
 
-        private void Save(IPlayer player)
+        private void Save(IPlayer player, bool a_noTest)
         {
             List<model.Dice> diceList = player.GetHand();
             List<model.Dice> tempDiceList = new List<model.Dice>();
@@ -140,7 +144,7 @@ namespace ProjectTDD.controller
 
                 if (input == model.Hand.Dices.Done)
                 {
-                    break;
+                    Roll(player, a_noTest);
                 }
 
                 int index = diceList.FindIndex(d => d.Dicenumber == input);
