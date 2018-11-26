@@ -211,11 +211,19 @@ namespace ProjectTDD.test
             Assert.Throws<ArgumentOutOfRangeException>(() => sut.SetPlayername(""));
         }
 
+        [Fact]
+        public void UpdateTotalScore_Should_Call_Reset()
+        {
+            sut.UpdateTotalScore();
+            fake_hand.Verify(mock => mock.Reset(), Times.Once());
+        }
+
         private void fake_hand_setup()
         {
             fake_hand.Setup(mock => mock.Roll()).Verifiable();
             fake_hand.Setup(mock => mock.Show()).Returns(fake_6dice_list());
             fake_hand.Setup(mock => mock.ShowSaved()).Returns(fake_emptydice_list());
+            fake_hand.Setup(mock => mock.Reset()).Verifiable();
         }
 
         private List<model.Dice> fake_6dice_list()
