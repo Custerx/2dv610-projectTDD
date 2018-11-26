@@ -175,7 +175,11 @@ namespace ProjectTDD.controller
 
         private void RollRemainingDicesAfterSave(IPlayer player, bool a_noTest)
         {
-            player.Roll();
+            if(player.IsMoreDicesToRoll())
+            {
+                player.Roll();
+            }
+   
             player.UpdateTotalScore();
 
             m_IView.DisplayRolledDices(player.GetPlayername(), player.GetHand(), player.CalculateScore(), player.GetTotalScore());
