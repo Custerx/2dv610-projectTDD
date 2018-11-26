@@ -79,7 +79,7 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Play_PlayerActionReturnEnumActionSave_Should_Call_PlayerGetHand2Times()
+        public void Play_PlayerActionReturnEnumActionSave_Should_Call_PlayerGetHand3Times()
         {
             var fake_IView_local = new Mock<view.IView>();
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
@@ -89,7 +89,7 @@ namespace ProjectTDD.test
 
             sut_local.Play(FakePlayerList(), false);
 
-            fake_player.Verify(mock => mock.GetHand(), Times.Exactly(2));
+            fake_player.Verify(mock => mock.GetHand(), Times.Exactly(3));
         }
 
         [Fact]
