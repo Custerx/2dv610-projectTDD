@@ -263,7 +263,7 @@ namespace ProjectTDD.test
             fake_player.Setup(mock => mock.Roll()).Verifiable();
             fake_player.Setup(mock => mock.UpdateTotalScore()).Verifiable();
             fake_player.Setup(mock => mock.IsPlayerWinner()).Returns(true).Verifiable();
-            fake_player.Setup(mock => mock.IsMoreDicesToRoll()).Verifiable();
+            fake_player.Setup(mock => mock.IsMoreDicesToRoll()).Returns(true).Verifiable();
         }
 
         private List<model.Dice> FakeDiceList()
