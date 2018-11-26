@@ -96,9 +96,16 @@ namespace ProjectTDD.model
 
         public void Reset()
         {
-            for (int i = 1; i < 7; i++)
+            List<model.Dice> dicesToBeReset = new List<model.Dice>();
+
+            foreach (model.Dice d in m_savedDiceList)
             {
-                MoveAndRemoveDice((Dices)i);
+                dicesToBeReset.Add(d);
+            }
+
+            for (int i = 0; i < dicesToBeReset.Count; i++)
+            {
+                MoveAndRemoveDice(dicesToBeReset[i].Dicenumber);
             }
         }
 
