@@ -17,6 +17,11 @@ namespace ProjectTDD.view
             Quit
         }
 
+        public void DisplayCannotSaveDiceTwice()
+        {
+
+        }
+
         public void DisplaySaveKeys()
         {
             Console.BackgroundColor = ConsoleColor.DarkBlue;

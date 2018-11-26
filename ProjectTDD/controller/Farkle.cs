@@ -151,12 +151,13 @@ namespace ProjectTDD.controller
 
                 if (index == -1)
                 {
-                    throw new model.exception.DiceNotFoundException();
+                    return;
                 }
                 else
                 {
                     model.Dice diceToSave = diceList[index];
                     tempDiceList.Add(diceToSave);
+                    diceList.RemoveAt(index);
                 }
             }
 

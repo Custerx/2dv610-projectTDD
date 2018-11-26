@@ -160,6 +160,18 @@ namespace ProjectTDD.test
             }
         }
 
+        [Fact]
+        public void DisplayCannotSaveDiceTwice_CompareWithConsoleOuput_Equal()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                sut.DisplayCannotSaveDiceTwice();
+                string expected = string.Format("\nError! You cannot save the same dice twice.\n");
+                Assert.Equal(expected, sw.ToString());
+            }
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
