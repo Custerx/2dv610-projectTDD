@@ -86,12 +86,12 @@ namespace ProjectTDD.model
 
         public List<model.Dice> Show()
         {
-            return m_diceList;
+            return m_diceList.OrderBy(d => d.Dicenumber).ToList();
         }
 
         public List<model.Dice> ShowSaved()
         {
-            return m_savedDiceList;
+            return m_savedDiceList.OrderBy(d => d.Dicenumber).ToList();
         }
 
         public void Reset()
