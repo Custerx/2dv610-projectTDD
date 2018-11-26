@@ -67,19 +67,7 @@ namespace ProjectTDD.test
         [Fact]
         public void Roll_WithEmptyList_ThrowsEmptyDiceListException()
         {
-            List<model.Dice> diceList = sut.Show();
-            List<model.Dice> toBeSaved = new List<model.Dice>();
-
-            // IMPORTANT! Done to avoid index issues.
-            foreach (model.Dice d in diceList)
-            {
-                toBeSaved.Add(d);
-            }
-            // Save all dices.
-            for (int i = 0; i < toBeSaved.Count; i++)
-            {
-                sut.Save(toBeSaved[i]);
-            }
+            SaveAllDices();
             // Call roll with an empty list.
             Assert.Throws<model.exception.EmptyDiceListException>(() => sut.Roll());
         }
@@ -94,19 +82,7 @@ namespace ProjectTDD.test
         [Fact]
         public void Reset_Save6Dices_MoveAllDicesFromSavedList_Return0()
         {
-            List<model.Dice> diceList = sut.Show();
-            List<model.Dice> toBeSaved = new List<model.Dice>();
-
-            // IMPORTANT! Done to avoid index issues.
-            foreach (model.Dice d in diceList)
-            {
-                toBeSaved.Add(d);
-            }
-            // Save all dices.
-            for (int i = 0; i < toBeSaved.Count; i++)
-            {
-                sut.Save(toBeSaved[i]);
-            }
+            SaveAllDices();
             // Move all saved dices back to roll list.
             sut.Reset();
 
@@ -137,6 +113,31 @@ namespace ProjectTDD.test
             int actual = sut.ShowSaved().Count;
             int expected = 0;
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void MoreDicesToRoll_SaveAllDices_False()
+        {
+            SaveAllDices();
+            bool fail = sut.MoreDicesToRoll();
+            Assert.False(fail);
+        }
+
+        private void SaveAllDices()
+        {
+            List<model.Dice> diceList = sut.Show();
+            List<model.Dice> toBeSaved = new List<model.Dice>();
+
+            // IMPORTANT! Done to avoid index issues.
+            foreach (model.Dice d in diceList)
+            {
+                toBeSaved.Add(d);
+            }
+            // Save all dices.
+            for (int i = 0; i < toBeSaved.Count; i++)
+            {
+                sut.Save(toBeSaved[i]);
+            }
         }
     }
 }

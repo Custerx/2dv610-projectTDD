@@ -68,7 +68,7 @@ namespace ProjectTDD.model
 
         public bool NoMoreThan6DicesInPlay()
         {
-            return ((m_diceList.Count + m_savedDiceList.Count) == 6);
+            throw new NotImplementedException();
         }
 
         public void Roll()
@@ -82,6 +82,11 @@ namespace ProjectTDD.model
             {
                 dice.Roll();
             }
+        }
+
+        public bool MoreDicesToRoll()
+        {
+            return m_diceList.Count > 0;
         }
 
         public List<model.Dice> Show()
