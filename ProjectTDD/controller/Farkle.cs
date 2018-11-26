@@ -30,9 +30,9 @@ namespace ProjectTDD.controller
                 playerList = AddName(playerList);
                 Play(playerList, a_noTest);
             }
-            catch (model.exception.DiceNotFoundException)
+            catch (model.exception.DiceNotFoundException dnfex)
             {
-                throw;
+                Console.WriteLine(dnfex);
             }
             catch (Exception ex)
             {
@@ -144,7 +144,7 @@ namespace ProjectTDD.controller
 
                 if (input == model.Hand.Dices.Done)
                 {
-                    Roll(player, a_noTest);
+                    break;
                 }
 
                 int index = diceList.FindIndex(d => d.Dicenumber == input);
@@ -169,6 +169,13 @@ namespace ProjectTDD.controller
             {
                 player.Save(dicesToBeSavedList[i]);
             }
+
+            RollRemainingDicesAfterSave(player, a_noTest);
+        }
+
+        private void RollRemainingDicesAfterSave(IPlayer player, bool a_noTest)
+        {
+
         }
 
         private void Quit(bool a_noTest)
