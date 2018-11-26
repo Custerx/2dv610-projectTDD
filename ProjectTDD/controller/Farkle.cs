@@ -151,6 +151,7 @@ namespace ProjectTDD.controller
 
                 if (index == -1)
                 {
+                    m_IView.DisplayCannotSaveDiceTwice();
                     return;
                 }
                 else
