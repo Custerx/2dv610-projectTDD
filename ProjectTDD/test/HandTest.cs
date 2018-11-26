@@ -92,7 +92,7 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Reset_MoveAllDicesFromSavedList_Return0()
+        public void Reset_Save6Dices_MoveAllDicesFromSavedList_Return0()
         {
             List<model.Dice> diceList = sut.Show();
             List<model.Dice> toBeSaved = new List<model.Dice>();
@@ -104,6 +104,30 @@ namespace ProjectTDD.test
             }
             // Save all dices.
             for (int i = 0; i < toBeSaved.Count; i++)
+            {
+                sut.Save(toBeSaved[i]);
+            }
+            // Move all saved dices back to roll list.
+            sut.Reset();
+
+            int actual = sut.ShowSaved().Count;
+            int expected = 0;
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Reset_Save2Dices_MoveAllDicesFromSavedList_Return0()
+        {
+            List<model.Dice> diceList = sut.Show();
+            List<model.Dice> toBeSaved = new List<model.Dice>();
+
+            // IMPORTANT! Done to avoid index issues.
+            foreach (model.Dice d in diceList)
+            {
+                toBeSaved.Add(d);
+            }
+            // Save two dices.
+            for (int i = 0; i < 2; i++)
             {
                 sut.Save(toBeSaved[i]);
             }
