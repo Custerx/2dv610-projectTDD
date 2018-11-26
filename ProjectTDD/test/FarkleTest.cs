@@ -247,7 +247,7 @@ namespace ProjectTDD.test
         {
             var fake_IView_local = new Mock<view.IView>();
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
-            fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(model.Hand.Dices.Dice_1);
+            fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(null);
             fake_IView_local.Setup(mock => mock.DisplayCannotSaveDiceTwice()).Verifiable();
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
