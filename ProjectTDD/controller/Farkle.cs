@@ -177,6 +177,13 @@ namespace ProjectTDD.controller
         {
             player.Roll();
             player.UpdateTotalScore();
+
+            m_IView.DisplayRolledDices(player.GetPlayername(), player.GetHand(), player.CalculateScore(), player.GetTotalScore());
+
+            if (a_noTest) // To avoid 2 sec delay when testing.
+            {
+                System.Threading.Thread.Sleep(2000);
+            }
         }
 
         private void Quit(bool a_noTest)
