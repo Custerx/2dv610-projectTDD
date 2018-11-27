@@ -100,10 +100,9 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void PlayerAction_SendArgumentTrue_ReturnsActionNewGame()
+        public void PlayerAction_SendArgumentString3_ReturnsActionNewGame()
         {
-            bool test = true;
-            view.FarkleView.Action actual = sut.PlayerAction(test);
+            view.FarkleView.Action actual = sut.PlayerAction("3");
             view.FarkleView.Action expected = view.FarkleView.Action.NewGame;
             Assert.Equal(expected, actual);
         }

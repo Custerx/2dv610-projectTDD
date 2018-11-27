@@ -11,7 +11,7 @@ namespace ProjectTDD.view
         void DisplayRolledDices(String a_player, List<model.Dice> a_hand, int a_score, int a_totalScore);
         bool GetAction(model.IPlayer player, string a_letter = null, bool a_test = false);
         int GetAmountOfPlayers(bool a_isThisATest = false);
-        view.FarkleView.Action PlayerAction(bool a_isThisATest = false);
+        view.FarkleView.Action PlayerAction(string a_input = null);
         void DisplayWinner(String a_player, int a_totalScore);
         string GetPlayername(bool a_isThisATest = false);
         model.Hand.Dices GetDiceToSave(bool a_isThisATest = false);

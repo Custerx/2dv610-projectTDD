@@ -47,7 +47,7 @@ namespace ProjectTDD.test
         public void Start_InputPlayerListWith3Players_Should_Call_PlayerAction3Times()
         {
             sut.Start(false);
-            fake_IView.Verify(mock => mock.PlayerAction(It.IsAny<bool>()), Times.Exactly(3));
+            fake_IView.Verify(mock => mock.PlayerAction(It.IsAny<string>()), Times.Exactly(3));
         }
 
         [Fact]
@@ -82,7 +82,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionSave_Should_Call_PlayerGetHand3Times()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(model.Hand.Dices.Dice_1);
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
@@ -96,7 +96,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionQuit_Should_Throw_ValidateQuitException()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Quit);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Quit);
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
 
@@ -107,7 +107,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionNewGame_Should_Throw_ValidateNewGameException()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.NewGame);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.NewGame);
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
 
@@ -118,7 +118,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionRoll_Should_Call_PlayerIsPlayerWinner1Time()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Roll);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Roll);
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
 
@@ -131,7 +131,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionRoll_Should_Call_DisplayWinner()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Roll);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Roll);
             fake_IView_local.Setup(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>())).Verifiable();
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
@@ -160,7 +160,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionSave_Should_Call_GetDiceToSave5Times()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(model.Hand.Dices.Dice_1).Verifiable();
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
@@ -174,7 +174,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionSave_Should_Call_DisplaySaveKeys6Times()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(model.Hand.Dices.Dice_1);
             fake_IView_local.Setup(mock => mock.DisplaySaveKeys()).Verifiable();
 
@@ -189,7 +189,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionSave_Should_Call_Roll2Times()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(model.Hand.Dices.Dice_1);
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
@@ -203,7 +203,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionSave_Should_Call_UpdateTotalScore()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(model.Hand.Dices.Dice_1);
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
@@ -217,7 +217,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionSave_Should_Call_DisplayRolledDices2Times()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(model.Hand.Dices.Dice_1);
             fake_IView_local.Setup(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>(), It.IsAny<int>())).Verifiable();
 
@@ -232,7 +232,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionSave_Should_Call_IsMoreDicesToRoll()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(model.Hand.Dices.Dice_1);
 
             var sut_local = new controller.Farkle(fake_IView_local.Object);
@@ -246,7 +246,7 @@ namespace ProjectTDD.test
         public void Play_PlayerActionReturnEnumActionSave_Should_Call_DisplayCannotSaveDiceTwice6Times()
         {
             var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<bool>())).Returns(null);
             fake_IView_local.Setup(mock => mock.DisplayCannotSaveDiceTwice()).Verifiable();
 
@@ -261,7 +261,7 @@ namespace ProjectTDD.test
         {
             fake_IView.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
             fake_IView.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300, 2400)).Verifiable();
-            fake_IView.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Roll).Verifiable();
+            fake_IView.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Roll).Verifiable();
             fake_IView.Setup(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>())).Verifiable();
             fake_IView.Setup(mock => mock.GetPlayername(It.IsAny<bool>())).Returns("Sune").Verifiable();
         }

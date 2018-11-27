@@ -64,17 +64,19 @@ namespace ProjectTDD.view
             {
                 try
                 {
-                    if (a_isThisATest)
-                    {
-                        return "Rogge";
-                    }
-
                     Console.BackgroundColor = ConsoleColor.DarkBlue;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("Please type your name: ");
                     Console.ResetColor();
 
-                    string input = Console.ReadLine();
+                    string input;
+                    if (a_isThisATest)
+                    {
+                        input = "Rogge";
+                    } else
+                    {
+                        input = Console.ReadLine();
+                    }
 
                     if (input.IsNullOrEmpty())
                     {
@@ -94,13 +96,13 @@ namespace ProjectTDD.view
 
         }
 
-        public Action PlayerAction(bool a_isThisATest = false)
+        public Action PlayerAction(string a_input = null)
         {
             while (true)
             {
                 try
                 {
-                    string input = GetNumberInput(a_isThisATest);
+                    string input = HandleInput(a_input);
 
                     if (!input.All(c => c >= '1' && c <= '4'))
                     {
@@ -226,6 +228,17 @@ namespace ProjectTDD.view
             } else
             {
                 return Console.ReadLine();
+            }
+        }
+
+        private string HandleInput(string a_input)
+        {
+            if (a_input == null)
+            { 
+                return Console.ReadLine();
+            } else
+            {
+                return a_input;
             }
         }
     }
