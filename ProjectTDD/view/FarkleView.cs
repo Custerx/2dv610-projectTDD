@@ -248,7 +248,10 @@ namespace ProjectTDD.view
 
         internal void GetAmountOfPlayersErrorMessage()
         {
-
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\nError! Your choice must contain a number between 2 and 8.\n");
+            Console.ResetColor();
         }
 
         private string GetNumberInput(bool a_isThisATest)
