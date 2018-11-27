@@ -60,11 +60,11 @@ namespace ProjectTDD.view
 
         public string GetPlayername(string a_input = null)
         {
+            GetPlayerNameIntroMessage();
             while (true)
             {
                 try
                 {
-                    GetPlayerNameIntroMessage();
                     return GetPlayerNameTestable(a_input);
                 }
                 catch (Exception)
@@ -77,7 +77,10 @@ namespace ProjectTDD.view
 
         internal void GetPlayerNameIntroMessage()
         {
-
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Please type your name: ");
+            Console.ResetColor();
         }
 
         internal string GetPlayerNameTestable(string a_input)
