@@ -198,6 +198,19 @@ namespace ProjectTDD.test
             Assert.Throws<ApplicationException>(() => sut_local.GetPlayerNameTestable(""));
         }
 
+        [Fact]
+        public void GetPlayerNameIntroMessage_CompareWithConsoleOuput_Equal()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
+                sut_local.GetPlayerNameIntroMessage();
+                string expected = string.Format("Please type your name: ");
+                Assert.Equal(expected, sw.ToString());
+            }
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
