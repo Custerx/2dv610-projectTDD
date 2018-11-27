@@ -226,7 +226,10 @@ namespace ProjectTDD.view
 
         internal void GetAmountOfPlayersIntroMessage()
         {
-
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Chose amount of players. Between [2] and [8] :");
+            Console.ResetColor();
         }
 
         internal int GetAmountOfPlayersTestable(string a_input)
