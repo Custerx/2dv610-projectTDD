@@ -238,7 +238,7 @@ namespace ProjectTDD.view
 
             if (!input.All(c => c >= '2' && c <= '8'))
             {
-                throw new NotImplementedException();
+                throw new ApplicationException();
             }
             else
             {
