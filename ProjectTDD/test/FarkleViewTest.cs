@@ -219,7 +219,7 @@ namespace ProjectTDD.test
                 Console.SetOut(sw);
                 var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
                 sut_local.GetPlayerNameErrorMessage();
-                string expected = string.Format("\nError! Your name must contain atleast 1 character.\n");
+                string expected = string.Format("\nError! Your name must contain atleast 1 character.\n\r\n");
                 Assert.Equal(expected, sw.ToString());
             }
         }

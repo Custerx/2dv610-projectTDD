@@ -97,7 +97,10 @@ namespace ProjectTDD.view
 
         internal void GetPlayerNameErrorMessage()
         {
-
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\nError! Your name must contain atleast 1 character.\n");
+            Console.ResetColor();
         }
 
         public Action PlayerAction(string a_input = null)
