@@ -41,9 +41,9 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetAmountOfPlayers_SetArgumentToTrue_ReturnsInt3()
+        public void GetAmountOfPlayers_SetArgumentToString3_ReturnsInt3()
         {
-            int actual = sut.GetAmountOfPlayers(true);
+            int actual = sut.GetAmountOfPlayers("3");
             int expected = 3;
             Assert.Equal(expected, actual);
         }
@@ -222,6 +222,13 @@ namespace ProjectTDD.test
                 string expected = string.Format("\nError! Your name must contain atleast 1 character.\n\r\n");
                 Assert.Equal(expected, sw.ToString());
             }
+        }
+
+        [Fact]
+        public void GetAmountOfPlayersTestable_UseWrongArgumentEmptyString_ThrowsApplicationException()
+        {
+            var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
+            Assert.Throws<ApplicationException>(() => sut_local.GetAmountOfPlayersTestable("1"));
         }
 
         private void mock_player_setup()

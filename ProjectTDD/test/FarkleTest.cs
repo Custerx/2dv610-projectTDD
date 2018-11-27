@@ -31,7 +31,7 @@ namespace ProjectTDD.test
         public void Start_Should_Call_GetAmountOfPlayers()
         {
             sut.Start(false);
-            fake_IView.Verify(mock => mock.GetAmountOfPlayers(false), Times.Once());
+            fake_IView.Verify(mock => mock.GetAmountOfPlayers(It.IsAny<string>()), Times.Once());
         }
 
         [Fact]
@@ -259,7 +259,7 @@ namespace ProjectTDD.test
 
         private void fake_IView_setup()
         {
-            fake_IView.Setup(mock => mock.GetAmountOfPlayers(false)).Returns(3).Verifiable();
+            fake_IView.Setup(mock => mock.GetAmountOfPlayers(It.IsAny<string>())).Returns(3).Verifiable();
             fake_IView.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300, 2400)).Verifiable();
             fake_IView.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Roll).Verifiable();
             fake_IView.Setup(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>())).Verifiable();

@@ -90,9 +90,10 @@ namespace ProjectTDD.view
             if (input.IsNullOrEmpty())
             {
                 throw new ApplicationException();
+            } else
+            {
+                return input;
             }
-
-            return input;
         }
 
         internal void GetPlayerNameErrorMessage()
@@ -125,9 +126,10 @@ namespace ProjectTDD.view
             if (!input.All(c => c >= '1' && c <= '4'))
             {
                 throw new ApplicationException();
+            } else
+            {
+                return (Action)int.Parse(input);
             }
-
-            return (Action)int.Parse(input);
         }
 
         internal void PlayerActionErrorMessage()
@@ -205,36 +207,51 @@ namespace ProjectTDD.view
             return a_letter != "q";
         }
 
-        public int GetAmountOfPlayers(bool a_isThisATest = false)
+        public int GetAmountOfPlayers(string a_input = null)
         {
-            string input;
-
             while (true)
             {
                 try
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkBlue;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("Chose amount of players. Between [2] and [8] :");
-                    Console.ResetColor();
-
-                    input = GetNumberInput(a_isThisATest);
-
-                    if (!input.All(c => c >= '2' && c <= '8'))
-                    {
-                        throw new ApplicationException();
-                    }
-
-                    return int.Parse(input);
+                    GetAmountOfPlayersIntroMessage();
+                    return GetAmountOfPlayersTestable(a_input);
                 }
                 catch (Exception)
                 {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nError! Your choice must contain a number between 2 and 8.\n");
-                    Console.ResetColor();
+                    GetAmountOfPlayersErrorMessage();
                 }
             }
+
+        }
+
+        internal void GetAmountOfPlayersIntroMessage()
+        {
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Chose amount of players. Between [2] and [8] :");
+            Console.ResetColor();
+        }
+
+        internal int GetAmountOfPlayersTestable(string a_input)
+        {
+            string input = HandleInput(a_input);
+
+            if (!input.All(c => c >= '2' && c <= '8'))
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                return int.Parse(input);
+            }
+        }
+
+        internal void GetAmountOfPlayersErrorMessage()
+        {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\nError! Your choice must contain a number between 2 and 8.\n");
+            Console.ResetColor();
         }
 
         private string GetNumberInput(bool a_isThisATest)
