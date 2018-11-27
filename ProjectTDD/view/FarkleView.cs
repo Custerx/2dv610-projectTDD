@@ -125,7 +125,10 @@ namespace ProjectTDD.view
 
         internal void PlayerActionErrorMessage()
         {
-
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("\nError! Your choice must contain a number between 1 and 4.\n");
+            Console.ResetColor();
         }
 
         public void DisplayWinner(String a_player, int a_totalScore)
