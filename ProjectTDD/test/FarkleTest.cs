@@ -153,7 +153,7 @@ namespace ProjectTDD.test
         {
             List<model.IPlayer> playerList = sut.CreatePlayer(3);
             sut.AddName(playerList);
-            fake_IView.Verify(mock => mock.GetPlayername(It.IsAny<bool>()), Times.Exactly(3));
+            fake_IView.Verify(mock => mock.GetPlayername(It.IsAny<string>()), Times.Exactly(3));
         }
 
         [Fact]
@@ -263,7 +263,7 @@ namespace ProjectTDD.test
             fake_IView.Setup(mock => mock.DisplayRolledDices("Rogge", FakeDiceList(), 300, 2400)).Verifiable();
             fake_IView.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Roll).Verifiable();
             fake_IView.Setup(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>())).Verifiable();
-            fake_IView.Setup(mock => mock.GetPlayername(It.IsAny<bool>())).Returns("Sune").Verifiable();
+            fake_IView.Setup(mock => mock.GetPlayername(It.IsAny<string>())).Returns("Sune").Verifiable();
         }
 
         private void fake_dice_setup()

@@ -13,7 +13,7 @@ namespace ProjectTDD.view
         int GetAmountOfPlayers(bool a_isThisATest = false);
         view.FarkleView.Action PlayerAction(string a_input = null);
         void DisplayWinner(String a_player, int a_totalScore);
-        string GetPlayername(bool a_isThisATest = false);
+        string GetPlayername(string a_input = null);
         model.Hand.Dices GetDiceToSave(bool a_isThisATest = false);
         void DisplaySaveKeys();
         void DisplayCannotSaveDiceTwice();

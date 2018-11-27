@@ -58,41 +58,42 @@ namespace ProjectTDD.view
             }
         }
 
-        public string GetPlayername(bool a_isThisATest = false)
+        public string GetPlayername(string a_input = null)
         {
             while (true)
             {
                 try
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkBlue;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("Please type your name: ");
-                    Console.ResetColor();
-
-                    string input;
-                    if (a_isThisATest)
-                    {
-                        input = "Rogge";
-                    } else
-                    {
-                        input = Console.ReadLine();
-                    }
-
-                    if (input.IsNullOrEmpty())
-                    {
-                        throw new ApplicationException();
-                    }
-
-                    return input;
+                    GetPlayerNameIntroMessage();
+                    return GetPlayerNameTestable(a_input);
                 }
                 catch (Exception)
                 {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nError! Your name must contain atleast 1 character.\n");
-                    Console.ResetColor();
+                    GetPlayerNameErrorMessage();
                 }
             }
+
+        }
+
+        internal void GetPlayerNameIntroMessage()
+        {
+
+        }
+
+        internal string GetPlayerNameTestable(string a_input)
+        {
+            string input = HandleInput(a_input);
+
+            if (input.IsNullOrEmpty())
+            {
+                throw new NotImplementedException();
+            }
+
+            return input;
+        }
+
+        internal void GetPlayerNameErrorMessage()
+        {
 
         }
 

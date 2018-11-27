@@ -134,7 +134,7 @@ namespace ProjectTDD.test
         [Fact]
         public void GetPlayername_ArgumentTrue_ReturnsStringRogge()
         {
-            string actual = sut.GetPlayername(true);
+            string actual = sut.GetPlayername("Rogge");
             string expected = "Rogge";
             Assert.Equal(expected, actual);
         }
@@ -183,12 +183,19 @@ namespace ProjectTDD.test
         {
             using (StringWriter sw = new StringWriter())
             {
-                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
                 Console.SetOut(sw);
+                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
                 sut_local.PlayerActionErrorMessage();
                 string expected = string.Format("\nError! Your choice must contain a number between 1 and 4.\n");
                 Assert.Equal(expected, sw.ToString());
             }
+        }
+
+        [Fact]
+        public void GetPlayerNameTestable_UseWrongArgumentEmptyString_ThrowsApplicationException()
+        {
+            var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
+            Assert.Throws<ApplicationException>(() => sut_local.GetPlayerNameTestable(""));
         }
 
         private void mock_player_setup()
