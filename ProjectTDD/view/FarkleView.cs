@@ -226,10 +226,7 @@ namespace ProjectTDD.view
 
         internal void GetAmountOfPlayersIntroMessage()
         {
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Chose amount of players. Between [2] and [8] :");
-            Console.ResetColor();
+
         }
 
         internal int GetAmountOfPlayersTestable(string a_input)
@@ -248,10 +245,7 @@ namespace ProjectTDD.view
 
         internal void GetAmountOfPlayersErrorMessage()
         {
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("\nError! Your choice must contain a number between 2 and 8.\n");
-            Console.ResetColor();
+
         }
 
         private string GetNumberInput(bool a_isThisATest)

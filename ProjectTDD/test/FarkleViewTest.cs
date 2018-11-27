@@ -231,6 +231,19 @@ namespace ProjectTDD.test
             Assert.Throws<ApplicationException>(() => sut_local.GetAmountOfPlayersTestable("1"));
         }
 
+        [Fact]
+        public void GetAmountOfPlayersIntroMessage_CompareWithConsoleOuput_Equal()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
+                sut_local.GetAmountOfPlayersIntroMessage();
+                string expected = string.Format("Chose amount of players. Between [2] and [8] :\r\n");
+                Assert.Equal(expected, sw.ToString());
+            }
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
