@@ -157,7 +157,7 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Play_PlayerActionReturnEnumActionSave_Should_Call_GetDiceToSave()
+        public void Play_PlayerActionReturnEnumActionSave_Should_Call_GetDiceToSave5Times()
         {
             var fake_IView_local = new Mock<view.IView>();
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
@@ -167,11 +167,11 @@ namespace ProjectTDD.test
 
             sut_local.Play(FakePlayerList(), false);
 
-            fake_IView_local.Verify(mock => mock.GetDiceToSave(It.IsAny<bool>()), Times.Once());
+            fake_IView_local.Verify(mock => mock.GetDiceToSave(It.IsAny<bool>()), Times.Exactly(6));
         }
 
         [Fact]
-        public void Play_PlayerActionReturnEnumActionSave_Should_Call_DisplaySaveKeys()
+        public void Play_PlayerActionReturnEnumActionSave_Should_Call_DisplaySaveKeys6Times()
         {
             var fake_IView_local = new Mock<view.IView>();
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
@@ -182,11 +182,11 @@ namespace ProjectTDD.test
 
             sut_local.Play(FakePlayerList(), false);
 
-            fake_IView_local.Verify(mock => mock.DisplaySaveKeys(), Times.Once());
+            fake_IView_local.Verify(mock => mock.DisplaySaveKeys(), Times.Exactly(6));
         }
 
         [Fact]
-        public void Play_PlayerActionReturnEnumActionSave_Should_Call_Roll()
+        public void Play_PlayerActionReturnEnumActionSave_Should_Call_Roll2Times()
         {
             var fake_IView_local = new Mock<view.IView>();
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
@@ -196,7 +196,7 @@ namespace ProjectTDD.test
 
             sut_local.Play(FakePlayerList(), false);
 
-            fake_player.Verify(mock => mock.Roll(), Times.Once());
+            fake_player.Verify(mock => mock.Roll(), Times.Exactly(2));
         }
 
         [Fact]
@@ -243,7 +243,7 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Play_PlayerActionReturnEnumActionSave_Should_Call_DisplayCannotSaveDiceTwice()
+        public void Play_PlayerActionReturnEnumActionSave_Should_Call_DisplayCannotSaveDiceTwice6Times()
         {
             var fake_IView_local = new Mock<view.IView>();
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<bool>())).Returns(view.FarkleView.Action.Save);
@@ -254,7 +254,7 @@ namespace ProjectTDD.test
 
             sut_local.Play(FakePlayerList(), false);
 
-            fake_IView_local.Verify(mock => mock.DisplayCannotSaveDiceTwice(), Times.Once());
+            fake_IView_local.Verify(mock => mock.DisplayCannotSaveDiceTwice(), Times.Exactly(6));
         }
 
         private void fake_IView_setup()
