@@ -136,8 +136,9 @@ namespace ProjectTDD.controller
             List<model.Dice> diceList = player.GetHand();
             List<model.Dice> tempDiceList = new List<model.Dice>();
             List<model.Dice> dicesToBeSavedList = new List<model.Dice>();
+            int dicesInList = 6;
 
-            for (int i = 0; i < diceList.Count; i++)
+            for (int i = 0; i < dicesInList; i++)
             {
                 m_IView.DisplaySaveKeys();
                 model.Hand.Dices input = m_IView.GetDiceToSave();
@@ -193,6 +194,7 @@ namespace ProjectTDD.controller
             {
                 System.Threading.Thread.Sleep(2000);
             }
+            player.Roll(); // Roll dices again, orelse same dice value will appear next round.
         }
 
         private void Quit(bool a_noTest)
