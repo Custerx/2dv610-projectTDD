@@ -211,6 +211,19 @@ namespace ProjectTDD.test
             }
         }
 
+        [Fact]
+        public void GetPlayerNameErrorMessage_CompareWithConsoleOuput_Equal()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
+                sut_local.GetPlayerNameErrorMessage();
+                string expected = string.Format("\nError! Your name must contain atleast 1 character.\n");
+                Assert.Equal(expected, sw.ToString());
+            }
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
