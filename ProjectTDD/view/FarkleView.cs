@@ -102,23 +102,30 @@ namespace ProjectTDD.view
             {
                 try
                 {
-                    string input = HandleInput(a_input);
-
-                    if (!input.All(c => c >= '1' && c <= '4'))
-                    {
-                        throw new ApplicationException();
-                    }
-
-                    return (Action)int.Parse(input);
+                    return PlayerActionTestable(a_input);
                 }
                 catch (Exception)
                 {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nError! Your choice must contain a number between 1 and 4.\n");
-                    Console.ResetColor();
+                    PlayerActionErrorMessage();
                 }
             }
+        }
+
+        internal Action PlayerActionTestable(string a_input)
+        {
+            string input = HandleInput(a_input);
+
+            if (!input.All(c => c >= '1' && c <= '4'))
+            {
+                throw new ApplicationException();
+            }
+
+            return (Action)int.Parse(input);
+        }
+
+        internal void PlayerActionErrorMessage()
+        {
+
         }
 
         public void DisplayWinner(String a_player, int a_totalScore)

@@ -171,6 +171,26 @@ namespace ProjectTDD.test
             }
         }
 
+        [Fact]
+        public void PlayerActionTestable_UseWrongArgumentString0_ThrowsApplicationException()
+        {
+            var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
+            Assert.Throws<ApplicationException>(() => sut_local.PlayerActionTestable("0"));
+        }
+
+        [Fact]
+        public void PlayerActionErrorMessage_CompareWithConsoleOuput_Equal()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
+                Console.SetOut(sw);
+                sut_local.PlayerActionErrorMessage();
+                string expected = string.Format("\nError! Your choice must contain a number between 1 and 4.\n");
+                Assert.Equal(expected, sw.ToString());
+            }
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
