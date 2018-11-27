@@ -15,6 +15,7 @@ namespace ProjectTDD.test
         private view.IView sut;
         private readonly ITestOutputHelper m_output; // Capturing output.
         private Mock<model.IPlayer> mock_player;
+        private view.FarkleView sut_farkleview;
 
         public FarkleViewTest(ITestOutputHelper a_output)
         {
@@ -23,6 +24,7 @@ namespace ProjectTDD.test
             mock_player = new Mock<model.IPlayer>();
             mock_player_setup();
             sut = new view.FarkleView();
+            sut_farkleview = new view.FarkleView(); // Not using interface so I can reach internal function.
             m_output = a_output; // https://xunit.github.io/docs/capturing-output
         }
 
@@ -174,8 +176,7 @@ namespace ProjectTDD.test
         [Fact]
         public void PlayerActionTestable_UseWrongArgumentString0_ThrowsApplicationException()
         {
-            var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
-            Assert.Throws<ApplicationException>(() => sut_local.PlayerActionTestable("0"));
+            Assert.Throws<ApplicationException>(() => sut_farkleview.PlayerActionTestable("0"));
         }
 
         [Fact]
@@ -184,8 +185,7 @@ namespace ProjectTDD.test
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
-                sut_local.PlayerActionErrorMessage();
+                sut_farkleview.PlayerActionErrorMessage();
                 string expected = string.Format("\nError! Your choice must contain a number between 1 and 4.\n\r\n");
                 Assert.Equal(expected, sw.ToString());
             }
@@ -194,8 +194,7 @@ namespace ProjectTDD.test
         [Fact]
         public void GetPlayerNameTestable_UseWrongArgumentEmptyString_ThrowsApplicationException()
         {
-            var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
-            Assert.Throws<ApplicationException>(() => sut_local.GetPlayerNameTestable(""));
+            Assert.Throws<ApplicationException>(() => sut_farkleview.GetPlayerNameTestable(""));
         }
 
         [Fact]
@@ -204,8 +203,7 @@ namespace ProjectTDD.test
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
-                sut_local.GetPlayerNameIntroMessage();
+                sut_farkleview.GetPlayerNameIntroMessage();
                 string expected = string.Format("Please type your name: \r\n");
                 Assert.Equal(expected, sw.ToString());
             }
@@ -217,8 +215,7 @@ namespace ProjectTDD.test
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
-                sut_local.GetPlayerNameErrorMessage();
+                sut_farkleview.GetPlayerNameErrorMessage();
                 string expected = string.Format("\nError! Your name must contain atleast 1 character.\n\r\n");
                 Assert.Equal(expected, sw.ToString());
             }
@@ -227,8 +224,7 @@ namespace ProjectTDD.test
         [Fact]
         public void GetAmountOfPlayersTestable_UseWrongArgumentEmptyString_ThrowsApplicationException()
         {
-            var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
-            Assert.Throws<ApplicationException>(() => sut_local.GetAmountOfPlayersTestable("1"));
+            Assert.Throws<ApplicationException>(() => sut_farkleview.GetAmountOfPlayersTestable("1"));
         }
 
         [Fact]
@@ -237,8 +233,7 @@ namespace ProjectTDD.test
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
-                sut_local.GetAmountOfPlayersIntroMessage();
+                sut_farkleview.GetAmountOfPlayersIntroMessage();
                 string expected = string.Format("Chose amount of players. Between [2] and [8] :\r\n");
                 Assert.Equal(expected, sw.ToString());
             }
@@ -250,8 +245,7 @@ namespace ProjectTDD.test
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
-                sut_local.GetAmountOfPlayersErrorMessage();
+                sut_farkleview.GetAmountOfPlayersErrorMessage();
                 string expected = string.Format("\nError! Your choice must contain a number between 2 and 8.\n\r\n");
                 Assert.Equal(expected, sw.ToString());
             }
