@@ -244,6 +244,19 @@ namespace ProjectTDD.test
             }
         }
 
+        [Fact]
+        public void GetAmountOfPlayersErrorMessage_CompareWithConsoleOuput_Equal()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
+                sut_local.GetAmountOfPlayersErrorMessage();
+                string expected = string.Format("\nError! Your choice must contain a number between 2 and 8.\n\r\n");
+                Assert.Equal(expected, sw.ToString());
+            }
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
