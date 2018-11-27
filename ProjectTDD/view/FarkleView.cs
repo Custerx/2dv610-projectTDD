@@ -86,7 +86,7 @@ namespace ProjectTDD.view
 
             if (input.IsNullOrEmpty())
             {
-                throw new NotImplementedException();
+                throw new ApplicationException();
             }
 
             return input;
