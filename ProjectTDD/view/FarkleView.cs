@@ -60,11 +60,11 @@ namespace ProjectTDD.view
 
         public string GetPlayername(string a_input = null)
         {
-            GetPlayerNameIntroMessage();
             while (true)
             {
                 try
                 {
+                    GetPlayerNameIntroMessage();
                     return GetPlayerNameTestable(a_input);
                 }
                 catch (Exception)
@@ -79,7 +79,7 @@ namespace ProjectTDD.view
         {
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("Please type your name: ");
+            Console.WriteLine("Please type your name: ");
             Console.ResetColor();
         }
 
@@ -134,7 +134,7 @@ namespace ProjectTDD.view
         {
             Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("\nError! Your choice must contain a number between 1 and 4.\n");
+            Console.WriteLine("\nError! Your choice must contain a number between 1 and 4.\n");
             Console.ResetColor();
         }
 

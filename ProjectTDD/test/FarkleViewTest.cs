@@ -132,7 +132,7 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetPlayername_ArgumentTrue_ReturnsStringRogge()
+        public void GetPlayername_ArgumentStringRogge_ReturnsStringRogge()
         {
             string actual = sut.GetPlayername("Rogge");
             string expected = "Rogge";
@@ -186,7 +186,7 @@ namespace ProjectTDD.test
                 Console.SetOut(sw);
                 var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
                 sut_local.PlayerActionErrorMessage();
-                string expected = string.Format("\nError! Your choice must contain a number between 1 and 4.\n");
+                string expected = string.Format("\nError! Your choice must contain a number between 1 and 4.\n\r\n");
                 Assert.Equal(expected, sw.ToString());
             }
         }
@@ -206,7 +206,7 @@ namespace ProjectTDD.test
                 Console.SetOut(sw);
                 var sut_local = new view.FarkleView(); // Not using interface so I can reach internal function.
                 sut_local.GetPlayerNameIntroMessage();
-                string expected = string.Format("Please type your name: ");
+                string expected = string.Format("Please type your name: \r\n");
                 Assert.Equal(expected, sw.ToString());
             }
         }
