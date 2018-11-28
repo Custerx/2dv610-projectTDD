@@ -130,16 +130,9 @@ namespace ProjectTDD.model
             }
         }
 
-        public bool Save(model.Dice a_dice)
+        public void Save(model.Dice a_dice)
         {
             SaveAndRemoveDice(a_dice);
-
-            if (IsDiceSaved(a_dice) && IsDiceNotRemoved(a_dice) == false)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         private void SaveAndRemoveDice(model.Dice a_dice)
@@ -156,16 +149,6 @@ namespace ProjectTDD.model
                 m_diceList.RemoveAt(index);
             }
 
-        }
-
-        private bool IsDiceSaved(model.Dice a_dice)
-        {
-            return m_savedDiceList.Any(dice => dice.Dicenumber == a_dice.Dicenumber);
-        }
-
-        private bool IsDiceNotRemoved(model.Dice a_dice)
-        {
-            return m_diceList.Any(dice => dice.Dicenumber == a_dice.Dicenumber);
         }
     }
 }

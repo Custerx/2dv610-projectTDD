@@ -44,14 +44,17 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Save_Dice1_Success()
+        public void Save_Dice1_ShowSaved_ReturnsInt1()
         {
             List<model.Dice> input = sut.Show();
             model.Dice dice1 = input.First(dice => dice.Dicenumber == model.Hand.Dices.Dice_1);
 
-            bool success = sut.Save(dice1);
+            sut.Save(dice1);
 
-            Assert.True(success);
+            int actual = sut.ShowSaved().Count;
+            int expected = 1;
+
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
