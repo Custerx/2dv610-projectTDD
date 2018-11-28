@@ -33,20 +33,13 @@ namespace ProjectTDD.view
             Console.ResetColor();
         }
 
-        public model.Hand.Dices GetDiceToSave(bool a_isThisATest = false)
+        public model.Hand.Dices GetDiceToSave(string a_input = null)
         {
             while (true)
             {
                 try
                 {
-                    string input = GetNumberInput(a_isThisATest);
-
-                    if (!input.All(c => c >= '1' && c <= '7'))
-                    {
-                        throw new ApplicationException();
-                    }
-
-                    return (model.Hand.Dices)int.Parse(input);
+                    return GetDiceToSaveTestable(a_input);
                 }
                 catch (Exception)
                 {
@@ -55,6 +48,20 @@ namespace ProjectTDD.view
                     Console.WriteLine("\nError! Your choice must contain a number between 1 and 7.\n");
                     Console.ResetColor();
                 }
+            }
+        }
+
+        internal model.Hand.Dices GetDiceToSaveTestable(string a_input)
+        {
+            string input = HandleInput(a_input);
+
+            if (!input.All(c => c >= '1' && c <= '7'))
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                return (model.Hand.Dices)int.Parse(input);
             }
         }
 

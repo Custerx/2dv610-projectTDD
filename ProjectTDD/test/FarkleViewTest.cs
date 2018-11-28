@@ -15,7 +15,7 @@ namespace ProjectTDD.test
         private view.IView sut;
         private readonly ITestOutputHelper m_output; // Capturing output.
         private Mock<model.IPlayer> mock_player;
-        private view.FarkleView sut_farkleview;
+        private view.FarkleView sut_farkleview; // Not using interface so I can reach internal function.
 
         public FarkleViewTest(ITestOutputHelper a_output)
         {
@@ -24,7 +24,7 @@ namespace ProjectTDD.test
             mock_player = new Mock<model.IPlayer>();
             mock_player_setup();
             sut = new view.FarkleView();
-            sut_farkleview = new view.FarkleView(); // Not using interface so I can reach internal function.
+            sut_farkleview = new view.FarkleView();
             m_output = a_output; // https://xunit.github.io/docs/capturing-output
         }
 
@@ -142,9 +142,9 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetDiceToSave_ArgumentTrue_ReturnsEnumDicesDice_3()
+        public void GetDiceToSave_ArgumentString3_ReturnsEnumDicesDice_3()
         {
-            model.Hand.Dices actual = sut.GetDiceToSave(true);
+            model.Hand.Dices actual = sut.GetDiceToSave("3");
             model.Hand.Dices expected = model.Hand.Dices.Dice_3;
             Assert.Equal(expected, actual);
         }
@@ -249,6 +249,12 @@ namespace ProjectTDD.test
                 string expected = string.Format("\nError! Your choice must contain a number between 2 and 8.\n\r\n");
                 Assert.Equal(expected, sw.ToString());
             }
+        }
+
+        [Fact]
+        public void GetDiceToSaveTestable_UseWrongArgumentString0_ThrowsApplicationException()
+        {
+            Assert.Throws<ApplicationException>(() => sut_farkleview.GetDiceToSaveTestable("0"));
         }
 
         private void mock_player_setup()
