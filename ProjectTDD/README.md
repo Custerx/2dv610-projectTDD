@@ -4,8 +4,7 @@ This is a test driven development c# project. The aim of this project is to crea
 ## Frameworks
 XUnit for Unit-testing.
 Moq 4.10.0 for Mocking.
-OpenCover 4.6.519 for Code Coverage.
-ReportGenerator for 
+Visual Studio Enterprise for Code Coverage.
 
 ## Farkle rules
 Object of the game: Score 10 000 points.
