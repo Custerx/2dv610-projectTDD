@@ -210,6 +210,18 @@ namespace ProjectTDD.model
             if (a_ones == One && a_twos == One && a_threes == One && a_fours == One && a_fives == One && a_sixes == One)
             {
                 score += 3000;
+            } else
+            {
+                // Score for 1 and 5.
+                if (a_ones == One)
+                {
+                    score += 100;
+                }
+
+                if (a_fives == One)
+                {
+                    score += 50;
+                }
             }
 
             // Score for 3 pairs.
@@ -255,17 +267,6 @@ namespace ProjectTDD.model
                 {
                     score += 1500;
                 }
-            }
-
-            // Score for 1 and 5.
-            if (a_ones == One)
-            {
-                score += 100;
-            }
-
-            if (a_fives == One)
-            {
-                score += 50;
             }
 
             // Score for pair of 1's and pair if 5's when 3 pair score combination not been hit.
