@@ -183,7 +183,7 @@ namespace ProjectTDD.model
 
             if (a_twos == Three)
             {
-                score += 200;
+
             }
 
             if (a_threes == Three)
@@ -193,7 +193,7 @@ namespace ProjectTDD.model
 
             if (a_fours == Three)
             {
-                score += 400;
+
             }
 
             if (a_fives == Three)
