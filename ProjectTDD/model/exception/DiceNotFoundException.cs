@@ -9,13 +9,5 @@ namespace ProjectTDD.model.exception
         public DiceNotFoundException() : base()
         {
         }
-
-        public DiceNotFoundException(string message) : base(message)
-        {
-        }
-
-        public DiceNotFoundException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
     }
 }

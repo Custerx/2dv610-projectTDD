@@ -9,13 +9,5 @@ namespace ProjectTDD.model.exception
         public ValidateNewGameException() : base()
         {
         }
-
-        public ValidateNewGameException(string message) : base(message)
-        {
-        }
-
-        public ValidateNewGameException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
     }
 }

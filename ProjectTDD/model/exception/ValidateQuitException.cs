@@ -9,13 +9,5 @@ namespace ProjectTDD.model.exception
         public ValidateQuitException() : base()
         {
         }
-
-        public ValidateQuitException(string message) : base(message)
-        {
-        }
-
-        public ValidateQuitException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
     }
 }

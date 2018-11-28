@@ -9,13 +9,5 @@ namespace ProjectTDD.model.exception
         public EmptyDiceListException()
         {
         }
-
-        public EmptyDiceListException(string message) : base(message)
-        {
-        }
-
-        public EmptyDiceListException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
     }
 }
