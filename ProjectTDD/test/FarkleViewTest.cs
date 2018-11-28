@@ -156,7 +156,7 @@ namespace ProjectTDD.test
             {
                 Console.SetOut(sw);
                 sut.DisplaySaveKeys();
-                string expected = string.Format("\nSave Dices. Dice_1 = [1], Dice_2 = [2], Dice_3 = [3], Dice_4 = [4], Dice_5 = [5], Dice_6 = [6], EXIT = [7]\n");
+                string expected = string.Format("\nSave Dices. Dice_1 = [1], Dice_2 = [2], Dice_3 = [3], Dice_4 = [4]\n Dice_5 = [5], Dice_6 = [6], DONE = [7]\n\r\n");
                 Assert.Equal(expected, sw.ToString());
             }
         }
