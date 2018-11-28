@@ -257,7 +257,7 @@ namespace ProjectTDD.model
 
             if (pairs == Three)
             {
-                score += 1500;
+
             }
 
             // Score for 4 of a kind and 1 pair.
