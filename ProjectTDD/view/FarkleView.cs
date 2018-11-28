@@ -190,7 +190,6 @@ namespace ProjectTDD.view
             {
                 try
                 {
-                    GetAmountOfPlayersIntroMessage();
                     return GetAmountOfPlayersTestable(a_input);
                 }
                 catch (Exception)
@@ -201,7 +200,7 @@ namespace ProjectTDD.view
 
         }
 
-        internal void GetAmountOfPlayersIntroMessage()
+        public void GetAmountOfPlayersIntroMessage()
         {
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.White;

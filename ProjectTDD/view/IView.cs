@@ -17,5 +17,6 @@ namespace ProjectTDD.view
         void DisplaySaveKeys();
         void DisplayCannotSaveDiceTwice();
         void GetPlayerNameIntroMessage();
+        void GetAmountOfPlayersIntroMessage();
     }
 }
