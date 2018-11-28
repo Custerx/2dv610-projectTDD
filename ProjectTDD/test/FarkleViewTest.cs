@@ -257,6 +257,18 @@ namespace ProjectTDD.test
             Assert.Throws<ApplicationException>(() => sut_farkleview.GetDiceToSaveTestable("0"));
         }
 
+        [Fact]
+        public void GetDiceToSaveErrorMessage_CompareWithConsoleOuput_Equal()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                sut_farkleview.GetDiceToSaveErrorMessage();
+                string expected = string.Format("\nError! Your choice must contain a number between 1 and 7.\n\r\n");
+                Assert.Equal(expected, sw.ToString());
+            }
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
