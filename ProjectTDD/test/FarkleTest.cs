@@ -62,9 +62,9 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void Start_InputPlayerListWith3Players_Should_Call_PlayerAction3Times()
+        public async void Play_InputPlayerListWith3Players_Should_Call_PlayerAction3TimesAsync()
         {
-            sut.Start(false);
+            await sut.Play(Fake3PlayerList(), fake_async_delay.Object, false);
             fake_IView.Verify(mock => mock.PlayerAction(It.IsAny<string>()), Times.Exactly(3));
         }
 
@@ -309,6 +309,15 @@ namespace ProjectTDD.test
         private List<IPlayer> FakePlayerList()
         {
             List<IPlayer> fakelist = new List<IPlayer>();
+            fakelist.Add(fake_player.Object);
+            return fakelist;
+        }
+
+        private List<IPlayer> Fake3PlayerList()
+        {
+            List<IPlayer> fakelist = new List<IPlayer>();
+            fakelist.Add(fake_player.Object);
+            fakelist.Add(fake_player.Object);
             fakelist.Add(fake_player.Object);
             return fakelist;
         }
