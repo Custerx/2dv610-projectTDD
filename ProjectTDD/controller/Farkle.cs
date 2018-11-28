@@ -139,7 +139,7 @@ namespace ProjectTDD.controller
 
                 if (input == model.Hand.Dices.Done)
                 {
-                    throw new NotImplementedException();
+                    break;
                 }
 
                 int index = diceList.FindIndex(d => d.Dicenumber == input);
