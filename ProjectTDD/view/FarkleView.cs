@@ -57,7 +57,7 @@ namespace ProjectTDD.view
 
             if (!input.All(c => c >= '1' && c <= '7'))
             {
-                throw new NotImplementedException();
+                throw new ApplicationException();
             }
             else
             {
