@@ -126,6 +126,12 @@ namespace ProjectTDD.test
             Assert.False(fail);
         }
 
+        [Fact]
+        public void MoveAndRemoveDice_WithDoneAsArgument_ThrowsDiceNotFoundException()
+        {
+            Assert.Throws<model.exception.DiceNotFoundException>(() => sut.MoveAndRemoveDice(model.Hand.Dices.Done));
+        }
+
         private void SaveAllDices()
         {
             List<model.Dice> diceList = sut.Show();

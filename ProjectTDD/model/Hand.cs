@@ -114,13 +114,13 @@ namespace ProjectTDD.model
             }
         }
 
-        private void MoveAndRemoveDice(Dices a_diceNumber)
+        internal void MoveAndRemoveDice(Dices a_diceNumber)
         {
             int index = m_savedDiceList.FindIndex(d => d.Dicenumber == a_diceNumber);
 
             if (index == -1)
             {
-                throw new DiceNotFoundException();
+                throw new NotImplementedException();
             }
             else
             {
