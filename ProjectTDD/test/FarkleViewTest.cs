@@ -51,44 +51,6 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public void GetAction_PressKeyQ_False()
-        {
-            string input = "q";
-            bool fail = sut.GetAction(mock_player.Object, input, true);
-            Assert.False(fail);
-        }
-
-        [Fact]
-        public void GetAction_PressKeyR_Should_Call_Roll()
-        {
-            string input = "r";
-            sut.GetAction(mock_player.Object, input, true);
-            mock_player.Verify(mock => mock.Roll(), Times.Once());
-        }
-
-        [Fact]
-        public void GetAction_PressKeyS_Should_Call_Save()
-        {
-            string input = "s";
-            sut.GetAction(mock_player.Object, input, true);
-            mock_player.Verify(mock => mock.Save(fake_dice.Object), Times.Once());
-        }
-
-        [Fact]
-        public void GetAction_PressKeyS_Should_Call_GetHand()
-        {
-            string input = "s";
-            Assert.Throws<model.exception.InvalidStringArgumentException>(() => sut.GetAction(mock_player.Object, input));
-        }
-
-        [Fact]
-        public void GetAction_UseWrongArgumentStringE_ThrowsArgumentException()
-        {
-            string input = "e";
-            Assert.Throws<model.exception.TestStringArgumentException>(() => sut.GetAction(mock_player.Object, input, true));
-        }
-
-        [Fact]
         public void DisplayGameKeys_CompareWithConsoleOuput_Equal()
         {
             // Part of this code is inspired by code found in 2DV610 slack channel.

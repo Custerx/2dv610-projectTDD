@@ -16,11 +16,6 @@ namespace ProjectTDD.controller
             m_playerFactory = new PlayerFactory();
         }
 
-        public bool Action(IPlayer player, string a_letter = null, bool a_test = false)
-        {
-            return m_IView.GetAction(player, a_letter, a_test);
-        }
-
         public void Start(bool a_noTest = true)
         {
             try

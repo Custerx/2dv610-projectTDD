@@ -141,12 +141,6 @@ namespace ProjectTDD.test
             fake_IView_local.Verify(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>()), Times.Once());
         }
 
-        [Fact]
-        public void Action_WhenPlayerHitQ_ReturnFalse()
-        {
-            bool fail = sut.Action(fake_player.Object, "q", true);
-            Assert.False(fail);
-        }
 
         [Fact]
         public void AddName_Should_Call_GetPlayername3Times()

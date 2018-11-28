@@ -185,40 +185,6 @@ namespace ProjectTDD.view
             Console.Write("Total-score: {0}\n", a_totalScore);
         }
 
-        public bool GetAction(model.IPlayer player, string a_letter = null, bool a_test = false)
-        {
-            if (a_test && !a_letter.All(c => c == 'r' || c == 'n' || c == 's' || c == 'q'))
-            {
-                throw new model.exception.TestStringArgumentException();
-            }
-
-            if (a_test == false && a_letter != null)
-            {
-                throw new model.exception.InvalidStringArgumentException();
-            }
-
-            if (a_test == false)
-            {
-                a_letter = Console.ReadLine();
-            }
-
-            if (a_letter == "r")
-            {
-                player.Roll();
-            }
-
-            if (a_letter == "s") // TODO: Enable user to chose what dice to save.
-            {
-                List<model.Dice> diceList = player.GetHand();
-                foreach (model.Dice d in diceList)
-                {
-                    player.Save(d);
-                }
-            }
-
-            return a_letter != "q";
-        }
-
         public int GetAmountOfPlayers(string a_input = null)
         {
             while (true)
@@ -264,17 +230,6 @@ namespace ProjectTDD.view
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\nError! Your choice must contain a number between 2 and 8.\n");
             Console.ResetColor();
-        }
-
-        private string GetNumberInput(bool a_isThisATest)
-        {
-            if(a_isThisATest)
-            {
-                return "3";
-            } else
-            {
-                return Console.ReadLine();
-            }
         }
 
         private string HandleInput(string a_input)
