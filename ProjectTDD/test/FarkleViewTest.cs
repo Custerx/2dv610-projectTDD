@@ -13,11 +13,10 @@ namespace ProjectTDD.test
     {
         private Mock<model.Dice> fake_dice;
         private view.IView sut;
-        private readonly ITestOutputHelper m_output; // Capturing output.
         private Mock<model.IPlayer> mock_player;
         private view.FarkleView sut_farkleview; // Not using interface so I can reach internal function.
 
-        public FarkleViewTest(ITestOutputHelper a_output)
+        public FarkleViewTest()
         {
             fake_dice = new Mock<model.Dice>();
             fake_dice_setup();
@@ -25,21 +24,6 @@ namespace ProjectTDD.test
             mock_player_setup();
             sut = new view.FarkleView();
             sut_farkleview = new view.FarkleView();
-            m_output = a_output; // https://xunit.github.io/docs/capturing-output
-        }
-
-        [Fact]
-        public void DisplayDice_ArgumentFakeDice_OutputDice_1Value5()
-        {
-            // This is a copy of FarkleView.DisplayDice(model.Dice a_dice)
-            SimulateOutputFromDisplayDice(fake_dice.Object);
-        }
-
-        [Fact]
-        public void DisplayRolledDices_ArgumentFakeDiceList_Dice_1Value5_Dice_2Value3()
-        {
-            // This is a copy of FarkleView.DisplayRolledDices(string a_player, List<model.Dice> a_hand, int a_score)
-            SimulateOutputFromDisplayRolledDices("Rogge", fake_dice_list(), 300, 3000);
         }
 
         [Fact]
@@ -255,24 +239,6 @@ namespace ProjectTDD.test
             dicelist.Add(fake_dice.Object);
             dicelist.Add(fake_dice2.Object);
             return dicelist;
-        }
-
-        private void SimulateOutputFromDisplayDice(model.Dice a_fakedice)
-        {
-            m_output.WriteLine("{0} : {1}", a_fakedice.Dicenumber, a_fakedice.GetValue());
-        }
-
-        private void SimulateOutputFromDisplayRolledDices(String a_player, List<model.Dice> a_hand, int a_score, int a_totalScore)
-        {
-            m_output.WriteLine("{0} Rolled: ", a_player);
-            foreach (model.Dice d in a_hand)
-            {
-                SimulateOutputFromDisplayDice(d);
-            }
-            m_output.WriteLine("Score: {0}", a_score);
-            m_output.WriteLine("");
-            m_output.WriteLine("Total-score: {0}", a_totalScore);
-            m_output.WriteLine("");
         }
     }
 }
