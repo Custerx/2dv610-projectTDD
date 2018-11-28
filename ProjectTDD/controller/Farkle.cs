@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ProjectTDD.controller
 {
@@ -9,14 +10,16 @@ namespace ProjectTDD.controller
     {
         private view.IView m_IView;
         private model.PlayerFactory m_playerFactory;
+        private model.task.delay.IAsyncDelay m_asyncDelay;
 
         public Farkle(view.IView a_IView)
         {
             m_IView = a_IView;
             m_playerFactory = new PlayerFactory();
+            m_asyncDelay = new model.task.delay.AsyncDelay();
         }
 
-        public void Start(bool a_noTest = true)
+        public async Task Start(bool a_noTest = true)
         {
             try
             {
@@ -24,7 +27,7 @@ namespace ProjectTDD.controller
                 int players = m_IView.GetAmountOfPlayers();
                 List<IPlayer> playerList = CreatePlayer(players);
                 playerList = AddName(playerList);
-                Play(playerList, a_noTest);
+                await Play(playerList, m_asyncDelay, a_noTest);
             }
             catch (model.exception.DiceNotFoundException dnfex)
             {
@@ -60,7 +63,7 @@ namespace ProjectTDD.controller
             return a_playerList;
         }
 
-        internal void Play(List<IPlayer> a_playerList, bool a_noTest = true)
+        internal async Task Play(List<IPlayer> a_playerList, model.task.delay.IAsyncDelay a_asyncDelay, bool a_noTest = true)
         {
             do
             {
@@ -77,13 +80,13 @@ namespace ProjectTDD.controller
 
                     if (action == view.FarkleView.Action.Roll)
                     {
-                        Roll(player, a_noTest);
+                        await Roll(player, a_noTest, a_asyncDelay);
                         continue;
                     }
 
                     if (action == view.FarkleView.Action.Save)
                     {
-                        Save(player, a_noTest);
+                        await Save(player, a_noTest, a_asyncDelay);
                     }
 
                     if (action == view.FarkleView.Action.Quit)
@@ -104,31 +107,29 @@ namespace ProjectTDD.controller
             throw new model.exception.ValidateNewGameException();
         }
 
-        private void Roll(IPlayer player, bool a_noTest)
+        private async Task Roll(IPlayer player, bool a_noTest, model.task.delay.IAsyncDelay a_asyncDelay)
         {
             player.Roll();
             player.UpdateTotalScore();
 
             m_IView.DisplayRolledDices(player.GetPlayername(), player.GetHand(), player.CalculateScore(), player.GetTotalScore());
 
-            if (a_noTest) // To avoid 2 sec delay when testing.
-            {
-                System.Threading.Thread.Sleep(2000);
-            }
+            await a_asyncDelay.Delay(TimeSpan.FromSeconds(2));
 
             if (player.IsPlayerWinner())
             {
                 m_IView.DisplayWinner(player.GetPlayername(), player.GetTotalScore());
 
-                if (a_noTest) // To avoid 5 sec delay when testing.
+                await a_asyncDelay.Delay(TimeSpan.FromSeconds(5));
+
+                if (a_noTest)
                 {
-                    System.Threading.Thread.Sleep(5000);
                     Start();
                 }
             }
         }
 
-        private void Save(IPlayer player, bool a_noTest)
+        private async Task Save(IPlayer player, bool a_noTest, model.task.delay.IAsyncDelay a_asyncDelay)
         {
             List<model.Dice> diceList = player.GetHand();
             List<model.Dice> tempDiceList = new List<model.Dice>();
@@ -173,10 +174,10 @@ namespace ProjectTDD.controller
                 player.Save(dicesToBeSavedList[i]);
             }
 
-            RollRemainingDicesAfterSave(player, a_noTest);
+            await RollRemainingDicesAfterSave(player, a_asyncDelay);
         }
 
-        private void RollRemainingDicesAfterSave(IPlayer player, bool a_noTest)
+        private async Task RollRemainingDicesAfterSave(IPlayer player, model.task.delay.IAsyncDelay a_asyncDelay)
         {
             if(player.IsMoreDicesToRoll())
             {
@@ -187,10 +188,8 @@ namespace ProjectTDD.controller
 
             m_IView.DisplayRolledDices(player.GetPlayername(), player.GetHand(), player.CalculateScore(), player.GetTotalScore());
 
-            if (a_noTest) // To avoid 2 sec delay when testing.
-            {
-                System.Threading.Thread.Sleep(2000);
-            }
+            await a_asyncDelay.Delay(TimeSpan.FromSeconds(2));
+
             player.Roll(); // Roll dices again, orelse same dice value will appear next round.
         }
 
