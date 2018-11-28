@@ -263,7 +263,10 @@ namespace ProjectTDD.model
             // Score for 4 of a kind and 1 pair.
             if (a_ones == Four || a_twos == Four || a_threes == Four || a_fours == Four || a_fives == Four || a_sixes == Four)
             {
-
+                if (pairs == One)
+                {
+                    score += 1500;
+                }
             }
 
             // Score for pair of 1's and pair if 5's when 3 pair score combination not been hit.
