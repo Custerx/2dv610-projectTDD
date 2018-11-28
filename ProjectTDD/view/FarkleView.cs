@@ -76,7 +76,6 @@ namespace ProjectTDD.view
             {
                 try
                 {
-                    GetPlayerNameIntroMessage();
                     return GetPlayerNameTestable(a_input);
                 }
                 catch (Exception)
@@ -87,7 +86,7 @@ namespace ProjectTDD.view
 
         }
 
-        internal void GetPlayerNameIntroMessage()
+        public void GetPlayerNameIntroMessage()
         {
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.White;

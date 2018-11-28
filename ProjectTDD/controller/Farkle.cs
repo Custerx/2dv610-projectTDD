@@ -150,7 +150,7 @@ namespace ProjectTDD.controller
                     m_IView.DisplayCannotSaveDiceTwice();
                     if (a_noTest)
                     {
-                        i--; // Enables endless loop and player can only exit through own choice.
+                        i--; // Enables endless loop and player can only exit through option "DONE".
                     }
                 }
                 else

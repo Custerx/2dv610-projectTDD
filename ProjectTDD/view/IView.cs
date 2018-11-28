@@ -16,5 +16,6 @@ namespace ProjectTDD.view
         model.Hand.Dices GetDiceToSave(string a_input = null);
         void DisplaySaveKeys();
         void DisplayCannotSaveDiceTwice();
+        void GetPlayerNameIntroMessage();
     }
 }

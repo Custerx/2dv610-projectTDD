@@ -28,6 +28,13 @@ namespace ProjectTDD.test
         }
 
         [Fact]
+        public void Start_Should_Call_GetPlayerNameIntroMessage()
+        {
+            sut.Start(false);
+            fake_IView.Verify(mock => mock.GetPlayerNameIntroMessage());
+        }
+
+        [Fact]
         public void Start_Should_Call_GetAmountOfPlayers()
         {
             sut.Start(false);
@@ -140,7 +147,6 @@ namespace ProjectTDD.test
 
             fake_IView_local.Verify(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>()), Times.Once());
         }
-
 
         [Fact]
         public void AddName_Should_Call_GetPlayername3Times()
@@ -258,6 +264,7 @@ namespace ProjectTDD.test
             fake_IView.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Roll).Verifiable();
             fake_IView.Setup(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>())).Verifiable();
             fake_IView.Setup(mock => mock.GetPlayername(It.IsAny<string>())).Returns("Sune").Verifiable();
+            fake_IView.Setup(mock => mock.GetPlayerNameIntroMessage()).Verifiable();
         }
 
         private void fake_dice_setup()
