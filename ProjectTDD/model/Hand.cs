@@ -120,7 +120,7 @@ namespace ProjectTDD.model
 
             if (index == -1)
             {
-                throw new NotImplementedException();
+                throw new DiceNotFoundException();
             }
             else
             {
