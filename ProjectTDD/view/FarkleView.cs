@@ -64,7 +64,10 @@ namespace ProjectTDD.view
 
         internal void GetDiceToSaveErrorMessage()
         {
-
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\nError! Your choice must contain a number between 1 and 7.\n");
+            Console.ResetColor();
         }
 
         public string GetPlayername(string a_input = null)
