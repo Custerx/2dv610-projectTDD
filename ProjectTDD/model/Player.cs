@@ -188,7 +188,7 @@ namespace ProjectTDD.model
 
             if (a_threes == Three)
             {
-                score += 300;
+
             }
 
             if (a_fours == Three)
