@@ -81,7 +81,7 @@ namespace ProjectTDD.model
 
             if (IsFarkle(savedDicesScore, rolledDicesScore))
             {
-                throw new NotImplementedException();
+                return 0;
             }
 
             return savedDicesScore + rolledDicesScore;
