@@ -20,6 +20,7 @@ namespace ProjectTDD.controller
         {
             try
             {
+                m_IView.GetAmountOfPlayersIntroMessage();
                 int players = m_IView.GetAmountOfPlayers();
                 List<IPlayer> playerList = CreatePlayer(players);
                 playerList = AddName(playerList);
