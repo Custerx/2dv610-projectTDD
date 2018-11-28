@@ -29,13 +29,9 @@ namespace ProjectTDD.controller
                 playerList = AddName(playerList);
                 await Play(playerList, m_asyncDelay, a_noTest);
             }
-            catch (model.exception.DiceNotFoundException dnfex)
-            {
-                Console.WriteLine(dnfex);
-            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                throw;
             }
         }
 
@@ -124,7 +120,7 @@ namespace ProjectTDD.controller
 
                 if (a_noTest)
                 {
-                    Start();
+                    await Start();
                 }
             }
         }
@@ -143,7 +139,7 @@ namespace ProjectTDD.controller
 
                 if (input == model.Hand.Dices.Done)
                 {
-                    break;
+                    throw new NotImplementedException();
                 }
 
                 int index = diceList.FindIndex(d => d.Dicenumber == input);

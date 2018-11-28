@@ -268,6 +268,21 @@ namespace ProjectTDD.test
             fake_IView_local.Verify(mock => mock.DisplayCannotSaveDiceTwice(), Times.Exactly(6));
         }
 
+        [Fact]
+        public async void Play_PlayerActionReturnEnumActionSave_PlayerDontSaveAndClickDone_LoopBreak()
+        {
+            var fake_IView_local = new Mock<view.IView>();
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
+            fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<string>())).Returns(model.Hand.Dices.Done);
+            fake_IView_local.Setup(mock => mock.DisplayCannotSaveDiceTwice()).Verifiable();
+
+            var sut_local = new controller.Farkle(fake_IView_local.Object);
+
+            await sut_local.Play(Fake3PlayerList(), fake_async_delay.Object, false);
+
+            fake_IView_local.Verify(mock => mock.DisplayCannotSaveDiceTwice(), Times.Exactly(0));
+        }
+
         private void fake_IView_setup()
         {
             fake_IView.Setup(mock => mock.GetAmountOfPlayers(It.IsAny<string>())).Returns(3).Verifiable();
