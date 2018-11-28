@@ -218,6 +218,13 @@ namespace ProjectTDD.test
             fake_hand.Verify(mock => mock.Reset(), Times.Once());
         }
 
+        [Fact]
+        public void IsMoreDicesToRoll_Should_Return_False()
+        {
+            bool no = sut.IsMoreDicesToRoll();
+            Assert.False(no);
+        }
+
         private void fake_hand_setup()
         {
             fake_hand.Setup(mock => mock.Roll()).Verifiable();
