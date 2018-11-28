@@ -279,7 +279,7 @@ namespace ProjectTDD.model
 
                 if (a_fives == Two)
                 {
-                    score += 50 * 2;
+                    
                 }
             }
 
