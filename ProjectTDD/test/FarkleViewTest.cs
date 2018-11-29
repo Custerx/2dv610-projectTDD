@@ -218,6 +218,14 @@ namespace ProjectTDD.test
             }
         }
 
+        [Fact]
+        public void GetAmountOfPlayers_NullAsArgument_ReturnInt2()
+        {
+            int actual = sut.GetAmountOfPlayers(null);
+            int expected = 2; // Set by mock_console_readline_setup()
+            Assert.Equal(expected, actual);
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
@@ -227,7 +235,7 @@ namespace ProjectTDD.test
 
         private void mock_console_readline_setup()
         {
-            mock_console_readline.Setup(mock => mock.ReadLine()).Returns("1").Verifiable();
+            mock_console_readline.Setup(mock => mock.ReadLine()).Returns("2").Verifiable();
         }
 
         private void fake_dice_setup()

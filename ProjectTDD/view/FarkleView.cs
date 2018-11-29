@@ -238,8 +238,8 @@ namespace ProjectTDD.view
         private string HandleInput(string a_input)
         {
             if (a_input == null)
-            { 
-                return m_conReadline.ReadLine();
+            {
+                throw new NotImplementedException();
             } else
             {
                 return a_input;
