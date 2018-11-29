@@ -226,6 +226,14 @@ namespace ProjectTDD.test
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void GetDiceToSave_NullAsArgument_ReturnModelHandDices_2()
+        {
+            model.Hand.Dices actual = sut.GetDiceToSave(null);
+            model.Hand.Dices expected = model.Hand.Dices.Dice_2; // Set by mock_console_readline_setup()
+            Assert.Equal(expected, actual);
+        }
+
         private void mock_player_setup()
         {
             mock_player.Setup(mock => mock.Roll()).Verifiable();
