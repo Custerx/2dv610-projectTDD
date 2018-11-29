@@ -194,9 +194,6 @@ namespace ProjectTDD.controller
         private void Quit(bool a_noTest)
         {
             m_envExit.Exit(0);
-
-
-            throw new model.exception.ValidateQuitException();
         }
     }
 }
