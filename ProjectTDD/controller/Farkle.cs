@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTDD.controller
 {
-    public class Farkle
+    public class Farkle : IFarkle
     {
         private view.IView m_IView;
         private model.PlayerFactory m_playerFactory;
@@ -89,7 +89,7 @@ namespace ProjectTDD.controller
 
                     if (action == view.FarkleView.Action.Quit)
                     {
-                        Quit(a_noTest);
+                        Quit();
                     }
                 }
             } while (a_noTest);
@@ -191,7 +191,7 @@ namespace ProjectTDD.controller
             player.Roll(); // Roll dices again, orelse same dice value will appear next round.
         }
 
-        private void Quit(bool a_noTest)
+        private void Quit()
         {
             m_envExit.Exit(0);
         }

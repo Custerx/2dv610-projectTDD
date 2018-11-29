@@ -7,10 +7,12 @@ namespace ProjectTDD
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            App a = new App();
-            a.Exe();
+            view.IView v = new view.FarkleView();
+            model.env.exit.IEnvironmentExit e = new model.env.exit.EnvironmentExit();
+            controller.IFarkle c = new controller.Farkle(v, e);
+            await c.Start();
         }
     }
 }
