@@ -11,12 +11,14 @@ namespace ProjectTDD.controller
         private view.IView m_IView;
         private model.PlayerFactory m_playerFactory;
         private model.task.delay.IAsyncDelay m_asyncDelay;
+        private readonly model.env.exit.IEnvironmentExit m_envExit;
 
-        public Farkle(view.IView a_IView)
+        public Farkle(view.IView a_IView, model.env.exit.IEnvironmentExit a_envExit)
         {
             m_IView = a_IView;
             m_playerFactory = new PlayerFactory();
             m_asyncDelay = new model.task.delay.AsyncDelay();
+            m_envExit = a_envExit;
         }
 
         public async Task Start(bool a_noTest = true)
@@ -193,7 +195,7 @@ namespace ProjectTDD.controller
         {
             if (a_noTest)
             {
-                Environment.Exit(0);
+                m_envExit.Exit(0);
             }
 
             throw new model.exception.ValidateQuitException();

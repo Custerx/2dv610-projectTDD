@@ -17,6 +17,7 @@ namespace ProjectTDD.test
         private Mock<model.Dice> fake_dice;
         private Mock<IPlayer> fake_player;
         private Mock<model.task.delay.IAsyncDelay> fake_async_delay;
+        private Mock<model.env.exit.IEnvironmentExit> fake_envExit;
 
         public FarkleTest()
         {
@@ -26,9 +27,11 @@ namespace ProjectTDD.test
             fake_player_setup();
             fake_async_delay = new Mock<model.task.delay.IAsyncDelay>();
             fake_async_delay_setup();
+            fake_envExit = new Mock<model.env.exit.IEnvironmentExit>();
+            fake_envExit_setup();
             fake_IView = new Mock<view.IView>();
             fake_IView_setup();
-            sut = new controller.Farkle(fake_IView.Object);
+            sut = new controller.Farkle(fake_IView.Object, fake_envExit.Object);
         }
 
         [Fact]
@@ -103,7 +106,7 @@ namespace ProjectTDD.test
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<string>())).Returns(model.Hand.Dices.Dice_1);
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await sut_local.Play(FakePlayerList(), fake_async_delay.Object, false);
 
@@ -116,7 +119,7 @@ namespace ProjectTDD.test
             var fake_IView_local = new Mock<view.IView>();
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Quit);
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await Assert.ThrowsAsync<model.exception.ValidateQuitException>(() => sut_local.Play(FakePlayerList(), fake_async_delay.Object, false));
         }
@@ -127,7 +130,7 @@ namespace ProjectTDD.test
             var fake_IView_local = new Mock<view.IView>();
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.NewGame);
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await Assert.ThrowsAsync<model.exception.ValidateNewGameException>(() => sut_local.Play(FakePlayerList(), fake_async_delay.Object, false));
         }
@@ -138,7 +141,7 @@ namespace ProjectTDD.test
             var fake_IView_local = new Mock<view.IView>();
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Roll);
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await sut_local.Play(FakePlayerList(), fake_async_delay.Object, false);
 
@@ -152,7 +155,7 @@ namespace ProjectTDD.test
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Roll);
             fake_IView_local.Setup(mock => mock.DisplayWinner(It.IsAny<string>(), It.IsAny<int>())).Verifiable();
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await sut_local.Play(FakePlayerList(), fake_async_delay.Object, false);
 
@@ -174,7 +177,7 @@ namespace ProjectTDD.test
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<string>())).Returns(model.Hand.Dices.Dice_1).Verifiable();
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await sut_local.Play(FakePlayerList(), fake_async_delay.Object, false);
 
@@ -189,7 +192,7 @@ namespace ProjectTDD.test
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<string>())).Returns(model.Hand.Dices.Dice_1);
             fake_IView_local.Setup(mock => mock.DisplaySaveKeys()).Verifiable();
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await sut_local.Play(FakePlayerList(), fake_async_delay.Object, false);
 
@@ -203,7 +206,7 @@ namespace ProjectTDD.test
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<string>())).Returns(model.Hand.Dices.Dice_1);
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await sut_local.Play(FakePlayerList(), fake_async_delay.Object, false);
 
@@ -217,7 +220,7 @@ namespace ProjectTDD.test
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<string>())).Returns(model.Hand.Dices.Dice_1);
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await sut_local.Play(FakePlayerList(), fake_async_delay.Object, false);
 
@@ -232,7 +235,7 @@ namespace ProjectTDD.test
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<string>())).Returns(model.Hand.Dices.Dice_1);
             fake_IView_local.Setup(mock => mock.DisplayRolledDices(It.IsAny<string>(), It.IsAny<List<model.Dice>>(), It.IsAny<int>(), It.IsAny<int>())).Verifiable();
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await sut_local.Play(FakePlayerList(), fake_async_delay.Object, false);
 
@@ -246,7 +249,7 @@ namespace ProjectTDD.test
             fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Save);
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<string>())).Returns(model.Hand.Dices.Dice_1);
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await sut_local.Play(FakePlayerList(), fake_async_delay.Object, false);
 
@@ -261,7 +264,7 @@ namespace ProjectTDD.test
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<string>())).Returns(null);
             fake_IView_local.Setup(mock => mock.DisplayCannotSaveDiceTwice()).Verifiable();
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await sut_local.Play(FakePlayerList(), fake_async_delay.Object, false);
 
@@ -276,11 +279,24 @@ namespace ProjectTDD.test
             fake_IView_local.Setup(mock => mock.GetDiceToSave(It.IsAny<string>())).Returns(model.Hand.Dices.Done);
             fake_IView_local.Setup(mock => mock.DisplayCannotSaveDiceTwice()).Verifiable();
 
-            var sut_local = new controller.Farkle(fake_IView_local.Object);
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
 
             await sut_local.Play(Fake3PlayerList(), fake_async_delay.Object, false);
 
             fake_IView_local.Verify(mock => mock.DisplayCannotSaveDiceTwice(), Times.Exactly(0));
+        }
+
+        [Fact]
+        public async void Play_PlayerActionReturnEnumActionQuit_Should_Call_EnvironmentExit()
+        {
+            var fake_IView_local = new Mock<view.IView>();
+            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Quit);
+
+            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
+
+            await sut_local.Play(FakePlayerList(), fake_async_delay.Object, false);
+
+            fake_envExit.Verify(mock => mock.Exit(It.IsAny<int>()), Times.Once());
         }
 
         private void fake_IView_setup()
@@ -312,6 +328,11 @@ namespace ProjectTDD.test
         private void fake_async_delay_setup()
         {
             fake_async_delay.Setup(mock => mock.Delay(It.IsAny<TimeSpan>())).Returns(Task.FromResult(0)).Verifiable();
+        }
+
+        private void fake_envExit_setup()
+        {
+            fake_envExit.Setup(mock => mock.Exit(It.IsAny<int>())).Verifiable();
         }
 
         private List<model.Dice> FakeDiceList()
