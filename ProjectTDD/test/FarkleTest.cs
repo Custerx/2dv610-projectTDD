@@ -114,17 +114,6 @@ namespace ProjectTDD.test
         }
 
         [Fact]
-        public async Task Play_PlayerActionReturnEnumActionQuit_Should_Throw_ValidateQuitException()
-        {
-            var fake_IView_local = new Mock<view.IView>();
-            fake_IView_local.Setup(mock => mock.PlayerAction(It.IsAny<string>())).Returns(view.FarkleView.Action.Quit);
-
-            var sut_local = new controller.Farkle(fake_IView_local.Object, fake_envExit.Object);
-
-            await Assert.ThrowsAsync<model.exception.ValidateQuitException>(() => sut_local.Play(FakePlayerList(), fake_async_delay.Object, false));
-        }
-
-        [Fact]
         public async Task Play_PlayerActionReturnEnumActionNewGame_Should_Throw_ValidateNewGameException()
         {
             var fake_IView_local = new Mock<view.IView>();
