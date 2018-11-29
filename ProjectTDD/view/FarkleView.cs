@@ -239,7 +239,7 @@ namespace ProjectTDD.view
         {
             if (a_input == null)
             {
-                throw new NotImplementedException();
+                return m_conReadline.ReadLine();
             } else
             {
                 return a_input;
