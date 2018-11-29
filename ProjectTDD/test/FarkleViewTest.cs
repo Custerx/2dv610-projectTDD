@@ -15,6 +15,7 @@ namespace ProjectTDD.test
         private view.IView sut;
         private Mock<model.IPlayer> mock_player;
         private view.FarkleView sut_farkleview; // Not using interface so I can reach internal function.
+        private Mock<model.console.readline.IConsoleReadline> mock_console_readline;
 
         public FarkleViewTest()
         {
@@ -22,8 +23,10 @@ namespace ProjectTDD.test
             fake_dice_setup();
             mock_player = new Mock<model.IPlayer>();
             mock_player_setup();
-            sut = new view.FarkleView();
-            sut_farkleview = new view.FarkleView();
+            mock_console_readline = new Mock<model.console.readline.IConsoleReadline>();
+            mock_console_readline_setup();
+            sut = new view.FarkleView(mock_console_readline.Object);
+            sut_farkleview = new view.FarkleView(mock_console_readline.Object);
         }
 
         [Fact]
@@ -220,6 +223,11 @@ namespace ProjectTDD.test
             mock_player.Setup(mock => mock.Roll()).Verifiable();
             mock_player.Setup(mock => mock.Save(fake_dice.Object)).Verifiable();
             mock_player.Setup(mock => mock.GetHand()).Returns(fake_dice_list()).Verifiable();
+        }
+
+        private void mock_console_readline_setup()
+        {
+            mock_console_readline.Setup(mock => mock.ReadLine()).Returns("1").Verifiable();
         }
 
         private void fake_dice_setup()

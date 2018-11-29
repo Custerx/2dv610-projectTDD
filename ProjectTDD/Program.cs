@@ -9,7 +9,8 @@ namespace ProjectTDD
     {
         static async Task Main(string[] args)
         {
-            view.IView v = new view.FarkleView();
+            model.console.readline.IConsoleReadline cr = new model.console.readline.ConsoleReadline();
+            view.IView v = new view.FarkleView(cr);
             model.env.exit.IEnvironmentExit e = new model.env.exit.EnvironmentExit();
             controller.IFarkle c = new controller.Farkle(v, e);
             await c.Start();

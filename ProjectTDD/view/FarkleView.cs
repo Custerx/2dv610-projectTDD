@@ -9,6 +9,11 @@ namespace ProjectTDD.view
 {
     public class FarkleView : IView
     {
+        private readonly model.console.readline.IConsoleReadline m_conReadline;
+        public FarkleView(model.console.readline.IConsoleReadline a_conReadline)
+        {
+            m_conReadline = a_conReadline;
+        }
         public enum Action
         {
             Roll = 1,
@@ -234,7 +239,7 @@ namespace ProjectTDD.view
         {
             if (a_input == null)
             { 
-                return Console.ReadLine();
+                return m_conReadline.ReadLine();
             } else
             {
                 return a_input;
